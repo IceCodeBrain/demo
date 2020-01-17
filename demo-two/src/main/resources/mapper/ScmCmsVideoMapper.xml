@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.example.mapper.ScmCmsVideoMapper">
+  <resultMap id="BaseResultMap" type="com.example.demo.example.entity.ScmCmsVideo">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="type_id" jdbcType="BIGINT" property="typeId" />
+    <result column="cover" jdbcType="VARCHAR" property="cover" />
+    <result column="watch_count" jdbcType="INTEGER" property="watchCount" />
+    <result column="likes_count" jdbcType="INTEGER" property="likesCount" />
+    <result column="comment_count" jdbcType="INTEGER" property="commentCount" />
+    <result column="time_length" jdbcType="BIGINT" property="timeLength" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="description" jdbcType="LONGVARCHAR" property="description" />
+    <result column="video_url" jdbcType="LONGVARCHAR" property="videoUrl" />
+  </resultMap>
+</mapper>

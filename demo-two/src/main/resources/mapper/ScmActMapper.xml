@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.example.mapper.ScmActMapper">
+  <resultMap id="BaseResultMap" type="com.example.demo.example.entity.ScmAct">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="user_id" jdbcType="BIGINT" property="userId" />
+    <result column="seller_id" jdbcType="BIGINT" property="sellerId" />
+    <result column="product_id" jdbcType="VARCHAR" property="productId" />
+    <result column="category_id" jdbcType="BIGINT" property="categoryId" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="author" jdbcType="VARCHAR" property="author" />
+    <result column="simple_description" jdbcType="VARCHAR" property="simpleDescription" />
+    <result column="cover" jdbcType="VARCHAR" property="cover" />
+    <result column="abstracts" jdbcType="VARCHAR" property="abstracts" />
+    <result column="evaluation_type" jdbcType="CHAR" property="evaluationType" />
+    <result column="likes" jdbcType="INTEGER" property="likes" />
+    <result column="shears" jdbcType="INTEGER" property="shears" />
+    <result column="comments" jdbcType="INTEGER" property="comments" />
+    <result column="browse" jdbcType="INTEGER" property="browse" />
+    <result column="version" jdbcType="INTEGER" property="version" />
+    <result column="auth_status" jdbcType="INTEGER" property="authStatus" />
+    <result column="fail_cause" jdbcType="VARCHAR" property="failCause" />
+    <result column="act_status" jdbcType="INTEGER" property="actStatus" />
+    <result column="act_top" jdbcType="INTEGER" property="actTop" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="aite" jdbcType="TINYINT" property="aite" />
+    <result column="headlines_article" jdbcType="TINYINT" property="headlinesArticle" />
+    <result column="aite_delete" jdbcType="TINYINT" property="aiteDelete" />
+    <result column="description" jdbcType="LONGVARCHAR" property="description" />
+    <result column="video_url" jdbcType="LONGVARCHAR" property="videoUrl" />
+    <result column="pic_url" jdbcType="LONGVARCHAR" property="picUrl" />
+  </resultMap>
+</mapper>
