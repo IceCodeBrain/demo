@@ -39,11 +39,16 @@
                 targetProject="src/main/java"
                 type="XMLMAPPER"/>
 
-
+        <javaTypeResolver>
+            <!--他的属性用于指定MyBatis Generator是否应在DATE，TIME和TIMESTAMP字段上强制使用JSR-310数据类型，而不是使用java.util.Date-->
+            <!-- <property name="useJSR310Types" value="true"/>-->
+        </javaTypeResolver>
         <!-- 配置需要指定生成的数据库和表，% 代表所有表 -->
         <table catalog="" tableName="%">
             <!-- mysql 配置 -->
             <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+            <!--<columnOverride column="create_time" property="createTime" typeHandler="org.apache.ibatis.type.LocalDateTimeTypeHandler" jdbcType="OTHER" javaType="java.time.LocalDateTime" />-->
+
         </table>
     </context>
 </generatorConfiguration>

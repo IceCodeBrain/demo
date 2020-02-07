@@ -1,6 +1,7 @@
 package com.example.demo.boot.uitls;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -47,8 +48,28 @@ public class DateU {
         return doFormatDate(pattern, getDate(calendar, oneDay, date));
     }
 
-    /*public static void main(String[] args) {
-        String pattern = "yyyy-MM";
+
+    public static void doLocalDate() {
+
+        LocalDate today = LocalDate.now();
+        int year = today.getYear();
+        int month = today.getMonthValue();
+        int day = today.getDayOfMonth();
+
+        LocalDate date2 = LocalDate.of(2018,2,5);
+        System.out.println("date2:" + date2);
+
+        date2 = LocalDate.MIN;
+        System.out.println("date2:" + date2);
+        System.out.println("today:" + today);
+        System.out.println("year:" + year);
+        System.out.println("month:" + month);
+        System.out.println("day:" + day);
+
+    }
+
+    public static void main(String[] args) {
+        /*String pattern = "yyyy-MM";
         System.out.println(getDateStr(pattern, Calendar.MONTH, -24));
         String dateFormatType = "%Y-%m";
 
@@ -56,6 +77,7 @@ public class DateU {
         int num = 15;
         for (int day = 0; day > -num; day--) {
             System.out.println(getDateStr(pattern, calendar, day));
-        }
-    }*/
+        }*/
+        doLocalDate();
+    }
 }
