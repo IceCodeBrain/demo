@@ -27,6 +27,7 @@
     </dependencies>
 
     <build>
+        <finalName>demo-three</finalName>
         <plugins>
             <plugin>
                 <groupId>org.mybatis.generator</groupId>
