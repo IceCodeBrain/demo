@@ -1,7 +1,7 @@
 server:
   port: 8080
-  servlet:
-    context-path: /demo
+#  servlet:
+#    context-path: /demo
   tomcat:
     accept-count: 150
     max-threads: 500

@@ -1,9 +1,12 @@
 package com.example.demo.boot.uitls;
 
 import java.text.SimpleDateFormat;
+import java.time.Instant;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @description: DateU <br>
@@ -68,6 +71,15 @@ public class DateU {
 
     }
 
+
+    public  static  void testInstant(){
+        Date date = new Date();
+        Instant instant =  Instant.now().plusMillis(TimeUnit.HOURS.toMillis(8));
+        LocalDateTime localDateTime = LocalDateTime.now();
+        System.out.println(date);
+        System.out.println(instant);
+        System.out.println(localDateTime);
+    }
     public static void main(String[] args) {
         /*String pattern = "yyyy-MM";
         System.out.println(getDateStr(pattern, Calendar.MONTH, -24));
@@ -78,6 +90,7 @@ public class DateU {
         for (int day = 0; day > -num; day--) {
             System.out.println(getDateStr(pattern, calendar, day));
         }*/
-        doLocalDate();
+       // doLocalDate();
+        testInstant();
     }
 }
