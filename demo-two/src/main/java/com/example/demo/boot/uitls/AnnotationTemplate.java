@@ -13,7 +13,7 @@ public class AnnotationTemplate {
      * @description: ${NAME} <br>
      * @date: ${DATE} ${TIME} <br>
      * @author: PWB <br>
-     * @version: 1.0 <br>
+     * @since: 1.0 <br>
      */
 
     //方法注释模板
@@ -21,7 +21,7 @@ public class AnnotationTemplate {
     /**
      *  *
      * @description: $description$ <br>
-     * @version: 1.0 <br>
+     * @since: 1.0 <br>
      * @date: $date$ $time$ <br>
      * @author: PWB <br>
     $params$ <br>
