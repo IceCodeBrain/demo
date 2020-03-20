@@ -1,5 +1,7 @@
 package com.example.demo.boot.uitls;
 
+import org.apache.commons.lang3.time.DateUtils;
+
 import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.time.LocalDate;
@@ -80,6 +82,14 @@ public class DateU {
         System.out.println(instant);
         System.out.println(localDateTime);
     }
+
+
+    public static void testLangDateUtils(){
+        Date date = DateUtils.addMinutes(new Date(), 10);
+        System.out.println(date);
+    }
+
+
     public static void main(String[] args) {
         /*String pattern = "yyyy-MM";
         System.out.println(getDateStr(pattern, Calendar.MONTH, -24));
@@ -91,6 +101,7 @@ public class DateU {
             System.out.println(getDateStr(pattern, calendar, day));
         }*/
        // doLocalDate();
-        testInstant();
+       // testInstant();
+        testLangDateUtils();
     }
 }

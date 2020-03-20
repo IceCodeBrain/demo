@@ -1,5 +1,6 @@
 package com.example.demo.service;
 
+import com.example.demo.example.entity.ScmAnnouncement;
 import com.example.demo.service.model.dto.AnnouncementDTO;
 import com.example.demo.service.model.vo.AnnouncementVO;
 import com.github.pagehelper.PageInfo;
@@ -69,5 +70,7 @@ public interface AnnouncementService {
      **/
     Boolean deleteAnnouncement(Long id);
 
+
+    PageInfo<ScmAnnouncement> doTestPageInfo(Integer pageNum, Integer pageSize);
 
 }

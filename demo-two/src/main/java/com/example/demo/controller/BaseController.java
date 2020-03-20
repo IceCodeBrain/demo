@@ -7,4 +7,8 @@ package com.example.demo.controller;
  * @version: 1.0 <br>
  */
 public class BaseController {
+
+
+
+
 }

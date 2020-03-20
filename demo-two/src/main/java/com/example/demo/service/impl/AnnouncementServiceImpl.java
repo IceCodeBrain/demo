@@ -7,6 +7,7 @@ import com.example.demo.service.model.dto.AnnouncementDTO;
 import com.example.demo.service.model.vo.AnnouncementVO;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.CacheEvict;
@@ -24,6 +25,7 @@ import java.util.List;
  * @author: PWB <br>
  * @version: 1.0 <br>
  */
+@Slf4j
 @Service
 @CacheConfig(cacheNames = "announcement_cache", keyGenerator = "defineKeyGenerator")
 public class AnnouncementServiceImpl implements AnnouncementService {
@@ -98,4 +100,21 @@ public class AnnouncementServiceImpl implements AnnouncementService {
         announcement.setUpdateTime(new Date());
         return scmAnnouncementMapper.updateByPrimaryKeySelective(announcement) == 1;
     }
+
+
+    public PageInfo<ScmAnnouncement> doTestPageInfo(Integer pageNum, Integer pageSize) {
+        ScmAnnouncement announcement = new ScmAnnouncement();
+        announcement.setIsDelete(false);
+        PageHelper.startPage(pageNum, pageSize);
+        /*PageInfo<ScmAnnouncement> pageInfo = new PageInfo<>(scmAnnouncementMapper.select(announcement));
+        log.info("pageInfo1 =>>{}", pageInfo);
+*/
+        PageInfo<ScmAnnouncement> pageInfo2 = new PageInfo<>(scmAnnouncementMapper.select(announcement));
+
+        pageInfo2.setTotal(pageInfo2.getTotal() + 5);
+        log.info("pageInfo2 =>>{}", pageInfo2);
+        return pageInfo2;
+    }
+
+
 }

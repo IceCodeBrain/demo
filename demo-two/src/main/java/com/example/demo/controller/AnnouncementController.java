@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import com.example.demo.boot.restful.ResResponse;
 import com.example.demo.boot.restful.ResResult;
+import com.example.demo.example.entity.ScmAnnouncement;
 import com.example.demo.service.AnnouncementService;
 import com.example.demo.service.model.dto.AnnouncementDTO;
 import com.example.demo.service.model.vo.AnnouncementVO;
@@ -67,18 +68,15 @@ public class AnnouncementController {
         return ResResponse.ok(scmAnnouncementService.editAnnouncement(announcementDTO));
     }
 
-    /*
-     * 分页获取公告列表
-     * */
     /**
-     * @description: getAnnouncementInfoByPage <br>
-     * @version: 1.0 <br>
-     * @date: 2020/1/16 14:42 <br>
+     * @param pageNum  <br>
+     * @param pageSize <br>
+     * @return com.example.demo.boot.restful.ResResult<com.github.pagehelper.PageInfo < com.example.demo.service.model.vo.AnnouncementVO>> <br>
+     * @description: getAnnouncementInfoByPage 分页获取公告列表 <br>
+     * @since: 1.0 <br>
+     * @date: 2020/3/7 13:56 <br>
      * @author: PWB <br>
-     * @param pageNum
- * @param pageSize <br>
-     * @return com.example.demo.boot.restful.ResResult<com.github.pagehelper.PageInfo<com.example.demo.service.model.vo.AnnouncementVO>> <br>
-     */ 
+     */
     @GetMapping("/getAnnouncementInfoByPage")
     public ResResult<PageInfo<AnnouncementVO>> getAnnouncementInfoByPage(@RequestParam(defaultValue = "1") Integer pageNum, @RequestParam(defaultValue = "10") Integer pageSize) {
         return ResResponse.ok(scmAnnouncementService.getAnnouncementInfoByPage(pageNum, pageSize));
@@ -120,6 +118,9 @@ public class AnnouncementController {
         return ResResponse.ok(scmAnnouncementService.deleteAnnouncement(id));
     }
 
-
+    @GetMapping("doTestPageInfo")
+    public ResResult<PageInfo<ScmAnnouncement>> doTestPageInfo(Integer pageNum, Integer pageSize) {
+        return ResResponse.ok(scmAnnouncementService.doTestPageInfo(pageNum, pageSize));
+    }
 
 }
