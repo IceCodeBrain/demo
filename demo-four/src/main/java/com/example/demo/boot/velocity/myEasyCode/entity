@@ -13,6 +13,8 @@ import java.io.Serializable;
 
 ##使用宏定义实现类注释信息
 #tableComment("实体类")
+
+@Table(name = "$!{tableInfo.obj.name}")
 public class $!{tableInfo.name} implements Serializable {
 private static final long serialVersionUID = $!tool.serial();
 #foreach($column in $tableInfo.fullColumn)
