@@ -19,13 +19,10 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.util.List;
 
-/**
-* $!{tableInfo.comment}($!{tableInfo.name})表服务实现类
-*
-* @author $!author
-* @since $!time.currTime()
-*/
-@Service("$!tool.firstLowerCase($!{tableInfo.name})Service")
+##使用宏定义实现类注释信息
+#tableComment("表服务实现类")
+
+@Service
 public class $!{tableName} implements $!{tableInfo.name}Service {
 @Resource
 private $!{tableInfo.name}Dao $!tool.firstLowerCase($!{tableInfo.name})Dao;

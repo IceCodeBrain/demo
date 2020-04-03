@@ -14,12 +14,9 @@ $!callback.setSavePath($tool.append($tableInfo.savePath, "/service"))
 import $!{tableInfo.savePackageName}.entity.$!{tableInfo.name};
 import java.util.List;
 
-/**
-* $!{tableInfo.comment}($!{tableInfo.name})表服务接口
-*
-* @author $!author
-* @since $!time.currTime()
-*/
+##使用宏定义实现类注释信息
+#tableComment("表服务接口")
+
 public interface $!{tableName} {
 
 /**

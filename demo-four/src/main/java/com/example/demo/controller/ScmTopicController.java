@@ -3,9 +3,9 @@ package com.example.demo.controller;
 import com.example.demo.entity.ScmTopic;
 import com.example.demo.service.ScmTopicService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
-
-import javax.annotation.Resource;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * 课程表(ScmTopic)表控制层

@@ -15,12 +15,9 @@ import $!{tableInfo.savePackageName}.entity.$!{tableInfo.name};
 import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
-/**
-* $!{tableInfo.comment}($!{tableInfo.name})表数据库访问层
-*
-* @author $!author
-* @since $!time.currTime()
-*/
+##使用宏定义实现类注释信息
+#tableComment("表数据库访问层")
+
 public interface $!{tableName} {
 
 /**

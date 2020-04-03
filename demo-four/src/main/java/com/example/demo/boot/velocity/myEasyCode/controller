@@ -14,21 +14,19 @@ import $!{tableInfo.savePackageName}.entity.$!{tableInfo.name};
 import $!{tableInfo.savePackageName}.service.$!{tableInfo.name}Service;
 import org.springframework.web.bind.annotation.*;
 
-import javax.annotation.Resource;
+import org.springframework.beans.factory.annotation.Autowired;
 
-/**
-* $!{tableInfo.comment}($!{tableInfo.name})表控制层
-*
-* @author $!author
-* @since $!time.currTime()
-*/
+
+##使用宏定义实现类注释信息
+#tableComment("表控制层")
+
 @RestController
 @RequestMapping("$!tool.firstLowerCase($tableInfo.name)")
 public class $!{tableName} {
 /**
 * 服务对象
 */
-@Resource
+@Autowired
 private $!{tableInfo.name}Service $!tool.firstLowerCase($tableInfo.name)Service;
 
 /**
