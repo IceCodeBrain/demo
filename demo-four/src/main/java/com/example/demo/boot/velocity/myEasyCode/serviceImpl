@@ -34,7 +34,7 @@ private $!{tableInfo.name}Dao $!tool.firstLowerCase($!{tableInfo.name})Dao;
 * @return 实例对象
 */
 @Override
-public $!{tableInfo.name} queryById($!pk.shortType $!pk.name) {
+public $!{tableInfo.name} get$!{tableInfo.name}ById($!pk.shortType $!pk.name) {
 return this.$!{tool.firstLowerCase($!{tableInfo.name})}Dao.queryById($!pk.name);
 }
 
@@ -46,8 +46,8 @@ return this.$!{tool.firstLowerCase($!{tableInfo.name})}Dao.queryById($!pk.name);
 * @return 对象列表
 */
 @Override
-public List<$!{tableInfo.name}> queryAllByLimit(int offset, int limit) {
-return this.$!{tool.firstLowerCase($!{tableInfo.name})}Dao.queryAllByLimit(offset, limit);
+public List<$!{tableInfo.name}> query$!{tableInfo.name}ByPage(int offset, int limit) {
+return null;
 }
 
 /**
@@ -57,9 +57,9 @@ return this.$!{tool.firstLowerCase($!{tableInfo.name})}Dao.queryAllByLimit(offse
 * @return 实例对象
 */
 @Override
-public $!{tableInfo.name} insert($!{tableInfo.name} $!tool.firstLowerCase($!{tableInfo.name})) {
-this.$!{tool.firstLowerCase($!{tableInfo.name})}Dao.insert($!tool.firstLowerCase($!{tableInfo.name}));
-return $!tool.firstLowerCase($!{tableInfo.name});
+public $!{tableInfo.name} add$!{tableInfo.name}($!{tableInfo.name} $!tool.firstLowerCase($!{tableInfo.name})) {
+
+return null;
 }
 
 /**
@@ -69,9 +69,9 @@ return $!tool.firstLowerCase($!{tableInfo.name});
 * @return 实例对象
 */
 @Override
-public $!{tableInfo.name} update($!{tableInfo.name} $!tool.firstLowerCase($!{tableInfo.name})) {
-this.$!{tool.firstLowerCase($!{tableInfo.name})}Dao.update($!tool.firstLowerCase($!{tableInfo.name}));
-return this.queryById($!{tool.firstLowerCase($!{tableInfo.name})}.get$!tool.firstUpperCase($pk.name)());
+public $!{tableInfo.name} update$!{tableInfo.name}($!{tableInfo.name} $!tool.firstLowerCase($!{tableInfo.name})) {
+
+return null;
 }
 
 /**
@@ -81,7 +81,7 @@ return this.queryById($!{tool.firstLowerCase($!{tableInfo.name})}.get$!tool.firs
 * @return 是否成功
 */
 @Override
-public boolean deleteById($!pk.shortType $!pk.name) {
-return this.$!{tool.firstLowerCase($!{tableInfo.name})}Dao.deleteById($!pk.name) > 0;
+public boolean delete$!{tableInfo.name}ById($!pk.shortType $!pk.name) {
+return null;
 }
 }

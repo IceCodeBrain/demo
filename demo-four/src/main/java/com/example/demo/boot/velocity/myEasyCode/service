@@ -25,7 +25,7 @@ public interface $!{tableName} {
 * @param $!pk.name 主键
 * @return 实例对象
 */
-$!{tableInfo.name} queryById($!pk.shortType $!pk.name);
+$!{tableInfo.name} get$!{tableInfo.name}ById($!pk.shortType $!pk.name);
 
 /**
 * 查询多条数据
@@ -34,7 +34,7 @@ $!{tableInfo.name} queryById($!pk.shortType $!pk.name);
 * @param limit 查询条数
 * @return 对象列表
 */
-List<$!{tableInfo.name}> queryAllByLimit(int offset, int limit);
+List<$!{tableInfo.name}> query$!{tableInfo.name}ByPage(int offset, int limit);
 
 /**
 * 新增数据
@@ -42,7 +42,7 @@ List<$!{tableInfo.name}> queryAllByLimit(int offset, int limit);
 * @param $!tool.firstLowerCase($!{tableInfo.name}) 实例对象
 * @return 实例对象
 */
-$!{tableInfo.name} insert($!{tableInfo.name} $!tool.firstLowerCase($!{tableInfo.name}));
+$!{tableInfo.name} add$!{tableInfo.name}($!{tableInfo.name} $!tool.firstLowerCase($!{tableInfo.name}));
 
 /**
 * 修改数据
@@ -50,7 +50,7 @@ $!{tableInfo.name} insert($!{tableInfo.name} $!tool.firstLowerCase($!{tableInfo.
 * @param $!tool.firstLowerCase($!{tableInfo.name}) 实例对象
 * @return 实例对象
 */
-$!{tableInfo.name} update($!{tableInfo.name} $!tool.firstLowerCase($!{tableInfo.name}));
+$!{tableInfo.name} update$!{tableInfo.name}($!{tableInfo.name} $!tool.firstLowerCase($!{tableInfo.name}));
 
 /**
 * 通过主键删除数据
@@ -58,6 +58,6 @@ $!{tableInfo.name} update($!{tableInfo.name} $!tool.firstLowerCase($!{tableInfo.
 * @param $!pk.name 主键
 * @return 是否成功
 */
-boolean deleteById($!pk.shortType $!pk.name);
+boolean delete$!{tableInfo.name}ById($!pk.shortType $!pk.name);
 
 }
