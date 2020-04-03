@@ -30,8 +30,4 @@ $!callback.setSavePath($tool.append($modulePath, "/src/main/resources/mapper"))
     </select>
 
 
-
-
-
-
 </mapper>
