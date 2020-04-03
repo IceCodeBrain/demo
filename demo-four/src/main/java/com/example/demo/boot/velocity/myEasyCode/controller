@@ -31,7 +31,7 @@ private $!{tableInfo.name}Service $!tool.firstLowerCase($tableInfo.name)Service;
 
 @Autowired
 public $!{tableName}($!{tableInfo.name}Service $!tool.firstLowerCase($tableInfo.name)Service) {
-    this.$!tool.firstLowerCase($tableInfo.name)Service = $!tool.firstLowerCase($tableInfo.name)Service;
+this.$!tool.firstLowerCase($tableInfo.name)Service = $!tool.firstLowerCase($tableInfo.name)Service;
 }
 /**
 * 通过主键查询单条数据
@@ -41,7 +41,7 @@ public $!{tableName}($!{tableInfo.name}Service $!tool.firstLowerCase($tableInfo.
 */
 @GetMapping("selectOne")
 public $!{tableInfo.name} selectOne($!pk.shortType id) {
-return this.$!{tool.firstLowerCase($tableInfo.name)}Service.queryById(id);
+return this.$!{tool.firstLowerCase($tableInfo.name)}Service.get$!{tableInfo.name}ById(id);
 }
 
 }
