@@ -16,11 +16,18 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("scmTopic")
 public class ScmTopicController {
+
+
+    @Autowired
+    public ScmTopicController(ScmTopicService scmTopicService) {
+        this.scmTopicService = scmTopicService;
+    }
+
     /**
      * 服务对象
      */
-    @Autowired
     private ScmTopicService scmTopicService;
+
 
     /**
      * 通过主键查询单条数据

@@ -23,12 +23,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 @RestController
 @RequestMapping("$!tool.firstLowerCase($tableInfo.name)")
 public class $!{tableName} {
+
 /**
 * 服务对象
 */
-@Autowired
 private $!{tableInfo.name}Service $!tool.firstLowerCase($tableInfo.name)Service;
 
+@Autowired
+public $!{tableName}($!{tableInfo.name}Service $!tool.firstLowerCase($tableInfo.name)Service) {
+    this.$!tool.firstLowerCase($tableInfo.name)Service = $!tool.firstLowerCase($tableInfo.name)Service;
+}
 /**
 * 通过主键查询单条数据
 *
