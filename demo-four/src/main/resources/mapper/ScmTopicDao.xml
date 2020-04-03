@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.dao.ScmTopicDao">
+
+    <resultMap type="com.example.demo.entity.ScmTopic" id="ScmTopicMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="name" column="name" jdbcType="VARCHAR"/>
+        <result property="currTitleId" column="curr_title_id" jdbcType="INTEGER"/>
+        <result property="type" column="type" jdbcType="VARCHAR"/>
+        <result property="currDetail" column="curr_detail" jdbcType="VARCHAR"/>
+        <result property="remark" column="remark" jdbcType="VARCHAR"/>
+        <result property="coverUrl" column="cover_url" jdbcType="VARCHAR"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+        <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+        <result property="state" column="state" jdbcType="VARCHAR"/>
+        <result property="releaseState" column="release_state" jdbcType="VARCHAR"/>
+        <result property="sort" column="sort" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="ScmTopicMap">
+        select
+          id, name, curr_title_id, type, curr_detail, remark, cover_url, create_time, update_time, state, release_state, sort
+        from scm_cms.scm_topic
+        where id = #{id}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="ScmTopicMap">
+        select
+          id, name, curr_title_id, type, curr_detail, remark, cover_url, create_time, update_time, state, release_state, sort
+        from scm_cms.scm_topic
+        limit #{offset}, #{limit}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="ScmTopicMap">
+        select
+          id, name, curr_title_id, type, curr_detail, remark, cover_url, create_time, update_time, state, release_state, sort
+        from scm_cms.scm_topic
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="name != null and name != ''">
+                and name = #{name}
+            </if>
+            <if test="currTitleId != null">
+                and curr_title_id = #{currTitleId}
+            </if>
+            <if test="type != null and type != ''">
+                and type = #{type}
+            </if>
+            <if test="currDetail != null and currDetail != ''">
+                and curr_detail = #{currDetail}
+            </if>
+            <if test="remark != null and remark != ''">
+                and remark = #{remark}
+            </if>
+            <if test="coverUrl != null and coverUrl != ''">
+                and cover_url = #{coverUrl}
+            </if>
+            <if test="createTime != null">
+                and create_time = #{createTime}
+            </if>
+            <if test="updateTime != null">
+                and update_time = #{updateTime}
+            </if>
+            <if test="state != null and state != ''">
+                and state = #{state}
+            </if>
+            <if test="releaseState != null and releaseState != ''">
+                and release_state = #{releaseState}
+            </if>
+            <if test="sort != null">
+                and sort = #{sort}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        insert into scm_cms.scm_topic(name, curr_title_id, type, curr_detail, remark, cover_url, create_time, update_time, state, release_state, sort)
+        values (#{name}, #{currTitleId}, #{type}, #{currDetail}, #{remark}, #{coverUrl}, #{createTime}, #{updateTime}, #{state}, #{releaseState}, #{sort})
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update scm_cms.scm_topic
+        <set>
+            <if test="name != null and name != ''">
+                name = #{name},
+            </if>
+            <if test="currTitleId != null">
+                curr_title_id = #{currTitleId},
+            </if>
+            <if test="type != null and type != ''">
+                type = #{type},
+            </if>
+            <if test="currDetail != null and currDetail != ''">
+                curr_detail = #{currDetail},
+            </if>
+            <if test="remark != null and remark != ''">
+                remark = #{remark},
+            </if>
+            <if test="coverUrl != null and coverUrl != ''">
+                cover_url = #{coverUrl},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime},
+            </if>
+            <if test="updateTime != null">
+                update_time = #{updateTime},
+            </if>
+            <if test="state != null and state != ''">
+                state = #{state},
+            </if>
+            <if test="releaseState != null and releaseState != ''">
+                release_state = #{releaseState},
+            </if>
+            <if test="sort != null">
+                sort = #{sort},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from scm_cms.scm_topic where id = #{id}
+    </delete>
+
+</mapper>
