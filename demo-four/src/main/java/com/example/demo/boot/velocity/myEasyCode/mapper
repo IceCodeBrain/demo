@@ -31,21 +31,6 @@ $!callback.setSavePath($tool.append($modulePath, "/src/main/resources/mapper"))
 
 
 
-    <!--通过实体作为筛选条件查询-->
-    <select id="queryAll" resultMap="$!{tableInfo.name}Map">
-        select
-        #allSqlColumn()
-
-        from $!{tableInfo.obj.parent.name}.$!tableInfo.obj.name
-        <where>
-            #foreach($column in $tableInfo.fullColumn)
-                <if test="$!column.name != null#if($column.type.equals("java.lang.String")) and $!column.name != ''#end">
-                    and $!column.obj.name = #{$!column.name}
-                </if>
-            #end
-        </where>
-    </select>
-
 
 
 
