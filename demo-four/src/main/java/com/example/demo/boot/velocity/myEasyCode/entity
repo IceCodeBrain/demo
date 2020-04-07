@@ -9,16 +9,14 @@ $!define
 
 ##使用全局变量实现默认包导入
 $!autoImport
-import javax.persistence.*;
-import java.io.Serializable;
+import javax.persistence.Column;
+import javax.persistence.Table;
 
 ##使用宏定义实现类注释信息
 #tableComment("实体类")
 
 @Table(name = "$!{tableInfo.obj.name}")
-public class $!{tableInfo.name} implements Serializable {
-private static final long serialVersionUID = $!tool.serial();
-
+public class $!{tableInfo.name}{
 #foreach($column in $tableInfo.fullColumn)
     ##定义实体类属性：#doField($column)
     #doField($column)

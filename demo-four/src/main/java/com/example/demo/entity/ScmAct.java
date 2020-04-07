@@ -1,20 +1,18 @@
 package com.example.demo.entity;
 
 import java.util.Date;
-import javax.persistence.*;
-import java.io.Serializable;
+import javax.persistence.Column;
+import javax.persistence.Table;
 
 /**
-* @description: CMS文章视频测评种草表(ScmAct)实体类 <br>
-* @author: makejava <br>
-* @since: 1.0 <br>
-* @date: 2020-04-07 10:05:45 <br>
-*/
+ * @description: CMS文章视频测评种草表(ScmAct)实体类 <br>
+ * @author: PWB <br>
+ * @since: 1.0 <br>
+ * @date: 2020-04-07 10:18:13 <br>
+ */
 
 @Table(name = "scm_act")
-public class ScmAct implements Serializable {
-private static final long serialVersionUID = -54600209677383032L;
-
+public class ScmAct{
         
     
     private Long id;
@@ -201,7 +199,7 @@ private static final long serialVersionUID = -54600209677383032L;
     public Long getId() {
         return id;
     }
-    
+
     public void setId(Long id) {
         this.id = id;
     }
@@ -212,7 +210,7 @@ private static final long serialVersionUID = -54600209677383032L;
     public Long getUserId() {
         return userId;
     }
-    
+
     /**
      * 设置发布用户id
      */
@@ -226,7 +224,7 @@ private static final long serialVersionUID = -54600209677383032L;
     public Long getSellerId() {
         return sellerId;
     }
-    
+
     /**
      * 设置关联商家id
      */
@@ -240,7 +238,7 @@ private static final long serialVersionUID = -54600209677383032L;
     public String getProductId() {
         return productId;
     }
-    
+
     /**
      * 设置商品ids(逗号分割)
      */
@@ -254,7 +252,7 @@ private static final long serialVersionUID = -54600209677383032L;
     public Long getCategoryId() {
         return categoryId;
     }
-    
+
     /**
      * 设置商品分类id
      */
@@ -268,7 +266,7 @@ private static final long serialVersionUID = -54600209677383032L;
     public String getTitle() {
         return title;
     }
-    
+
     /**
      * 设置标题
      */
@@ -282,7 +280,7 @@ private static final long serialVersionUID = -54600209677383032L;
     public String getAuthor() {
         return author;
     }
-    
+
     /**
      * 设置作者
      */
@@ -296,7 +294,7 @@ private static final long serialVersionUID = -54600209677383032L;
     public String getSimpleDescription() {
         return simpleDescription;
     }
-    
+
     /**
      * 设置简单描述
      */
@@ -310,7 +308,7 @@ private static final long serialVersionUID = -54600209677383032L;
     public String getDescription() {
         return description;
     }
-    
+
     /**
      * 设置文本
      */
@@ -324,7 +322,7 @@ private static final long serialVersionUID = -54600209677383032L;
     public String getVideoUrl() {
         return videoUrl;
     }
-    
+
     /**
      * 设置视频地址
      */
@@ -338,7 +336,7 @@ private static final long serialVersionUID = -54600209677383032L;
     public String getPicUrl() {
         return picUrl;
     }
-    
+
     /**
      * 设置图片地址（多个用,隔开）
      */
@@ -352,7 +350,7 @@ private static final long serialVersionUID = -54600209677383032L;
     public String getCover() {
         return cover;
     }
-    
+
     /**
      * 设置封面图
      */
@@ -366,7 +364,7 @@ private static final long serialVersionUID = -54600209677383032L;
     public String getAbstracts() {
         return abstracts;
     }
-    
+
     /**
      * 设置简介/摘要
      */
@@ -380,7 +378,7 @@ private static final long serialVersionUID = -54600209677383032L;
     public String getEvaluationType() {
         return evaluationType;
     }
-    
+
     /**
      * 设置图文类型（T 种草，V 视频，P 测评 I 图片）
      */
@@ -394,7 +392,7 @@ private static final long serialVersionUID = -54600209677383032L;
     public Integer getLikes() {
         return likes;
     }
-    
+
     /**
      * 设置点赞数
      */
@@ -408,7 +406,7 @@ private static final long serialVersionUID = -54600209677383032L;
     public Integer getShears() {
         return shears;
     }
-    
+
     /**
      * 设置分享数
      */
@@ -422,7 +420,7 @@ private static final long serialVersionUID = -54600209677383032L;
     public Integer getComments() {
         return comments;
     }
-    
+
     /**
      * 设置评论数
      */
@@ -436,7 +434,7 @@ private static final long serialVersionUID = -54600209677383032L;
     public Integer getBrowse() {
         return browse;
     }
-    
+
     /**
      * 设置浏览/观看数
      */
@@ -450,7 +448,7 @@ private static final long serialVersionUID = -54600209677383032L;
     public Integer getVersion() {
         return version;
     }
-    
+
     /**
      * 设置共享锁
      */
@@ -464,7 +462,7 @@ private static final long serialVersionUID = -54600209677383032L;
     public Integer getAuthStatus() {
         return authStatus;
     }
-    
+
     /**
      * 设置审核状态（0=已保存1=审核中2=审核成功3=待上架4=出售中5=已下架 6=审核失败）
      */
@@ -478,7 +476,7 @@ private static final long serialVersionUID = -54600209677383032L;
     public String getFailCause() {
         return failCause;
     }
-    
+
     /**
      * 设置不通过原因
      */
@@ -492,7 +490,7 @@ private static final long serialVersionUID = -54600209677383032L;
     public Integer getActStatus() {
         return actStatus;
     }
-    
+
     /**
      * 设置0未推荐1推荐
      */
@@ -506,7 +504,7 @@ private static final long serialVersionUID = -54600209677383032L;
     public Integer getActTop() {
         return actTop;
     }
-    
+
     /**
      * 设置1置顶
      */
@@ -520,7 +518,7 @@ private static final long serialVersionUID = -54600209677383032L;
     public Date getUpdateTime() {
         return updateTime;
     }
-    
+
     /**
      * 设置修改时间
      */
@@ -534,7 +532,7 @@ private static final long serialVersionUID = -54600209677383032L;
     public Date getCreateTime() {
         return createTime;
     }
-    
+
     /**
      * 设置创建时间
      */
@@ -548,7 +546,7 @@ private static final long serialVersionUID = -54600209677383032L;
     public Byte getAite() {
         return aite;
     }
-    
+
     /**
      * 设置是否@兔店学院
      */
@@ -562,7 +560,7 @@ private static final long serialVersionUID = -54600209677383032L;
     public Byte getHeadlinesArticle() {
         return headlinesArticle;
     }
-    
+
     /**
      * 设置兔店头条 1 供应链头条 2 商家头条
      */
@@ -576,7 +574,7 @@ private static final long serialVersionUID = -54600209677383032L;
     public Byte getAiteDelete() {
         return aiteDelete;
     }
-    
+
     /**
      * 设置@删除标志
      */

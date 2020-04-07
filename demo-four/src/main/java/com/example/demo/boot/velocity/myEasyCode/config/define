@@ -19,11 +19,11 @@
 ##定义表注释的宏定义，调用方式：#tableComment("注释信息")
 #macro(tableComment $desc)
 /**
-* @description: $!{tableInfo.comment}($!{tableInfo.name})$desc <br>
-* @author: $!author <br>
-* @since: 1.0 <br>
-* @date: $!time.currTime() <br>
-*/
+ * @description: $!{tableInfo.comment}($!{tableInfo.name})$desc <br>
+ * @author: $!author <br>
+ * @since: 1.0 <br>
+ * @date: $!time.currTime() <br>
+ */
 #end
 
 ##定义GET，SET方法的宏定义，调用方式：#getSetMethod($column)
