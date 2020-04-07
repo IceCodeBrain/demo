@@ -16,6 +16,12 @@
     $!callback.setFileName($tool.append($tableInfo.name, $fileName))
 #end
 
+##定义直接保存路径与文件名简化的宏定义，调用方式：#save("/entity","ObjectVO", ".java")
+#macro(saveFile $path $fileName $suffix)
+    $!callback.setSavePath($tool.append($tableInfo.savePath, $path))
+    $!callback.setFileName($tool.append($fileName, $suffix))
+#end
+
 ##定义表注释的宏定义，调用方式：#tableComment("注释信息")
 #macro(tableComment $desc)
 /**
