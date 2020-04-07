@@ -49,6 +49,7 @@ this.$!{column.name} = $!{column.name};
 
 ##定义实体类属性：#doField($column)
 #macro(doField $column)
+
     #if(${column.comment})
 /**
     * $!{column.comment}
