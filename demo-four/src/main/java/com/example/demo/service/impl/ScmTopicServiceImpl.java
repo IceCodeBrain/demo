@@ -12,7 +12,7 @@ import java.util.List;
  * @description: 课程表(ScmTopic)表服务实现类 <br>
  * @author: PWB <br>
  * @since: 1.0 <br>
- * @date: 2020-04-07 10:33:29 <br>
+ * @date: 2020-04-07 13:49:37 <br>
  */
 
 @Service
@@ -74,7 +74,7 @@ return null;
 * @return 是否成功
 */
 @Override
-public boolean deleteScmTopicById(Long id) {
+public Boolean deleteScmTopicById(Long id) {
 return null;
 }
 }

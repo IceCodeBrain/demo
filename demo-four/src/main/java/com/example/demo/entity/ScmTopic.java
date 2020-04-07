@@ -7,7 +7,7 @@ import java.util.Date;
  * @description: 课程表(ScmTopic)实体类 <br>
  * @author: PWB <br>
  * @since: 1.0 <br>
- * @date: 2020-04-07 13:44:56 <br>
+ * @date: 2020-04-07 13:46:33 <br>
  */
 
 @Table(name = "scm_topic")

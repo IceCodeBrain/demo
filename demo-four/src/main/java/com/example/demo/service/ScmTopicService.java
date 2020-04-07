@@ -7,7 +7,7 @@ import java.util.List;
  * @description: 课程表(ScmTopic)表服务接口 <br>
  * @author: PWB <br>
  * @since: 1.0 <br>
- * @date: 2020-04-07 10:33:29 <br>
+ * @date: 2020-04-07 13:49:36 <br>
  */
 
 public interface ScmTopicService {
@@ -51,6 +51,6 @@ ScmTopic updateScmTopic(ScmTopic scmTopic);
 * @param id 主键
 * @return 是否成功
 */
-boolean deleteScmTopicById(Long id);
+Boolean deleteScmTopicById(Long id);
 
 }

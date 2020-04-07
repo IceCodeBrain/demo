@@ -60,6 +60,6 @@ $!{tableInfo.name} update$!{tableInfo.name}($!{tableInfo.name} $!tool.firstLower
 * @param $!pk.name 主键
 * @return 是否成功
 */
-boolean delete$!{tableInfo.name}ById($!pk.shortType $!pk.name);
+Boolean delete$!{tableInfo.name}ById($!pk.shortType $!pk.name);
 
 }

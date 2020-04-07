@@ -9,7 +9,7 @@ import tk.TKMapper;
  * @description: 课程表(ScmTopic)表数据库访问层 <br>
  * @author: PWB <br>
  * @since: 1.0 <br>
- * @date: 2020-04-07 10:33:28 <br>
+ * @date: 2020-04-07 13:49:36 <br>
  */
 
 public interface ScmTopicDao extends TKMapper<ScmTopic>{
