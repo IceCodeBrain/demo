@@ -9,8 +9,7 @@ $!define
 
 ##使用全局变量实现默认包导入
 $!autoImport
-import javax.persistence.Column;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 ##使用宏定义实现类注释信息
 #tableComment("实体类")

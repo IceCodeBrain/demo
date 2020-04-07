@@ -15,7 +15,7 @@ $!callback.setSavePath($tool.append($modulePath, "/src/main/resources/mapper"))
 <mapper namespace="$!{tableInfo.savePackageName}.dao.$!{tableInfo.name}Dao">
     <resultMap type="$!{tableInfo.savePackageName}.entity.$!{tableInfo.name}" id="$!{tableInfo.name}Map">
         #foreach($column in $tableInfo.fullColumn)
-        #if($column.obj.name.indexOf("id") && $column.obj.name.length()<3)
+        #if($column.obj.name.indexOf("id")>-1 && $column.obj.name.length()<3)
         <id column="$!column.obj.name" jdbcType="$!column.ext.jdbcType" property="$!column.name"/>
         #else
         <result column="$!column.obj.name" jdbcType="$!column.ext.jdbcType" property="$!column.name"/>

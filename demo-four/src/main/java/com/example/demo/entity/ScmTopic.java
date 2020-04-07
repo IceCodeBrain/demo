@@ -1,98 +1,110 @@
 package com.example.demo.entity;
 
+import javax.persistence.*;
 import java.util.Date;
-import javax.persistence.Column;
-import javax.persistence.Table;
 
 /**
  * @description: 课程表(ScmTopic)实体类 <br>
  * @author: PWB <br>
  * @since: 1.0 <br>
- * @date: 2020-04-07 10:33:27 <br>
+ * @date: 2020-04-07 13:44:56 <br>
  */
 
 @Table(name = "scm_topic")
-public class ScmTopic{
-        
+public class ScmTopic {
+
     /**
      * id
      */
-    
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-        
+
     /**
      * 课程名称
      */
-    
+
+
     private String name;
-        
+
     /**
      * 所属课题id
      */
-    
+
+
     @Column(name = "curr_title_id")
     private Long currTitleId;
-        
+
     /**
      * 课程类型（0 文章 1 视频）
      */
-    
+
+
     private String type;
-        
+
     /**
      * 课程详情
      */
-    
+
+
     @Column(name = "curr_detail")
     private String currDetail;
-        
+
     /**
      * 课程介绍
      */
-    
+
+
     private String remark;
-        
+
     /**
      * 封面url
      */
-    
+
+
     @Column(name = "cover_url")
     private String coverUrl;
-        
+
     /**
      * 创建时间
      */
-    
+
+
     @Column(name = "create_time")
     private Date createTime;
-        
+
     /**
      * 修改时间
      */
-    
+
+
     @Column(name = "update_time")
     private Date updateTime;
-        
+
     /**
      * 数据状态(0 有效 1无效)
      */
-    
+
+
     private String state;
-        
+
     /**
      * 发布状态(0 发布 1 未发布)
      */
-    
+
+
     @Column(name = "release_state")
     private String releaseState;
-        
+
     /**
      * 排序字段
      */
-    
+
+
     private Long sort;
 
-        
+
     /**
      * 获取id
      */
@@ -106,7 +118,7 @@ public class ScmTopic{
     public void setId(Long id) {
         this.id = id;
     }
-        
+
     /**
      * 获取课程名称
      */
@@ -120,7 +132,7 @@ public class ScmTopic{
     public void setName(String name) {
         this.name = name;
     }
-        
+
     /**
      * 获取所属课题id
      */
@@ -134,7 +146,7 @@ public class ScmTopic{
     public void setCurrTitleId(Long currTitleId) {
         this.currTitleId = currTitleId;
     }
-        
+
     /**
      * 获取课程类型（0 文章 1 视频）
      */
@@ -148,7 +160,7 @@ public class ScmTopic{
     public void setType(String type) {
         this.type = type;
     }
-        
+
     /**
      * 获取课程详情
      */
@@ -162,7 +174,7 @@ public class ScmTopic{
     public void setCurrDetail(String currDetail) {
         this.currDetail = currDetail;
     }
-        
+
     /**
      * 获取课程介绍
      */
@@ -176,7 +188,7 @@ public class ScmTopic{
     public void setRemark(String remark) {
         this.remark = remark;
     }
-        
+
     /**
      * 获取封面url
      */
@@ -190,7 +202,7 @@ public class ScmTopic{
     public void setCoverUrl(String coverUrl) {
         this.coverUrl = coverUrl;
     }
-        
+
     /**
      * 获取创建时间
      */
@@ -204,7 +216,7 @@ public class ScmTopic{
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
     }
-        
+
     /**
      * 获取修改时间
      */
@@ -218,7 +230,7 @@ public class ScmTopic{
     public void setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;
     }
-        
+
     /**
      * 获取数据状态(0 有效 1无效)
      */
@@ -232,7 +244,7 @@ public class ScmTopic{
     public void setState(String state) {
         this.state = state;
     }
-        
+
     /**
      * 获取发布状态(0 发布 1 未发布)
      */
@@ -246,7 +258,7 @@ public class ScmTopic{
     public void setReleaseState(String releaseState) {
         this.releaseState = releaseState;
     }
-        
+
     /**
      * 获取排序字段
      */
