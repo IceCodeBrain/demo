@@ -9,6 +9,7 @@ $!define
 
 ##使用全局变量实现默认包导入
 $!autoImport
+import javax.persistence.*;
 import java.io.Serializable;
 
 ##使用宏定义实现类注释信息
@@ -18,11 +19,8 @@ import java.io.Serializable;
 public class $!{tableInfo.name} implements Serializable {
 private static final long serialVersionUID = $!tool.serial();
 #foreach($column in $tableInfo.fullColumn)
-    #if(${column.comment})/**
-    * ${column.comment}
-    */#end
-
-private $!{tool.getClsNameByFullName($column.type)} $!{column.name};
+    ##定义实体类属性：#doField($column)
+    #doField($column)
 #end
 
 #foreach($column in $tableInfo.fullColumn)

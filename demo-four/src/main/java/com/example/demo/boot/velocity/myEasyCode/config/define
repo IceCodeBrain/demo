@@ -28,12 +28,25 @@
 
 ##定义GET，SET方法的宏定义，调用方式：#getSetMethod($column)
 #macro(getSetMethod $column)
-
+    #if(${column.comment})/**
+    * 获取${column.comment}
+    */#end
 public $!{tool.getClsNameByFullName($column.type)} get$!{tool.firstUpperCase($column.name)}() {
 return $!{column.name};
 }
-
+    #if(${column.comment})/**
+    * 设置${column.comment}
+    */#end
 public void set$!{tool.firstUpperCase($column.name)}($!{tool.getClsNameByFullName($column.type)} $!{column.name}) {
 this.$!{column.name} = $!{column.name};
 }
+#end
+
+
+##定义实体类属性：#doField($column)
+#macro(doField $column)
+    #if($column.obj.name.indexOf("_")>-1)
+    @Column(name = "$!{column.obj.name}")
+    #end
+private $!{tool.getClsNameByFullName($column.type)} $!{column.name};
 #end
