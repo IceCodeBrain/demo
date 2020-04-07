@@ -1,4 +1,4 @@
-package com.example.demo.model;
+package com.example.demo.entity.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.annotations.ApiModel;
@@ -11,7 +11,7 @@ import java.util.Date;
  * @description: 课程表(ScmTopic)实体类 <br>
  * @author: PWB <br>
  * @since: 1.0 <br>
- * @date: 2020-04-07 15:39:05 <br>
+ * @date: 2020-04-07 15:43:42 <br>
  */
 
 @ApiModel("课程表model")
