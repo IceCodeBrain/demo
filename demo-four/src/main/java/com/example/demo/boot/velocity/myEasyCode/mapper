@@ -13,10 +13,13 @@ $!callback.setSavePath($tool.append($modulePath, "/src/main/resources/mapper"))
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="$!{tableInfo.savePackageName}.dao.$!{tableInfo.name}Dao">
-
     <resultMap type="$!{tableInfo.savePackageName}.entity.$!{tableInfo.name}" id="$!{tableInfo.name}Map">
         #foreach($column in $tableInfo.fullColumn)
-            <result property="$!column.name" column="$!column.obj.name" jdbcType="$!column.ext.jdbcType"/>
+        #if($column.obj.name.indexOf("id") && $column.obj.name.length()<3)
+        <id column="$!column.obj.name" jdbcType="$!column.ext.jdbcType" property="$!column.name"/>
+        #else
+        <result column="$!column.obj.name" jdbcType="$!column.ext.jdbcType" property="$!column.name"/>
+        #end
         #end
     </resultMap>
 
@@ -28,6 +31,5 @@ $!callback.setSavePath($tool.append($modulePath, "/src/main/resources/mapper"))
         from $!{tableInfo.obj.parent.name}.$!tableInfo.obj.name
         where $!pk.obj.name = #{$!pk.name}
     </select>
-
 
 </mapper>
