@@ -16,13 +16,14 @@ $!callback.setSavePath($tool.append($tableInfo.savePath, "/controller"))
 import $!{tableInfo.savePackageName}.entity.$!{tableInfo.name};
 import $!{tableInfo.savePackageName}.service.$!{tableInfo.name}Service;
 import org.springframework.web.bind.annotation.*;
-
 import org.springframework.beans.factory.annotation.Autowired;
-
-
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 ##使用宏定义实现类注释信息
 #tableComment("表控制层")
 
+@Api(tags = "$!{tableInfo.comment}相关功能API")
 @RestController
 @RequestMapping("$!tool.firstLowerCase($tableInfo.name)")
 public class $!{tableName} {
@@ -42,8 +43,9 @@ this.$!tool.firstLowerCase($tableInfo.name)Service = $!tool.firstLowerCase($tabl
 * @param id 主键
 * @return 单条数据
 */
+@ApiOperation("get查询")
 @GetMapping("selectOne")
-public $!{tableInfo.name} selectOne($!pk.shortType id) {
+public $!{tableInfo.name} selectOne(@ApiParam("id") @RequestParam $!pk.shortType id) {
 return this.$!{tool.firstLowerCase($tableInfo.name)}Service.get$!{tableInfo.name}ById(id);
 }
 

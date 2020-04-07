@@ -3,17 +3,18 @@ package com.example.demo.controller;
 import com.example.demo.entity.ScmTopic;
 import com.example.demo.service.ScmTopicService;
 import org.springframework.web.bind.annotation.*;
-
 import org.springframework.beans.factory.annotation.Autowired;
-
-
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 /**
  * @description: 课程表(ScmTopic)表控制层 <br>
  * @author: PWB <br>
  * @since: 1.0 <br>
- * @date: 2020-04-07 15:22:18 <br>
+ * @date: 2020-04-07 15:50:26 <br>
  */
 
+@Api(tags = "课程表相关功能API")
 @RestController
 @RequestMapping("scmTopic")
 public class ScmTopicController {
@@ -33,8 +34,9 @@ this.scmTopicService = scmTopicService;
 * @param id 主键
 * @return 单条数据
 */
+@ApiOperation("get查询")
 @GetMapping("selectOne")
-public ScmTopic selectOne(Long id) {
+public ScmTopic selectOne(@ApiParam("id") @RequestParam Long id) {
 return this.scmTopicService.getScmTopicById(id);
 }
 
