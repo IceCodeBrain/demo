@@ -1,10 +1,16 @@
 package com.example.demo.boot.test;
 
+import com.example.demo.boot.uitls.DocxUtils;
 import lombok.extern.slf4j.Slf4j;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @description: JunitTest <br>
@@ -21,6 +27,14 @@ public class JunitTest {
     public void testDecode() throws UnsupportedEncodingException {
         encodeUrl = URLDecoder.decode(encodeUrl, "utf-8");
         log.info(encodeUrl);
+    }
+
+    @Test
+    public void testDocx() throws IOException {
+        InputStream is = new FileInputStream("D:\\var\\contract\\20200408\\contract_1.docx");
+        Map<String, Object> params = new HashMap<>(1);
+        params.put("contractNo", "20200408110599");
+        DocxUtils.docxContentChange(is, params);
     }
 
 }
