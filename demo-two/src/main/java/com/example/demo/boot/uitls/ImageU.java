@@ -63,7 +63,6 @@ public class ImageU {
     }
 
 
-
     public static BufferedImage doBuildSecond() {
 
         String pressText = "来自与皮卡丘的分享";
@@ -181,19 +180,5 @@ public class ImageU {
         return null;
     }
 
-
-    public static void main(String[] args) throws IOException {
-        //doBuildSecond();
-        //doBuild();
-        doBuildFirst();
-        reSize(new File("D:/var/image/6.png"),
-                new File("D:/var/image/6avatar.png"),
-                35, 36, true);
-        reSize(new File("D:/var/image/6.png"),
-                new File("D:/var/image/6avatar2.png"),
-                35, 36, false);
-
-
-    }
 
 }

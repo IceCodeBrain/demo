@@ -18,7 +18,6 @@ import java.util.concurrent.TimeUnit;
  */
 public class DateU {
 
-
     public static String doFormatDate(Date date) {
         return doFormatDate("yyyy-MM-dd", date);
     }
@@ -61,7 +60,7 @@ public class DateU {
         int month = today.getMonthValue();
         int day = today.getDayOfMonth();
 
-        LocalDate date2 = LocalDate.of(2018,2,5);
+        LocalDate date2 = LocalDate.of(2018, 2, 5);
         System.out.println("date2:" + date2);
 
         date2 = LocalDate.MIN;
@@ -73,35 +72,19 @@ public class DateU {
 
     }
 
-
-    public  static  void testInstant(){
+    public static void testInstant() {
         Date date = new Date();
-        Instant instant =  Instant.now().plusMillis(TimeUnit.HOURS.toMillis(8));
+        Instant instant = Instant.now().plusMillis(TimeUnit.HOURS.toMillis(8));
         LocalDateTime localDateTime = LocalDateTime.now();
         System.out.println(date);
         System.out.println(instant);
         System.out.println(localDateTime);
     }
 
-
-    public static void testLangDateUtils(){
+    public static void testLangDateUtils() {
         Date date = DateUtils.addMinutes(new Date(), 10);
         System.out.println(date);
     }
 
 
-    public static void main(String[] args) {
-        /*String pattern = "yyyy-MM";
-        System.out.println(getDateStr(pattern, Calendar.MONTH, -24));
-        String dateFormatType = "%Y-%m";
-
-        int calendar = Calendar.MONTH;
-        int num = 15;
-        for (int day = 0; day > -num; day--) {
-            System.out.println(getDateStr(pattern, calendar, day));
-        }*/
-       // doLocalDate();
-       // testInstant();
-        testLangDateUtils();
-    }
 }
