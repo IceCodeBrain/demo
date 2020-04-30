@@ -15,7 +15,7 @@
         <plugin type="tk.mybatis.mapper.generator.MapperPlugin">
             <!-- <property name="mappers" value="tk.mybatis.mapper.MyMapper"/>-->
             <!--<property name="mappers" value="com.yintu.supply.core.universal.MyMapper"/>-->
-            <property name="mappers" value="com.example.demo.boot.core.TkMapper"/>
+            <property name="mappers" value="tk.mybatis.define.TkMapper"/>
 
         </plugin>
 
