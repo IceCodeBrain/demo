@@ -16,7 +16,7 @@ $!callback.setSavePath($tool.append($tableInfo.savePath, "/dao"))
 import $!{tableInfo.savePackageName}.entity.$!{tableInfo.name};
 import org.apache.ibatis.annotations.Param;
 import java.util.List;
-import tk.TKMapper;
+import com.example.demo.boot.core.TKMapper;
 
 ##使用宏定义实现类注释信息
 #tableComment("表数据库访问层")

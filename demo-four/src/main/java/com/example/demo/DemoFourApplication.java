@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import tk.mybatis.spring.annotation.MapperScan;
 
 
-@MapperScan("com.example.demo.dao")
+
 @SpringBootApplication
 public class DemoFourApplication {
 

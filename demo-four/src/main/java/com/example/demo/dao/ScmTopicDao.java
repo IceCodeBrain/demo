@@ -1,9 +1,7 @@
 package com.example.demo.dao;
 
 import com.example.demo.entity.ScmTopic;
-import org.apache.ibatis.annotations.Param;
-import java.util.List;
-import tk.TKMapper;
+import com.example.demo.boot.core.TKMapper;
 
 /**
  * @description: 课程表(ScmTopic)表数据库访问层 <br>

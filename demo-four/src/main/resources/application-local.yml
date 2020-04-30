@@ -99,3 +99,7 @@ pagehelper:
   params: count=countSql
   reasonable: true
   support-methods-arguments: true
+##``````````````````````````````````` tkMapper 配置``````````````````````````````````````````````````````````````###
+
+mapper:
+  mappers: com.example.demo.boot.core.TKMapper

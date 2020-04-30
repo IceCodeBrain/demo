@@ -1,4 +1,4 @@
-package tk;
+package com.example.demo.boot.core;
 
 import tk.mybatis.mapper.common.IdsMapper;
 import tk.mybatis.mapper.common.Mapper;
@@ -15,5 +15,5 @@ import tk.mybatis.mapper.common.MySqlMapper;
  * @author: PWB <br>
  * @version: 1.0 <br>
  */
-public interface TKMapper<T> extends Mapper<T>, MySqlMapper<T>, IdsMapper<T> {
+public interface TkMapper<T> extends Mapper<T>, MySqlMapper<T>, IdsMapper<T> {
 }
