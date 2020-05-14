@@ -1,13 +1,4 @@
-/**
- * Copyright (C), 2018-2019, XXX有限公司
- * FileName: AbstractBaseRedisDao
- * Author:   pwb
- * Date:     2019/8/27 18:28
- * Description:
- * History:
- * <author>          <time>          <version>          <desc>
- * frank           修改时间           1.0.0              ycypApp
- */
+
 package com.example.demo.component.impl;
 
 import org.springframework.data.redis.core.RedisTemplate;
@@ -16,7 +7,6 @@ import org.springframework.data.redis.serializer.RedisSerializer;
 import javax.annotation.Resource;
 
 /**
- * 〈〉
  *
  * @author pwb
  * @create 2019/8/27

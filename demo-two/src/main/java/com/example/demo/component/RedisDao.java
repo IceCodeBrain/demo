@@ -1,382 +1,256 @@
-/**
- * Copyright (C), 2018-2019, XXX有限公司
- * FileName: RedisDao
- * Author:   pwb
- * Date:     2019/8/27 18:20
- * Description:
- * History:
- * <author>          <time>          <version>          <desc>
- * frank           修改时间           1.0.0              ycypApp
- */
-package com.example.demo.component;
 
-/**
- * 〈〉
- *
- * @author pwb
- * @create 2019/8/27
- * @since 1.0.0
- */
+package com.example.demo.component;
 
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.TimeUnit;
 
 /**
  * RedisDao接口类
+ * @author pwb
+ * @create 2019/8/27
+ * @since 1.0.0
  */
 public interface RedisDao {
 
     /**
      * 判断缓存中是否有对应的value
-     *
-     * @param key
-     * @return boolean
      */
-    public boolean existsKey(Object key);
+    Boolean existsKey(String key);
 
     /**
      * 根据key获取key列表(key值可为模糊匹配---taskInfo:taskDetail:* <---> *代表任意字符)
-     *
-     * @param pattern
-     * @return Set<Object>
      */
-    public Set<Object> keys(Object pattern);
+    Set<String> keys(String pattern);
 
     /**
      * 根据key删除对应的value
      *
-     * @param key
+     * @param key 键
      */
-    public boolean delete(Object key);
+    void delete(String key);
 
     /**
      * 根据key获取个数
      *
-     * @param key
+     * @param key 键
      */
-    public int count(Object key);
+    int count(String key);
 
     /**
      * 批量删除对应的value
      *
-     * @param keys
+     * @param keys 键
      */
-    public void delete(String[] keys);
+    void delete(String[] keys);
 
     /**
      * 批量删除key(key值可为模糊匹配---taskInfo:taskDetail:* <---> *代表任意字符)
      *
-     * @param pattern
+     * @param pattern 键集合
      */
-    public Long deletePattern(Object pattern);
+    Long deletePattern(String pattern);
 
     /**
      * 批量删除对应的value
-     *
-     * @param keys
      */
-    public Long delete(Set<Object> keys);
+    Long delete(Set<String> keys);
 
     /**
      * 写入缓存(操作字符串)
-     *
-     * @param key
-     * @param value
-     * @return boolean
      */
-    public boolean vSet(Object key, Object value);
+    boolean vSet(String key, Object value);
 
     /**
      * 写入缓存设置时效时间(操作字符串)
-     *
-     * @param key
-     * @param value
-     * @return boolean
      */
-    public boolean vSet(Object key, Object value, Long expireTime);
+    boolean vSet(String key, Object value, Long expireTime);
 
     /**
-     * 更新写入缓存设置时效时间(操作字符串)
-     *
-     * @param key
-     * @return boolean
+     * 缓存设置时效时间
      */
-    public boolean vSetUpdate(Object key, Long expireTime);
+    Boolean setExpireTime(String key, Long expireTime, TimeUnit unit);
+
 
     /**
      * 读取缓存(操作字符串)
      *
-     * @param key
-     * @return Object
+     * @param key 键
      */
-    public Object vGet(Object key);
+    Object vGet(String key);
 
     /**
      * 哈希 添加(操作hash)
-     *
-     * @param key
-     * @param hashKey
-     * @param value
      */
-    public void hmSet(Object key, Object hashKey, Object value);
+    void hmSet(String key, String hashKey, Object value);
 
     /**
      * 哈希 添加(操作hash)
-     *
-     * @param key
-     * @param map
      */
-    public void hmSetAll(Object key, Map<Object, Object> map);
+    void hmSetAll(String key, Map<String, Object> map);
 
     /**
      * 哈希获取数据(操作hash)
-     *
-     * @param key
-     * @return Map<Object, Object>
      */
-    public Map<Object, Object> hmGet(Object key);
+    Map<String, Object> hmGet(String key);
 
     /**
      * 哈希获取数据(操作hash)
-     *
-     * @param key
-     * @param hashKey
-     * @return Object
      */
-    public Object hmGet(Object key, Object hashKey);
+    Object hmGet(String key, String hashKey);
 
     /**
      * 哈希大小
-     *
-     * @param key
-     * @return Long
      */
-    public Long hSize(final Object key);
+    Long hSize(final String key);
 
     /**
      * 哈希删除数据(操作hash)
-     *
-     * @param key
-     * @param hashKey
-     * @return Object
      */
-    public Object hmDel(Object key, Object hashKey);
+    Object hmDel(String key, String hashKey);
 
     /**
      * 获取列表中个数
      *
-     * @param k
+     * @param k 键
      * @return Long
      */
-    public Long lSize(Object k);
+    Long lSize(String k);
 
     /**
      * 通过其索引从列表获取第一个元素(操作list)
      *
-     * @param key
+     * @param key 键
      * @return Object
      */
-    public Object lindexFirst(Object key);
+    Object lindexFirst(String key);
 
     /**
      * 通过其索引从列表获取元素(操作list)
      *
-     * @param key
+     * @param key             键
      * @param index:索引位置,从0开始
      * @return Object
      */
-    public Object lindex(Object key, long index);
+    Object lindex(String key, long index);
 
     /**
      * 从左向右添加列表(操作list)
      *
-     * @param k
-     * @param v
+     * @param k 键集合
+     * @param v 值
      */
-    public void lLeftPush(Object k, Object v);
+    void lLeftPush(String k, Object v);
 
     /**
      * 从左向右添加列表(操作list);如果bool=true,会删除列表中已经存在的数据,然后再进行添加(仅针对字符串列表,其它待测)
-     *
-     * @param k
-     * @param v
-     * @param bool
      */
-    public void lLeftPush(Object k, Object v, boolean bool);
+    void lLeftPush(String k, Object v, boolean bool);
 
     /**
      * 从左向右添加列表(操作list)
-     *
-     * @param k
-     * @param lst
      */
-    public void lLeftPushAll(Object k, List<Object> lst);
+    void lLeftPushAll(String k, List<Object> lst);
 
     /**
      * 从右向左添加列表(操作list)
-     *
-     * @param k
-     * @param v
      */
-    public void lRightPush(Object k, Object v);
+    void lRightPush(String k, Object v);
 
     /**
      * 从右向左添加列表(操作list);如果bool=true,会删除列表中已经存在的数据,然后再进行添加(仅针对字符串列表,其它待测)
-     *
-     * @param k
-     * @param v
-     * @param bool
      */
-    public void lRightPush(Object k, Object v, boolean bool);
+    void lRightPush(String k, Object v, boolean bool);
 
     /**
      * 从右向左添加列表(操作list)
-     *
-     * @param k
-     * @param lst
      */
-    public void lRightPushAll(Object k, List<Object> lst);
+    void lRightPushAll(String k, List<Object> lst);
 
     /**
      * 删除并获取列表中的第1个元素(操作list)
-     *
-     * @param k
-     * @return Object
      */
-    public Object lLeftPop(Object k);
+    Object lLeftPop(String k);
 
     /**
      * 删除并获取列表中的最后1个元素(操作list)
-     *
-     * @param k
-     * @return Object
      */
-    public Object lRightPop(Object k);
+    Object lRightPop(String k);
 
-    /**
-     * 移除k中的count个,返回删除的个数；如果没有这个元素则返回0(操作list)
-     *
-     * @param k
-     * @param count
-     * @return long
-     */
-    public Long lRemove(Object k, long count);
 
     /**
      * 移除k中值为v的count个,返回删除的个数；如果没有这个元素则返回0(操作list)
-     *
-     * @param k
-     * @param count
-     * @param v
-     * @return Long
      */
-    public Long lRemove(Object k, long count, Object v);
+    Long lRemove(String k, long count, Object v);
 
     /**
      * 移除k中值为v的所有数据,返回删除的个数；如果没有这个元素则返回0(操作list)
-     *
-     * @param k
-     * @param v
-     * @param v
-     * @return Long
      */
-    public Long lRemove(Object k, Object v);
+    Long lRemove(String k, Object v);
 
     /**
      * 根据key获取获取List列表(操作list)
-     *
-     * @param key
-     * @return Object
      */
-    public Object lRange(Object key);
+    Object lRange(String key);
 
     /**
      * 根据key获取列表中第start至end的数据(操作list)
-     *
-     * @param k
-     * @param start
-     * @param end
-     * @return List<Object>
      */
-    public List<?> lRange(Object k, long start, long end);
+    List<?> lRange(String k, long start, long end);
 
     /**
      * 集合添加
-     *
-     * @param key
-     * @param value
      */
-    public void sAdd(Object key, Object value);
+    void sAdd(String key, Object value);
 
     /**
      * 集合获取
-     *
-     * @param key
-     * @return Set<Object>
      */
-    public Set<Object> sMembers(Object key);
+    Set<Object> sMembers(String key);
 
     /**
      * 有序集合添加
-     *
-     * @param key
-     * @param value
-     * @param score
      */
-    public void zAdd(Object key, Object value, double score);
+    void zAdd(String key, Object value, double score);
 
     /**
      * 有序集合获取
      *
-     * @param key
-     * @param score
-     * @param score1
      * @return Set<Object>
      */
-    public Set<Object> rangeByScore(Object key, double score, double score1);
+    Set<Object> rangeByScore(String key, double score, double score1);
 
 
     /**
      * 有序集合获取
      *
-     * @param key
-     * @param start
-     * @param end
      * @return Set<Object>
      */
-    public Set<Object> range(Object key, long start, long end);
+    Set<Object> range(String key, long start, long end);
 
 
-    public Set<Object> reverseRangeByScore(Object key, double score, double score1, long start, long end);
-
-    /**
-     * 有序集合删除
-     *
-     * @param key
-     * @param score
-     * @param score1
-     * @return Long
-     */
-    public Long removeRangeByScore(Object key, double score, double score1);
+    Set<Object> reverseRangeByScore(String key, double score, double score1, long start, long end);
 
     /**
      * 有序集合删除
      *
-     * @param key
-     * @param start
-     * @param end
      * @return Long
      */
-    public Long removeRange(Object key, long start, long end);
+    Long removeRangeByScore(String key, double score, double score1);
+
+    /**
+     * 有序集合删除
+     *
+     * @return Long
+     */
+    Long removeRange(String key, long start, long end);
 
     /**
      * 将hashKey中储存的数字加上指定的增量值(操作hash)
      *
-     * @param key
-     * @param value
-     * @return boolean
+     * @param key 键
      */
-    public void hmSetIncrement(Object key, Object hashKey, Long value);
+    void hmSetIncrement(String key, String hashKey, Long value);
 
 }

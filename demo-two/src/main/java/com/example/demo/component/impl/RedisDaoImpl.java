@@ -1,13 +1,4 @@
-/**
- * Copyright (C), 2018-2019, XXX有限公司
- * FileName: RedisDaoImpl
- * Author:   pwb
- * Date:     2019/8/27 18:29
- * Description:
- * History:
- * <author>          <time>          <version>          <desc>
- * frank           修改时间           1.0.0              ycypApp
- */
+
 package com.example.demo.component.impl;
 
 
@@ -15,51 +6,57 @@ import com.example.demo.component.RedisDao;
 import org.springframework.data.redis.core.*;
 import org.springframework.stereotype.Repository;
 
+import javax.annotation.Resource;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 /**
- * 〈〉
- *
  * @author pwb
  * @create 2019/8/27
  * @since 1.0.0
  */
-
-
 @Repository("redisDao")
-public class RedisDaoImpl extends AbstractBaseRedisDao<Object, Object> implements RedisDao {
+public class RedisDaoImpl implements RedisDao {
 
+    @Resource
+    protected RedisTemplate<String, Object> redisTemplate;
 
     @Override
-    public boolean existsKey(final Object key) {
+    public Boolean existsKey(final String key) {
         return redisTemplate.hasKey(key);
     }
 
     @Override
-    public Set<Object> keys(final Object pattern) {
+    public Set<String> keys(final String pattern) {
         return redisTemplate.keys(pattern);
     }
 
     @Override
-    public boolean delete(final Object key) {
-        return redisTemplate.delete(key);
+    public void delete(final String key) {
+        Boolean exist = existsKey(key);
+        if (exist != null && exist) {
+            redisTemplate.delete(key);
+        }
     }
 
     @Override
-    public int count(final Object key) {
-        return redisTemplate.keys(key).size();
+    public int count(final String key) {
+        Set<String> strings = redisTemplate.keys(key);
+        if (strings == null) {
+            return 0;
+        }
+        return strings.size();
     }
 
     @Override
-    public Long deletePattern(final Object pattern) {
-        Set<Object> keys = redisTemplate.keys(pattern);
+    public Long deletePattern(final String pattern) {
+        Set<String> keys = redisTemplate.keys(pattern);
         if ((keys != null ? keys.size() : 0) > 0) {
             return redisTemplate.delete(keys);
         } else {
-            return 0l;
+            return 0L;
         }
     }
 
@@ -71,15 +68,15 @@ public class RedisDaoImpl extends AbstractBaseRedisDao<Object, Object> implement
     }
 
     @Override
-    public Long delete(final Set<Object> keys) {
+    public Long delete(final Set<String> keys) {
         return redisTemplate.delete(keys);
     }
 
     @Override
-    public boolean vSet(final Object key, Object value) {
+    public boolean vSet(final String key, Object value) {
         boolean result = false;
         try {
-            ValueOperations<Object, Object> operations = redisTemplate.opsForValue();
+            ValueOperations<String, Object> operations = redisTemplate.opsForValue();
             operations.set(key, value);
             result = true;
         } catch (Exception e) {
@@ -89,10 +86,10 @@ public class RedisDaoImpl extends AbstractBaseRedisDao<Object, Object> implement
     }
 
     @Override
-    public boolean vSet(final Object key, Object value, Long expireTime) {
+    public boolean vSet(final String key, Object value, Long expireTime) {
         boolean result = false;
         try {
-            ValueOperations<Object, Object> operations = redisTemplate.opsForValue();
+            ValueOperations<String, Object> operations = redisTemplate.opsForValue();
             operations.set(key, value);
             redisTemplate.expire(key, expireTime, TimeUnit.SECONDS);
             result = true;
@@ -103,223 +100,218 @@ public class RedisDaoImpl extends AbstractBaseRedisDao<Object, Object> implement
     }
 
     @Override
-    public boolean vSetUpdate(final Object key, Long expireTime) {
-        boolean result = false;
-        try {
-            redisTemplate.expire(key, expireTime, TimeUnit.SECONDS);
-            result = true;
-        } catch (Exception e) {
-            e.printStackTrace();
+    public Boolean setExpireTime(final String key, Long expireTime, TimeUnit unit) {
+        Boolean hasKey = redisTemplate.hasKey(key);
+        if (hasKey != null && hasKey) {
+            return redisTemplate.expire(key, expireTime, unit);
         }
-        return result;
+        return true;
     }
 
     @Override
-    public Object vGet(final Object key) {
-        Object result = null;
-        ValueOperations<Object, Object> operations = redisTemplate.opsForValue();
-        result = operations.get(key);
-        return result;
+    public Object vGet(final String key) {
+        ValueOperations<String, Object> operations = redisTemplate.opsForValue();
+        return operations.get(key);
     }
 
     @Override
-    public void hmSet(Object key, Object hashKey, Object value) {
-        HashOperations<Object, Object, Object> hash = redisTemplate.opsForHash();
-
+    public void hmSet(String key, String hashKey, Object value) {
+        HashOperations<String, String, Object> hash = redisTemplate.opsForHash();
         hash.put(key, hashKey, value);
     }
 
     @Override
-    public Long hSize(final Object key) {
-
+    public Long hSize(final String key) {
         return redisTemplate.opsForHash().size(key);
     }
 
 
     @Override
-    public void hmSetAll(Object key, Map<Object, Object> map) {
-        HashOperations<Object, Object, Object> hash = redisTemplate.opsForHash();
+    public void hmSetAll(String key, Map<String, Object> map) {
+        HashOperations<String, String, Object> hash = redisTemplate.opsForHash();
         hash.putAll(key, map);
     }
 
     @Override
-    public Map<Object, Object> hmGet(Object key) {
-        HashOperations<Object, Object, Object> hash = redisTemplate.opsForHash();
+    public Map<String, Object> hmGet(String key) {
+        HashOperations<String, String, Object> hash = redisTemplate.opsForHash();
         return hash.entries(key);
     }
 
     @Override
-    public Object hmGet(Object key, Object hashKey) {
-        HashOperations<Object, Object, Object> hash = redisTemplate.opsForHash();
+    public Object hmGet(String key, String hashKey) {
+        HashOperations<String, String, Object> hash = redisTemplate.opsForHash();
         return hash.get(key, hashKey);
     }
 
     @Override
-    public Object hmDel(Object key, Object hashKey) {
-        HashOperations<Object, Object, Object> hash = redisTemplate.opsForHash();
+    public Object hmDel(String key, String hashKey) {
+        HashOperations<String, String, Object> hash = redisTemplate.opsForHash();
         return hash.delete(key, hashKey);
     }
 
     @Override
-    public Long lSize(Object k) {
-        ListOperations<Object, Object> list = redisTemplate.opsForList();
-        return list.size(k);
+    public Long lSize(String key) {
+        ListOperations<String, Object> list = redisTemplate.opsForList();
+        return list.size(key);
     }
 
     @Override
-    public Object lRange(Object k) {
-        ListOperations<Object, Object> list = redisTemplate.opsForList();
-        return list.range(k, 0, list.size(k));
+    public Object lRange(String k) {
+        ListOperations<String, Object> list = redisTemplate.opsForList();
+        Long size = list.size(k);
+        if (size == null) {
+            return null;
+        }
+        return list.range(k, 0, size);
+
     }
 
     @Override
-    public List<?> lRange(Object k, long start, long end) {
-        ListOperations<Object, Object> list = redisTemplate.opsForList();
+    public List<?> lRange(String k, long start, long end) {
+        ListOperations<String, Object> list = redisTemplate.opsForList();
         return list.range(k, start, end);
     }
 
     @Override
-    public Object lindexFirst(Object k) {
-        ListOperations<Object, Object> list = redisTemplate.opsForList();
+    public Object lindexFirst(String k) {
+        ListOperations<String, Object> list = redisTemplate.opsForList();
         return list.index(k, 0);
     }
 
     @Override
-    public Object lindex(Object k, long index) {
-        ListOperations<Object, Object> list = redisTemplate.opsForList();
+    public Object lindex(String k, long index) {
+        ListOperations<String, Object> list = redisTemplate.opsForList();
         return list.index(k, index);
     }
 
     @Override
-    public void lLeftPush(Object k, Object v) {
-        ListOperations<Object, Object> list = redisTemplate.opsForList();
+    public void lLeftPush(String k, Object v) {
+        ListOperations<String, Object> list = redisTemplate.opsForList();
         list.leftPush(k, v);
     }
 
     @Override
-    public void lLeftPush(Object k, Object v, boolean bool) {
-        ListOperations<Object, Object> list = redisTemplate.opsForList();
-        if (bool) {
-            list.remove(k, list.size(k), v);
+    public void lLeftPush(String k, Object v, boolean bool) {
+        ListOperations<String, Object> list = redisTemplate.opsForList();
+        Long size = list.size(k);
+        if (bool && size != null) {
+            list.remove(k, size, v);
         }
         list.leftPush(k, v);
     }
 
     @Override
-    public void lLeftPushAll(Object k, List<Object> lst) {
-        ListOperations<Object, Object> list = redisTemplate.opsForList();
+    public void lLeftPushAll(String k, List<Object> lst) {
+        ListOperations<String, Object> list = redisTemplate.opsForList();
         list.leftPushAll(k, lst);
     }
 
     @Override
-    public void lRightPush(Object k, Object v, boolean bool) {
-        ListOperations<Object, Object> list = redisTemplate.opsForList();
-        if (bool) {
-            list.remove(k, list.size(k), v);
+    public void lRightPush(String k, Object v, boolean bool) {
+        ListOperations<String, Object> list = redisTemplate.opsForList();
+        Long size = list.size(k);
+        if (bool && size != null) {
+            list.remove(k, size, v);
         }
         list.rightPush(k, v);
     }
 
     @Override
-    public void lRightPush(Object k, Object v) {
-        ListOperations<Object, Object> list = redisTemplate.opsForList();
+    public void lRightPush(String k, Object v) {
+        ListOperations<String, Object> list = redisTemplate.opsForList();
         list.rightPush(k, v);
     }
 
     @Override
-    public void lRightPushAll(Object k, List<Object> lst) {
-        ListOperations<Object, Object> list = redisTemplate.opsForList();
+    public void lRightPushAll(String k, List<Object> lst) {
+        ListOperations<String, Object> list = redisTemplate.opsForList();
         list.rightPushAll(k, lst);
     }
 
 
     @Override
-    public Object lLeftPop(Object k) {
-        ListOperations<Object, Object> list = redisTemplate.opsForList();
+    public Object lLeftPop(String k) {
+        ListOperations<String, Object> list = redisTemplate.opsForList();
         return list.leftPop(k);
     }
 
     @Override
-    public Object lRightPop(Object k) {
-        ListOperations<Object, Object> list = redisTemplate.opsForList();
+    public Object lRightPop(String k) {
+        ListOperations<String, Object> list = redisTemplate.opsForList();
         return list.rightPop(k);
     }
 
-    @Override
-    public Long lRemove(Object k, long count) {
-        ListOperations<Object, Object> list = redisTemplate.opsForList();
-        return list.remove(k, 0, null);
-    }
 
     @Override
-    public Long lRemove(Object k, long count, Object v) {
-        ListOperations<Object, Object> list = redisTemplate.opsForList();
+    public Long lRemove(String k, long count, Object v) {
+        ListOperations<String, Object> list = redisTemplate.opsForList();
         return list.remove(k, count, v);
     }
 
     @Override
-    public Long lRemove(Object k, Object v) {
-        ListOperations<Object, Object> list = redisTemplate.opsForList();
-        return list.remove(k, list.size(k), v);
+    public Long lRemove(String k, Object v) {
+        ListOperations<String, Object> list = redisTemplate.opsForList();
+        Long size = list.size(k);
+        if (size == null) {
+            return 0L;
+        }
+        return list.remove(k, size, v);
     }
 
     @Override
-    public void sAdd(Object key, Object value) {
-        SetOperations<Object, Object> set = redisTemplate.opsForSet();
+    public void sAdd(String key, Object value) {
+        SetOperations<String, Object> set = redisTemplate.opsForSet();
         set.add(key, value);
     }
 
     @Override
-    public Set<Object> sMembers(Object key) {
-        SetOperations<Object, Object> set = redisTemplate.opsForSet();
+    public Set<Object> sMembers(String key) {
+        SetOperations<String, Object> set = redisTemplate.opsForSet();
         return set.members(key);
     }
 
     @Override
-    public void zAdd(Object key, Object value, double score) {
-        ZSetOperations<Object, Object> zset = redisTemplate.opsForZSet();
+    public void zAdd(String key, Object value, double score) {
+        ZSetOperations<String, Object> zset = redisTemplate.opsForZSet();
         zset.add(key, value, score);
 
     }
 
     @Override
-    public Set<Object> rangeByScore(Object key, double score, double score1) {
-        ZSetOperations<Object, Object> zset = redisTemplate.opsForZSet();
+    public Set<Object> rangeByScore(String key, double score, double score1) {
+        ZSetOperations<String, Object> zset = redisTemplate.opsForZSet();
         return zset.rangeByScore(key, score, score1);
     }
 
     @Override
-    public Set<Object> range(Object key, long start, long end) {
-        ZSetOperations<Object, Object> zset = redisTemplate.opsForZSet();
-
+    public Set<Object> range(String key, long start, long end) {
+        ZSetOperations<String, Object> zset = redisTemplate.opsForZSet();
         return zset.range(key, start, end);
     }
 
     @Override
-    public Set<Object> reverseRangeByScore(Object key,double score, double score1, long start, long end) {
-        ZSetOperations<Object, Object> zset = redisTemplate.opsForZSet();
-
-        return  zset.reverseRangeByScore(key,score ,score1 ,start ,end);
+    public Set<Object> reverseRangeByScore(String key, double score, double score1, long start, long end) {
+        ZSetOperations<String, Object> zset = redisTemplate.opsForZSet();
+        return zset.reverseRangeByScore(key, score, score1, start, end);
     }
 
 
-
     @Override
-    public Long removeRangeByScore(Object key, double score, double score1) {
-        ZSetOperations<Object, Object> zset = redisTemplate.opsForZSet();
+    public Long removeRangeByScore(String key, double score, double score1) {
+        ZSetOperations<String, Object> zset = redisTemplate.opsForZSet();
         return zset.removeRangeByScore(key, score, score1);
     }
 
     @Override
-    public Long removeRange(Object key, long start, long end) {
-        ZSetOperations<Object, Object> zset = redisTemplate.opsForZSet();
-
+    public Long removeRange(String key, long start, long end) {
+        ZSetOperations<String, Object> zset = redisTemplate.opsForZSet();
         return zset.removeRange(key, start, end);
     }
 
     @Override
-    public void hmSetIncrement(Object key, Object hashKey, Long value) {
-        HashOperations<Object, Object, Object> hash = redisTemplate.opsForHash();
+    public void hmSetIncrement(String key, String hashKey, Long value) {
+        HashOperations<String, String, Object> hash = redisTemplate.opsForHash();
         hash.increment(key, hashKey, value);
     }
 
