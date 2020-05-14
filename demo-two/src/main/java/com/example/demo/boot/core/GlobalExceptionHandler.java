@@ -74,7 +74,7 @@ public class GlobalExceptionHandler {
         String errorMsg = ex.getBindingResult().getAllErrors().stream()
                 .map(DefaultMessageSourceResolvable::getDefaultMessage)
                 .collect(Collectors.joining("\n", "[", "]"));
-        return RestResponse.makeRsp(400, errorMsg);
+        return RestResponse.makeRsp(RestCode.FAIL.getCode(), errorMsg);
     }
 
     //捕捉BeanValidation 非法参数的异常
@@ -84,13 +84,13 @@ public class GlobalExceptionHandler {
         String errorMsg = ex.getConstraintViolations().stream()
                 .map(ConstraintViolation::getMessage)
                 .collect(Collectors.joining("\n", "[", "]"));
-        return RestResponse.makeRsp(400, errorMsg);
+        return RestResponse.makeRsp(RestCode.FAIL.getCode(), errorMsg);
     }
 
     @ExceptionHandler(NoHandlerFoundException.class)
     public RestResult<Object> handlerNoFoundException(Exception e) {
         log.error(e.getMessage(), e);
-        return RestResponse.makeRsp(404, "路径不存在，请检查路径是否正确");
+        return RestResponse.makeRsp(RestCode.NOT_FOUND.getCode(), "路径不存在，请检查路径是否正确");
     }
 
     @ExceptionHandler(DuplicateKeyException.class)
@@ -103,7 +103,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(Exception.class)
     public RestResult<Object> handleException(Exception e) {
         log.error(e.getMessage(), e);
-        return RestResponse.makeRsp(500, "系统繁忙,请稍后再试");
+        return RestResponse.error(RestCode.INTERNAL_SERVER_ERROR);
     }
 
 
