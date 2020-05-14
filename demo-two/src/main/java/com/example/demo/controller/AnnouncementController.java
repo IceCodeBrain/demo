@@ -1,7 +1,7 @@
 package com.example.demo.controller;
 
-import com.example.demo.boot.restful.ResResponse;
-import com.example.demo.boot.restful.ResResult;
+import com.example.demo.boot.restful.RestResponse;
+import com.example.demo.boot.restful.RestResult;
 import com.example.demo.example.entity.ScmAnnouncement;
 import com.example.demo.service.AnnouncementService;
 import com.example.demo.service.model.dto.AnnouncementDTO;
@@ -36,13 +36,13 @@ public class AnnouncementController {
      * @Description addAnnouncement  添加公告<br>
      **/
     @PostMapping("/addAnnouncement")
-    public ResResult<Boolean> addAnnouncement(@RequestBody AnnouncementDTO announcementDTO) {
+    public RestResult<Boolean> addAnnouncement(@RequestBody AnnouncementDTO announcementDTO) {
 
         announcementDTO.setId(null);
         if (StringUtils.isBlank(announcementDTO.getContent()))
-            return ResResponse.error("content 不能为空");
+            return RestResponse.error("content 不能为空");
         if (StringUtils.isBlank(announcementDTO.getTitle()))
-            return ResResponse.error("title不能为空");
+            return RestResponse.error("title不能为空");
         if (announcementDTO.getType() == null)
             announcementDTO.setType((byte) 3);
         if (announcementDTO.getRollingTime() == null)
@@ -53,7 +53,7 @@ public class AnnouncementController {
         if (announcementDTO.getSort() == null) {
             announcementDTO.setSort(11);
         }
-        return ResResponse.ok(scmAnnouncementService.addAnnouncement(announcementDTO));
+        return RestResponse.ok(scmAnnouncementService.addAnnouncement(announcementDTO));
     }
 
 
@@ -61,11 +61,11 @@ public class AnnouncementController {
      * 修改公告通过公告id
      * */
     @PutMapping("/editAnnouncement")
-    public ResResult<Boolean> editAnnouncement(@RequestBody AnnouncementDTO announcementDTO) {
+    public RestResult<Boolean> editAnnouncement(@RequestBody AnnouncementDTO announcementDTO) {
         if (announcementDTO.getId() == null)
-            return ResResponse.error("id 不能为空");
+            return RestResponse.error("id 不能为空");
 
-        return ResResponse.ok(scmAnnouncementService.editAnnouncement(announcementDTO));
+        return RestResponse.ok(scmAnnouncementService.editAnnouncement(announcementDTO));
     }
 
     /**
@@ -78,16 +78,16 @@ public class AnnouncementController {
      * @author: PWB <br>
      */
     @GetMapping("/getAnnouncementInfoByPage")
-    public ResResult<PageInfo<AnnouncementVO>> getAnnouncementInfoByPage(@RequestParam(defaultValue = "1") Integer pageNum, @RequestParam(defaultValue = "10") Integer pageSize) {
-        return ResResponse.ok(scmAnnouncementService.getAnnouncementInfoByPage(pageNum, pageSize));
+    public RestResult<PageInfo<AnnouncementVO>> getAnnouncementInfoByPage(@RequestParam(defaultValue = "1") Integer pageNum, @RequestParam(defaultValue = "10") Integer pageSize) {
+        return RestResponse.ok(scmAnnouncementService.getAnnouncementInfoByPage(pageNum, pageSize));
     }
 
     /*
      * 通过id获取相应公告信息
      * */
     @GetMapping("/getAnnouncementInfoById/{id}")
-    public ResResult<AnnouncementVO> getAnnouncementInfoById(@PathVariable Long id) {
-        return ResResponse.ok(scmAnnouncementService.getAnnouncementInfoById(id));
+    public RestResult<AnnouncementVO> getAnnouncementInfoById(@PathVariable Long id) {
+        return RestResponse.ok(scmAnnouncementService.getAnnouncementInfoById(id));
     }
 
     /**
@@ -100,8 +100,8 @@ public class AnnouncementController {
      **/
     @ApiOperation("改变公告文字轮播状态")
     @PutMapping("/doSwitchWordRolling")
-    public ResResult<Boolean> doSwitchWordRolling(@RequestParam Long id, @RequestParam Boolean wordIsRolling) {
-        return ResResponse.ok(scmAnnouncementService.doSwitchWordRolling(id, wordIsRolling));
+    public RestResult<Boolean> doSwitchWordRolling(@RequestParam Long id, @RequestParam Boolean wordIsRolling) {
+        return RestResponse.ok(scmAnnouncementService.doSwitchWordRolling(id, wordIsRolling));
     }
 
 
@@ -114,13 +114,13 @@ public class AnnouncementController {
      **/
 
     @DeleteMapping("/deleteAnnouncement/{id}")
-    public ResResult<Boolean> deleteAnnouncement(@PathVariable Long id) {
-        return ResResponse.ok(scmAnnouncementService.deleteAnnouncement(id));
+    public RestResult<Boolean> deleteAnnouncement(@PathVariable Long id) {
+        return RestResponse.ok(scmAnnouncementService.deleteAnnouncement(id));
     }
 
     @GetMapping("doTestPageInfo")
-    public ResResult<PageInfo<ScmAnnouncement>> doTestPageInfo(Integer pageNum, Integer pageSize) {
-        return ResResponse.ok(scmAnnouncementService.doTestPageInfo(pageNum, pageSize));
+    public RestResult<PageInfo<ScmAnnouncement>> doTestPageInfo(Integer pageNum, Integer pageSize) {
+        return RestResponse.ok(scmAnnouncementService.doTestPageInfo(pageNum, pageSize));
     }
 
 }

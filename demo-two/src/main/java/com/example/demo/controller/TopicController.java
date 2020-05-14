@@ -1,7 +1,7 @@
 package com.example.demo.controller;
 
-import com.example.demo.boot.restful.ResResponse;
-import com.example.demo.boot.restful.ResResult;
+import com.example.demo.boot.restful.RestResponse;
+import com.example.demo.boot.restful.RestResult;
 import com.example.demo.service.TopicService;
 import com.example.demo.service.model.dto.TopicDTO;
 import com.example.demo.service.model.pojo.TopicBean;
@@ -52,41 +52,41 @@ public class TopicController {
 
     @ApiOperation("添加课程")
     @PostMapping("/doAddTopic")
-    public ResResult<Boolean> doAddTopic(@RequestBody TopicDTO topicDTO) {
-        return ResResponse.ok(topicService.doAddTopic(topicDTO));
+    public RestResult<Boolean> doAddTopic(@RequestBody TopicDTO topicDTO) {
+        return RestResponse.ok(topicService.doAddTopic(topicDTO));
     }
 
     @ApiOperation("更新课程")
     @PutMapping("/doUpdateTopic")
-    public ResResult<Boolean> doUpdateTopic(@RequestBody TopicDTO topicDTO) {
-        return ResResponse.ok(topicService.doUpdateTopic(topicDTO));
+    public RestResult<Boolean> doUpdateTopic(@RequestBody TopicDTO topicDTO) {
+        return RestResponse.ok(topicService.doUpdateTopic(topicDTO));
     }
 
     @ApiOperation("通过课程id删除课程")
     @DeleteMapping("/doDeleteTopicById")
-    public ResResult<Boolean> doDeleteTopicById(@RequestParam Long id) {
-        return ResResponse.ok(topicService.doDeleteTopicById(id));
+    public RestResult<Boolean> doDeleteTopicById(@RequestParam Long id) {
+        return RestResponse.ok(topicService.doDeleteTopicById(id));
     }
 
 
     @ApiOperation("通过课程id获取课程")
     @GetMapping("/doGetTopicById")
-    public ResResult<TopicVO> doGetTopicById(@RequestParam Long id) {
-        return ResResponse.ok(topicService.doGetTopicById(id));
+    public RestResult<TopicVO> doGetTopicById(@RequestParam Long id) {
+        return RestResponse.ok(topicService.doGetTopicById(id));
     }
 
 
     @ApiOperation("通过课程名称获取课程")
     @GetMapping("/doGetTopicByName")
-    public ResResult<Page<TopicBean>> doGetTopicByName(@RequestParam String name, @RequestParam(defaultValue = "0") Integer page, @RequestParam(defaultValue = "10") Integer size) {
-        return ResResponse.ok(topicService.doGetTopicByName(name, page, size));
+    public RestResult<Page<TopicBean>> doGetTopicByName(@RequestParam String name, @RequestParam(defaultValue = "0") Integer page, @RequestParam(defaultValue = "10") Integer size) {
+        return RestResponse.ok(topicService.doGetTopicByName(name, page, size));
     }
 
 
     @ApiOperation("获取所有课程")
     @GetMapping("/doFindAllTopic")
-    public ResResult<Page<TopicBean>> doFindAllTopic(@RequestParam(defaultValue = "0") Integer page, @RequestParam(defaultValue = "10") Integer size) {
-        return ResResponse.ok(topicService.doFindAllTopic(page, size));
+    public RestResult<Page<TopicBean>> doFindAllTopic(@RequestParam(defaultValue = "0") Integer page, @RequestParam(defaultValue = "10") Integer size) {
+        return RestResponse.ok(topicService.doFindAllTopic(page, size));
     }
 
 }

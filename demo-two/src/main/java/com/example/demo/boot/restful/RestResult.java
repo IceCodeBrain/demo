@@ -8,13 +8,9 @@ import lombok.SneakyThrows;
 
 import java.io.Serializable;
 
-/**
- * @author kwah
- * @Description: 返回对象实体
- * @date 2018/4/19 09:43
- */
+
 @ApiModel("返回类")
-public class ResResult<T> implements Serializable {
+public class RestResult<T> implements Serializable {
 
     private static final long serialVersionUID = 3758864789222317092L;
 
@@ -27,8 +23,8 @@ public class ResResult<T> implements Serializable {
     @ApiModelProperty("对象")
     private T data;
 
-    public ResResult<T> setCode(ResCode resCode) {
-        this.code = resCode.code;
+    public RestResult<T> setCode(RestCode restCode) {
+        this.code = restCode.code;
         return this;
     }
 
@@ -36,7 +32,7 @@ public class ResResult<T> implements Serializable {
         return code;
     }
 
-    public ResResult<T> setCode(int code) {
+    public RestResult<T> setCode(int code) {
         this.code = code;
         return this;
     }
@@ -45,7 +41,7 @@ public class ResResult<T> implements Serializable {
         return msg;
     }
 
-    public ResResult<T> setMsg(String msg) {
+    public RestResult<T> setMsg(String msg) {
         this.msg = msg;
         return this;
     }
@@ -54,7 +50,7 @@ public class ResResult<T> implements Serializable {
         return data;
     }
 
-    public ResResult<T> setData(T data) {
+    public RestResult<T> setData(T data) {
         this.data = data;
         return this;
     }
