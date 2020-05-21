@@ -45,8 +45,9 @@ public class JunitTest {
         TopicVO topicVO = new TopicVO();
         topicVO.setId(1L);
         RestResult<TopicVO> restResult = RestResponse.ok(topicVO);
+        log.info("result:{}",restResult);
         // restResult = RestResponse.error("shiaop");
-        topicVO = RestResult.verifyRestResult(restResult);
+        topicVO = RestResponse.verifyRestResult(restResult);
         log.info("ces:{}", topicVO);
     }
 }

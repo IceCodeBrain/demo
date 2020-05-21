@@ -32,4 +32,10 @@ public class RestResponse {
 	public static <T> RestResult<T> makeRsp(int code, String msg, T data) {
 		return new RestResult<T>().setCode(code).setMsg(msg).setData(data);
 	}
+	public static <T> T verifyRestResult(RestResult<T> restResult) {
+		if (restResult == null || restResult.getCode() != RestCode.SUCCESS.getCode()) {
+			throw new ServiceException(RestCode.SERVICE_UNAVAILABLE);
+		}
+		return restResult.getData();
+	}
 }
