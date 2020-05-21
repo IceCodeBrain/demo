@@ -2,11 +2,7 @@ package com.example.demo.boot.restful;
 
 import java.io.Serializable;
 
-/**
- * @author kwah
- * @Description: 业务类异常
- * @date 2018/4/20 14:30
- */
+
 public class ServiceException extends RuntimeException implements Serializable {
 
     private static final long serialVersionUID = 1213855733833039552L;
