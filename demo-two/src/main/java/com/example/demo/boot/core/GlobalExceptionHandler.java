@@ -5,19 +5,27 @@ import com.example.demo.boot.restful.RestCode;
 import com.example.demo.boot.restful.RestResponse;
 import com.example.demo.boot.restful.RestResult;
 import com.example.demo.boot.restful.ServiceException;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.support.DefaultMessageSourceResolvable;
 import org.springframework.dao.DuplicateKeyException;
+import org.springframework.http.HttpStatus;
+import org.springframework.validation.BindException;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.servlet.NoHandlerFoundException;
 
 import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
+import javax.validation.Path;
 import javax.validation.ValidationException;
+import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 /**
@@ -40,6 +48,22 @@ public class GlobalExceptionHandler {
     }
 
     /**
+     * 统一处理请求参数校验(实体对象传参)
+     *
+     * @param e BindException
+     * @return FebsResponse
+     */
+    @ExceptionHandler(BindException.class)
+    public RestResult<Object> validExceptionHandler(BindException e) {
+        StringBuilder message = new StringBuilder();
+        List<FieldError> fieldErrors = e.getBindingResult().getFieldErrors();
+        for (FieldError error : fieldErrors) {
+            message.append(error.getField()).append(error.getDefaultMessage()).append(",");
+        }
+        message = new StringBuilder(message.substring(0, message.length() - 1));
+        return RestResponse.makeRsp(RestCode.FAIL.getCode(), message.toString());
+    }
+    /**
      * 方法参数校验
      */
     @ExceptionHandler(MethodArgumentNotValidException.class)
@@ -58,14 +82,23 @@ public class GlobalExceptionHandler {
     }
 
     /**
-     * ConstraintViolationException
+     * 统一处理请求参数校验(普通传参)
+     *
+     * @param e ConstraintViolationException
+     * @return FebsResponse
      */
-    @ExceptionHandler(ConstraintViolationException.class)
+    @ExceptionHandler(value = ConstraintViolationException.class)
     public RestResult<Object> handleConstraintViolationException(ConstraintViolationException e) {
-        log.error(e.getMessage(), e);
-        return RestResponse.makeRsp(RestCode.FAIL.getCode(), e.getMessage());
+        StringBuilder message = new StringBuilder();
+        Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+        for (ConstraintViolation<?> violation : violations) {
+            Path path = violation.getPropertyPath();
+            String[] pathArr = StringUtils.splitByWholeSeparatorPreserveAllTokens(path.toString(), ".");
+            message.append(pathArr[1]).append(violation.getMessage()).append(",");
+        }
+        message = new StringBuilder(message.substring(0, message.length() - 1));
+        return RestResponse.makeRsp(RestCode.FAIL.getCode(), message.toString());
     }
-
 
     //捕捉BeanValidation 非法参数的异常
     @ExceptionHandler(MethodArgumentNotValidException.class)
