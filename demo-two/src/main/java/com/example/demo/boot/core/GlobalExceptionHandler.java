@@ -10,12 +10,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.support.DefaultMessageSourceResolvable;
 import org.springframework.dao.DuplicateKeyException;
-import org.springframework.http.HttpStatus;
 import org.springframework.validation.BindException;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.servlet.NoHandlerFoundException;
 
@@ -44,7 +42,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(ServiceException.class)
     public RestResult<Object> handleRRException(ServiceException e) {
         log.error(e.getMessage(), e);
-        return RestResponse.makeRsp(e.getCode(), e.getMessage());
+        return RestResponse.build(e.getCode(), e.getMessage());
     }
 
     /**
@@ -61,7 +59,7 @@ public class GlobalExceptionHandler {
             message.append(error.getField()).append(error.getDefaultMessage()).append(",");
         }
         message = new StringBuilder(message.substring(0, message.length() - 1));
-        return RestResponse.makeRsp(RestCode.FAIL.getCode(), message.toString());
+        return RestResponse.build(RestCode.FAIL.getCode(), message.toString());
     }
     /**
      * 方法参数校验
@@ -69,7 +67,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public RestResult<Object> handleMethodArgumentNotValidException(MethodArgumentNotValidException e) {
         log.error(e.getMessage(), e);
-        return RestResponse.makeRsp(RestCode.FAIL.getCode(), Objects.requireNonNull(e.getBindingResult().getFieldError()).getDefaultMessage());
+        return RestResponse.build(RestCode.FAIL.getCode(), Objects.requireNonNull(e.getBindingResult().getFieldError()).getDefaultMessage());
     }
 
     /**
@@ -78,7 +76,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(ValidationException.class)
     public RestResult<Object> handleValidationException(ValidationException e) {
         log.error(e.getMessage(), e);
-        return RestResponse.makeRsp(RestCode.FAIL.getCode(), e.getCause().getMessage());
+        return RestResponse.build(RestCode.FAIL.getCode(), e.getCause().getMessage());
     }
 
     /**
@@ -97,7 +95,7 @@ public class GlobalExceptionHandler {
             message.append(pathArr[1]).append(violation.getMessage()).append(",");
         }
         message = new StringBuilder(message.substring(0, message.length() - 1));
-        return RestResponse.makeRsp(RestCode.FAIL.getCode(), message.toString());
+        return RestResponse.build(RestCode.FAIL.getCode(), message.toString());
     }
 
     //捕捉BeanValidation 非法参数的异常
@@ -107,7 +105,7 @@ public class GlobalExceptionHandler {
         String errorMsg = ex.getBindingResult().getAllErrors().stream()
                 .map(DefaultMessageSourceResolvable::getDefaultMessage)
                 .collect(Collectors.joining("\n", "[", "]"));
-        return RestResponse.makeRsp(RestCode.FAIL.getCode(), errorMsg);
+        return RestResponse.build(RestCode.FAIL.getCode(), errorMsg);
     }
 
     //捕捉BeanValidation 非法参数的异常
@@ -117,19 +115,19 @@ public class GlobalExceptionHandler {
         String errorMsg = ex.getConstraintViolations().stream()
                 .map(ConstraintViolation::getMessage)
                 .collect(Collectors.joining("\n", "[", "]"));
-        return RestResponse.makeRsp(RestCode.FAIL.getCode(), errorMsg);
+        return RestResponse.build(RestCode.FAIL.getCode(), errorMsg);
     }
 
     @ExceptionHandler(NoHandlerFoundException.class)
     public RestResult<Object> handlerNoFoundException(Exception e) {
         log.error(e.getMessage(), e);
-        return RestResponse.makeRsp(RestCode.NOT_FOUND.getCode(), "路径不存在，请检查路径是否正确");
+        return RestResponse.build(RestCode.NOT_FOUND.getCode(), "路径不存在，请检查路径是否正确");
     }
 
     @ExceptionHandler(DuplicateKeyException.class)
     public RestResult<Object> handleDuplicateKeyException(DuplicateKeyException e) {
         log.error(e.getMessage(), e);
-        return RestResponse.makeRsp(RestCode.FAIL.getCode(), "数据重复，请检查后提交");
+        return RestResponse.build(RestCode.FAIL.getCode(), "数据重复，请检查后提交");
     }
 
 

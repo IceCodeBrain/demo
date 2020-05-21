@@ -25,11 +25,11 @@ public class RestResponse {
         return new RestResult<T>().setCode(restCode.getCode()).setMsg(restCode.getMsg());
     }
 
-    public static <T> RestResult<T> makeRsp(int code, String msg) {
+    public static <T> RestResult<T> build(int code, String msg) {
         return new RestResult<T>().setCode(code).setMsg(msg);
     }
 
-    public static <T> RestResult<T> makeRsp(int code, String msg, T data) {
+    public static <T> RestResult<T> build(int code, String msg, T data) {
         return new RestResult<T>().setCode(code).setMsg(msg).setData(data);
     }
 
