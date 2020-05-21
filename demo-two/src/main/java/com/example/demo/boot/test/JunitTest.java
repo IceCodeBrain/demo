@@ -1,6 +1,9 @@
 package com.example.demo.boot.test;
 
+import com.example.demo.boot.restful.RestResponse;
+import com.example.demo.boot.restful.RestResult;
 import com.example.demo.boot.uitls.DocxUtils;
+import com.example.demo.service.model.vo.TopicVO;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 
@@ -37,4 +40,13 @@ public class JunitTest {
         DocxUtils.docxContentChange(is, params);
     }
 
+    @Test
+    public void testRestResult() {
+        TopicVO topicVO = new TopicVO();
+        topicVO.setId(1L);
+        RestResult<TopicVO> restResult = RestResponse.ok(topicVO);
+        // restResult = RestResponse.error("shiaop");
+        topicVO = RestResult.verifyRestResult(restResult);
+        log.info("ces:{}", topicVO);
+    }
 }
