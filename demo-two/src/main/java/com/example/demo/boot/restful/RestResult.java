@@ -55,6 +55,13 @@ public class RestResult<T> implements Serializable {
         return this;
     }
 
+    public static  <T> T verifyData(RestResult<T> restResult){
+        if (restResult == null || restResult.getCode() != RestCode.SUCCESS.getCode()) {
+            throw new ServiceException(RestCode.SERVICE_UNAVAILABLE);
+        }
+        return restResult.getData();
+    }
+
     @SneakyThrows
     @Override
     public String toString() {
