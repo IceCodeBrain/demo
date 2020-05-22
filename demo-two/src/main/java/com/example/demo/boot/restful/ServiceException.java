@@ -10,10 +10,13 @@ public class ServiceException extends RuntimeException implements Serializable {
     private Integer code;
 
     public ServiceException() {
+        super(RestCode.FAIL.getMsg());
+        this.code = RestCode.FAIL.getCode();
     }
 
     public ServiceException(String message) {
         super(message);
+        this.code = RestCode.FAIL.getCode();
     }
 
     public ServiceException(Integer code, String message) {
@@ -28,6 +31,7 @@ public class ServiceException extends RuntimeException implements Serializable {
 
     public ServiceException(String message, Throwable cause) {
         super(message, cause);
+        this.code = RestCode.FAIL.getCode();
     }
 
     public Integer getCode() {
