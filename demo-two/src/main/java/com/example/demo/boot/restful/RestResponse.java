@@ -3,8 +3,6 @@ package com.example.demo.boot.restful;
 
 public class RestResponse {
 
-    private final static String SUCCESS = "success";
-
     public static RestResult<String> ok() {
         return new RestResult<String>().setCode(RestCode.SUCCESS).setMsg(RestCode.SUCCESS.getMsg());
     }
