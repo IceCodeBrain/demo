@@ -64,12 +64,12 @@ public void set$!{tool.firstUpperCase($column.name)}($!{tool.getClsNameByFullNam
       */
     #end
 
-    #if($column.obj.name.indexOf("id")>-1 && $column.obj.name.length()<3)
+    #if(($column.obj.name.indexOf("id")>-1 || $column.obj.name.indexOf("ID")>-1) && $column.obj.name.length()<3)
 @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     #end
 
-    #if($column.obj.name.indexOf("_")>-1)
+    #if($column.obj.name != $column.name)
 @Column(name = "$!{column.obj.name}")
     #end
 private $!{tool.getClsNameByFullName($column.type)} $!{column.name};
