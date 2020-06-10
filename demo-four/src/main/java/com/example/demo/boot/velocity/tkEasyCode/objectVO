@@ -1,0 +1,35 @@
+##引入宏定义
+$!define
+
+##使用宏定义设置回调（保存位置与文件后缀）
+#saveFile("/entity/model","$!{tableInfo.name}VO", ".java")
+
+##使用宏定义设置包后缀
+#setPackageSuffix("entity.model")
+
+##使用全局变量实现默认包导入
+$!autoImport
+import com.fasterxml.jackson.annotation.JsonFormat;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;
+
+import java.util.Date;
+
+##使用宏定义实现类注释信息
+#tableComment("实体类")
+
+@ApiModel("$!{tableInfo.comment}model")
+@Data
+public class $!{tableInfo.name}VO {
+#foreach($column in $tableInfo.fullColumn)
+
+@ApiModelProperty(value = "$!{column.comment}", dataType = "$column.type")
+#if ($column.type.indexOf("Date")>-1)
+@JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
+#end
+private $!{tool.getClsNameByFullName($column.type)} $!{column.name};
+#end
+
+
+}
