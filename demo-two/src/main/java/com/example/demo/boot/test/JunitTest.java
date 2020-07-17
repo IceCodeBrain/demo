@@ -11,6 +11,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
+import java.math.BigDecimal;
 import java.net.URLDecoder;
 import java.util.HashMap;
 import java.util.Map;
@@ -49,5 +50,14 @@ public class JunitTest {
         // restResult = RestResponse.error("shiaop");
         topicVO = RestResponse.verifyRestResult(restResult);
         log.info("ces:{}", topicVO);
+    }
+
+    @Test
+    public void testBigDecimal() {
+        BigDecimal one =  BigDecimal.ONE;
+        BigDecimal two =  one.add(BigDecimal.ONE);
+
+        log.info(one.toString());
+        log.info(two.toString());
     }
 }
