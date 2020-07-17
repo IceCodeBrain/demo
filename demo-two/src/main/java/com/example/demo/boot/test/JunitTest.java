@@ -57,7 +57,7 @@ public class JunitTest {
         BigDecimal one =  BigDecimal.ONE;
         BigDecimal two =  one.add(BigDecimal.ONE);
 
-        log.info(one.toString());
-        log.info(two.toString());
+        log.info(one.toString()); // 1
+        log.info(two.toString()); // 2
     }
 }
