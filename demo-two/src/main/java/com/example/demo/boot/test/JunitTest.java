@@ -60,4 +60,13 @@ public class JunitTest {
         log.info(one.toString()); // 1
         log.info(two.toString()); // 2
     }
+
+    @Test
+    public void testAdd() {
+        int one =1;
+        one = one - -1;
+        int two = one + -1;
+        log.info(Integer.toString(one)); // 2
+        log.info(Integer.toString(two)); // 1
+    }
 }
