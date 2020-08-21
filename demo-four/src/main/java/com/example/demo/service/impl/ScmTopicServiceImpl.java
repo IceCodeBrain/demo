@@ -8,10 +8,14 @@ import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import lombok.extern.slf4j.Slf4j;
+import org.hibernate.service.spi.ServiceException;
+import org.springframework.aop.framework.AopContext;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -53,7 +57,7 @@ public class ScmTopicServiceImpl implements ScmTopicService {
         ScmTopicVO scmTopicVO;
         for (ScmTopic scmTopic : pageInfo.getList()) {
             scmTopicVO = new ScmTopicVO();
-            BeanUtils.copyProperties(scmTopic,scmTopicVO);
+            BeanUtils.copyProperties(scmTopic, scmTopicVO);
             scmTopicVOS.add(scmTopicVO);
         }
         topicVOPageInfo.setList(scmTopicVOS);
@@ -110,6 +114,67 @@ public class ScmTopicServiceImpl implements ScmTopicService {
         Page<V> page = new Page<>(pageInfoPo.getPageNum(), pageInfoPo.getPageSize());
         page.setTotal(pageInfoPo.getTotal());
         return new PageInfo<>(page);
+    }
+
+
+    @Override
+    public void testTransactional() {
+      /*  ScmTopic scmTopic = new ScmTopic();
+        //scmTopic.setId();
+        scmTopic.setName("测试");
+        scmTopic.setCurrTitleId(1L);
+        scmTopic.setType("0");
+        scmTopic.setCurrDetail("nothing");
+        scmTopic.setRemark("nothing");
+        scmTopic.setCoverUrl(null);
+        scmTopic.setCreateTime(new Date());
+        scmTopic.setUpdateTime(new Date());
+        scmTopic.setState("0");
+        scmTopic.setReleaseState("0");
+        scmTopic.setSort(1L);
+        scmTopicDao.insertSelective(scmTopic);
+        throw new ServiceException("ss");*/
+        //((ScmTopicServiceImpl) AopContext.currentProxy()).insert();
+        insert();
+    }
+
+
+    @Transactional
+    public void insert() {
+        ScmTopic scmTopic = new ScmTopic();
+        //scmTopic.setId();
+        scmTopic.setName("测试");
+        scmTopic.setCurrTitleId(1L);
+        scmTopic.setType("0");
+        scmTopic.setCurrDetail("nothing");
+        scmTopic.setRemark("nothing");
+        scmTopic.setCoverUrl(null);
+        scmTopic.setCreateTime(new Date());
+        scmTopic.setUpdateTime(new Date());
+        scmTopic.setState("0");
+        scmTopic.setReleaseState("0");
+        scmTopic.setSort(1L);
+        scmTopicDao.insertSelective(scmTopic);
+        //throw new ServiceException("ss");
+        insert2();
+    }
+
+    void insert2() {
+        ScmTopic scmTopic = new ScmTopic();
+        //scmTopic.setId();
+        scmTopic.setName("测试2");
+        scmTopic.setCurrTitleId(1L);
+        scmTopic.setType("0");
+        scmTopic.setCurrDetail("nothing");
+        scmTopic.setRemark("nothing");
+        scmTopic.setCoverUrl(null);
+        scmTopic.setCreateTime(new Date());
+        scmTopic.setUpdateTime(new Date());
+        scmTopic.setState("0");
+        scmTopic.setReleaseState("0");
+        scmTopic.setSort(1L);
+        scmTopicDao.insertSelective(scmTopic);
+        throw new ServiceException("ss");
     }
 
 }

@@ -24,6 +24,8 @@ public interface ScmTopicService {
 
     PageInfo<ScmTopicVO> queryScmTopicByPage(Integer pageNum, Integer pageSize);
 
+    void testTransactional();
+
     /**
      * 新增数据
      *
