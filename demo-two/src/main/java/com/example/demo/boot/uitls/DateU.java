@@ -2,6 +2,7 @@ package com.example.demo.boot.uitls;
 
 import org.apache.commons.lang3.time.DateUtils;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.time.LocalDate;
@@ -17,6 +18,33 @@ import java.util.concurrent.TimeUnit;
  * @version: 1.0 <br>
  */
 public class DateU {
+
+
+    public static String YYYY = "yyyy";
+
+    public static String MIN = "min";
+
+    public static String MAX = "max";
+
+    public static String YYYY_MM = "yyyy-MM";
+
+    public static String YYYYMM = "yyyyMM";
+
+    public static String YYYY_MM_DD = "yyyy-MM-dd";
+
+    public static String YYYY_MM_01 = "yyyy-MM-01";
+
+    public static String YYYYMMDDHHMMSS = "yyyyMMddHHmmss";
+
+    public static String YYYY_MM_DD_HH_MM_SS = "yyyy-MM-dd HH:mm:ss";
+
+    public static String CN_YYYY_MM_DD_HH_MM = "yyyy年MM月dd日 HH:mm";
+
+    public static String YYYY_MM_DD_T_HH_MM_SS = "yyyy-MM-dd'T'HH:mm:ss";
+
+    public static String HH_MM_SS = "HH-mm";
+
+    public static String MM_DD_HH_MM = "MM-dd HH:mm";
 
     public static String doFormatDate(Date date) {
         return doFormatDate("yyyy-MM-dd", date);
@@ -86,5 +114,14 @@ public class DateU {
         System.out.println(date);
     }
 
+    public static void testWxPay() {
+        String pay = "2020-09-14T10:14:59+08:00";
 
+        try {
+            Date date = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss").parse(pay);
+            System.out.println(date);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+    }
 }
