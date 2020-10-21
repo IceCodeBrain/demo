@@ -9,7 +9,7 @@ import java.util.Collections;
  * @author: PWB <br>
  * @version: 1.0 <br>
  */
-public class ArabicNumToChineseNumU {
+public class ArabicNumToChineseNumUtils {
 
     /**
      * 单位进位，中文默认为4位即（万、亿）
