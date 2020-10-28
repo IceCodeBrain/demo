@@ -8,7 +8,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 /**
- * @description: Image2Binary <br>
+ * @description: 创建临时文件 <br>
  * @date: 2020/10/21 10:49 <br>
  * @author: PWB <br>
  * @since: 1.0 <br>
