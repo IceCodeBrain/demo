@@ -1,10 +1,7 @@
 package com.example.demo.boot.core;
 
 
-import com.example.demo.boot.restful.RestCode;
-import com.example.demo.boot.restful.RestResponse;
-import com.example.demo.boot.restful.RestResult;
-import com.example.demo.boot.restful.ServiceException;
+import com.example.demo.boot.restful.*;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -44,7 +41,14 @@ public class GlobalExceptionHandler {
         log.error(e.getMessage(), e);
         return RestResponse.build(e.getCode(), e.getMessage());
     }
-
+    /**
+     * 处理自定义异常
+     */
+    @ExceptionHandler(CommonException.class)
+    public RestResult<Object> handleRRException(CommonException e) {
+        log.error(e.getMessage(), e);
+        return RestResponse.build(e.getCode(), e.getMessage());
+    }
     /**
      * 统一处理请求参数校验(实体对象传参)
      *

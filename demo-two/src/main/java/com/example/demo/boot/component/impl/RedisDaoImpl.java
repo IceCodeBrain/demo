@@ -1,8 +1,8 @@
 
-package com.example.demo.component.impl;
+package com.example.demo.boot.component.impl;
 
 
-import com.example.demo.component.RedisDao;
+import com.example.demo.boot.component.RedisDao;
 import org.springframework.data.redis.core.*;
 import org.springframework.stereotype.Repository;
 

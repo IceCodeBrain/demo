@@ -1,5 +1,5 @@
 
-package com.example.demo.component.impl;
+package com.example.demo.boot.component.impl;
 
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.RedisSerializer;

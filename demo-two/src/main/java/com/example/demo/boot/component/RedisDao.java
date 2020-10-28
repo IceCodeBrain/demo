@@ -1,5 +1,5 @@
 
-package com.example.demo.component;
+package com.example.demo.boot.component;
 
 import java.util.List;
 import java.util.Map;
