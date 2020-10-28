@@ -17,7 +17,7 @@ import java.net.URL;
  */
 public class TempFileUtils {
 
-    private static Logger log = LoggerFactory.getLogger(TempFileUtils.class);
+    //private static Logger log = LoggerFactory.getLogger(TempFileUtils.class);
 
     public static byte[] toByteArray(InputStream in) throws IOException {
 
@@ -27,7 +27,7 @@ public class TempFileUtils {
     private static byte[] getBytes(InputStream in) throws IOException {
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         byte[] buffer = new byte[1024 * 4];
-        int n = 0;
+        int n;
         while ((n = in.read(buffer)) != -1) {
             out.write(buffer, 0, n);
         }
