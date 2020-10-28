@@ -1,5 +1,6 @@
 package com.example.demo.boot.uitls;
 
+import com.example.demo.boot.restful.CommonException;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JavaType;
@@ -17,11 +18,7 @@ import java.util.TimeZone;
 
 
 public class JsonUtil {
-
-    private static Logger logger = LoggerFactory.getLogger(JsonUtil.class);
-
     private static final ObjectMapper objectMapper = new ObjectMapper();
-
     static {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         objectMapper.setDateFormat(sdf);
@@ -35,37 +32,43 @@ public class JsonUtil {
      * 将对象转换为JSON字符串
      */
     public static String toJson(Object obj) {
+        if (obj == null) {
+            return null;
+        }
         try {
             return objectMapper.writeValueAsString(obj);
         } catch (Exception e) {
-            logger.error(e.getMessage(), e);
-            return "";
+            throw new CommonException("对象转换为JSON字符串 异常！", e);
         }
     }
 
+    /**
+     * JSON字符串转换为对象 <br>
+     */
     public static <T> T toObject(String json, Class<T> clazz) {
-        try {
-            if (StringUtils.isNoneBlank(json)) {
-                return objectMapper.readValue(json, clazz);
-            }
-        } catch (IOException e) {
-            logger.error(e.getMessage(), e);
-
+        if (StringUtils.isEmpty(json)) {
+            return null;
         }
-        return null;
+        try {
+            return objectMapper.readValue(json, clazz);
+        } catch (IOException e) {
+            throw new CommonException("JSON字符串转换为对象 异常！", e);
+        }
     }
 
     /**
      * 将Json字符串转换成List
      */
     public static <T> List<T> toObjectList(Class<T> clazz, String json) {
+        if (StringUtils.isEmpty(json)) {
+            return null;
+        }
         JavaType javaType = getCollectionType(ArrayList.class, clazz);
         try {
             return objectMapper.readValue(json, javaType);
         } catch (IOException e) {
-            logger.error(e.getMessage(), e);
+            throw new CommonException("Json字符串转换成List 异常！", e);
         }
-        return null;
     }
 
     /**
@@ -84,13 +87,16 @@ public class JsonUtil {
      * 将JSON字符串转为Map
      */
     public static Map<String, Object> toMap(String json) {
+        if (StringUtils.isEmpty(json)) {
+            return null;
+        }
         try {
             @SuppressWarnings("unchecked")
             Map<String, Object> maps = objectMapper.readValue(json, Map.class);//转成map
             return maps;
         } catch (Exception e) {
-            logger.error(e.getMessage(), e);
-            return null;
+            throw new CommonException("JSON字符串转为Map 异常！", e);
         }
     }
+
 }

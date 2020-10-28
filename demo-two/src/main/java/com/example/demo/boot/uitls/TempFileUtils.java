@@ -36,14 +36,6 @@ public class TempFileUtils {
 
     /**
      * 网络文件转换为byte二进制
-     *
-     * @param @param  url
-     * @param @return
-     * @param @throws IOException    设定文件
-     * @return byte[]    返回类型
-     * @throws
-     * @Title: toByteArray
-     * @Description: TODO(这里用一句话描述这个方法的作用)
      */
     public static byte[] toByteArray(String urlStr) throws IOException {
         URL url = new URL(urlStr);
@@ -53,14 +45,9 @@ public class TempFileUtils {
     }
 
     /**
-     * @param @param  url
-     * @param @return
-     * @param @throws IOException    设定文件
-     * @return byte[]    返回类型
-     * @throws IOException 网络文件转换为本地文件
-     * @throws
-     * @Title: toByteArray
-     * @Description: TODO(这里用一句话描述这个方法的作用)
+     * @param urlStr 网络文件路径 <br>
+     * @param bdUrl  临时文件路径 <br>
+     * @description: 获取网络文件，暂存为临时文件 <br>
      */
     public static void toBDFile(String urlStr, String bdUrl) throws IOException {
         URL url = new URL(urlStr);
@@ -75,9 +62,6 @@ public class TempFileUtils {
 
     /**
      * 直接获取网络文件的md5值
-     *
-     * @param urlStr
-     * @return
      */
     public static String getMd5ByUrl(String urlStr) {
         String md5;
@@ -94,9 +78,6 @@ public class TempFileUtils {
 
     /**
      * 获取网络文件的输入流
-     *
-     * @param urlStr
-     * @return
      */
     public static InputStream getInputStreamByUrl(String urlStr) {
         DataInputStream in = null;

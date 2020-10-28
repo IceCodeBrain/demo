@@ -7,7 +7,6 @@ import ws.schild.jave.info.MultimediaInfo;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -100,6 +99,7 @@ public class MediaUtils {
         }
         return size;
     }
+
     /**
      * 获取https://image-store-all.oss-cn-beijing.aliyuncs.com/xymnTSJZwZ.mp4
      * 时长信息和大小信息
@@ -109,7 +109,7 @@ public class MediaUtils {
             String url = "https://image-store-all.oss-cn-beijing.aliyuncs.com/xymnTSJZwZ.mp4";
             File file = TempFileUtils.createTempFile(url);
             System.out.println("视频大小：" + file.length() / 1024 + "kb");
-            System.out.println("视频大小：" + getSize(file) );
+            System.out.println("视频大小：" + getSize(file));
             System.out.println("视频时长：" + getDuration(url));
         } catch (Exception e) {
             log.error("获取视频信息失败", e);
