@@ -102,26 +102,6 @@ public class GlobalExceptionHandler {
         return RestResponse.build(RestCode.FAIL.getCode(), message.toString());
     }
 
-    //捕捉BeanValidation 非法参数的异常
-    @ExceptionHandler(MethodArgumentNotValidException.class)
-    public RestResult<Object> handleMethodArgumentNotValidExceptionTypeTwo(MethodArgumentNotValidException ex) {
-        log.error(ex.getMessage(), ex);
-        String errorMsg = ex.getBindingResult().getAllErrors().stream()
-                .map(DefaultMessageSourceResolvable::getDefaultMessage)
-                .collect(Collectors.joining("\n", "[", "]"));
-        return RestResponse.build(RestCode.FAIL.getCode(), errorMsg);
-    }
-
-    //捕捉BeanValidation 非法参数的异常
-    @ExceptionHandler(ConstraintViolationException.class)
-    public RestResult<Object> handleConstraintViolationExceptionTypeTwo(ConstraintViolationException ex) {
-        log.error(ex.getMessage(), ex);
-        String errorMsg = ex.getConstraintViolations().stream()
-                .map(ConstraintViolation::getMessage)
-                .collect(Collectors.joining("\n", "[", "]"));
-        return RestResponse.build(RestCode.FAIL.getCode(), errorMsg);
-    }
-
     @ExceptionHandler(NoHandlerFoundException.class)
     public RestResult<Object> handlerNoFoundException(Exception e) {
         log.error(e.getMessage(), e);
