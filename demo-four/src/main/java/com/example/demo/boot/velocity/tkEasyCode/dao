@@ -14,7 +14,7 @@ $!callback.setSavePath($tool.append($tableInfo.savePath, "/dao"))
 #if($tableInfo.savePackageName)package $!{tableInfo.savePackageName}.#{end}dao;
 
 import $!{tableInfo.savePackageName}.entity.$!{tableInfo.name};
-import com.example.demo.boot.core.TKMapper;
+import $!{tableInfo.savePackageName}.boot.core.TKMapper;
 
 ##使用宏定义实现类注释信息
 #tableComment("表数据库访问层")

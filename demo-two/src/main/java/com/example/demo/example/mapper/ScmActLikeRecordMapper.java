@@ -1,7 +1,7 @@
 package com.example.demo.example.mapper;
 
 import com.example.demo.example.entity.ScmActLikeRecord;
-import com.example.demo.boot.core.TkMapper;
+import com.example.demo.boot.core.TKMapper;
 
-public interface ScmActLikeRecordMapper extends TkMapper<ScmActLikeRecord> {
+public interface ScmActLikeRecordMapper extends TKMapper<ScmActLikeRecord> {
 }
