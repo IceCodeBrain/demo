@@ -1,0 +1,85 @@
+
+
+1  class
+
+规则      ^.*(public|protected|private)*.+interface\s+\w+.*
+
+预览      /**\n
+         * The interface ${name}.\n
+        <#if element.typeParameters?has_content>        * \n
+        </#if><#list element.typeParameters as typeParameter>        * @param <${typeParameter.name}> the type parameter\n
+        </#list> */
+
+2  class
+
+规则      ^.*(public|protected|private)*.+enum\s+\w+.*
+
+预览       /**\n
+           * The enum ${name}.\n
+           */
+
+
+3 构造方法
+
+ 规则       .+
+
+ 预览      /**\n
+          * Instantiates a new ${name}.\n
+         <#if element.parameterList.parameters?has_content>         *\n
+         </#if><#list element.parameterList.parameters as parameter>         * @param ${parameter.name} the ${paramNames[parameter.name]}\n
+         </#list><#if element.throwsList.referenceElements?has_content>         *\n
+         </#if><#list element.throwsList.referenceElements as exception>         * @throws ${exception.referenceName} the ${exceptionNames[exception.referenceName]}\n
+         </#list> */
+
+4  方法
+
+规则      ^.*(public|protected|private)*\s*.*(\w(\s*<.+>)*)+\s+get\w+\s*\(.*\).+
+
+预览       /**\n
+          * Gets ${partName}.\n
+         <#if element.typeParameters?has_content>         * \n
+         </#if><#list element.typeParameters as typeParameter>         * @param <${typeParameter.name}> the type parameter\n
+         </#list><#if element.parameterList.parameters?has_content>         *\n
+         </#if><#list element.parameterList.parameters as parameter>         * @param ${parameter.name} the ${paramNames[parameter.name]}\n
+         </#list><#if isNotVoid>         *\n
+                  * @return the ${partName}\n
+         </#if><#if element.throwsList.referenceElements?has_content>         *\n
+         </#if><#list element.throwsList.referenceElements as exception>         * @throws ${exception.referenceName} the ${exceptionNames[exception.referenceName]}\n
+         </#list> */
+
+
+5  方法
+
+规则      ^.*(public|protected|private)*\s*.*(void|\w(\s*<.+>)*)+\s+set\w+\s*\(.*\).+
+
+预览       /**\n
+          * Sets ${partName}.\n
+         <#if element.typeParameters?has_content>         * \n
+         </#if><#list element.typeParameters as typeParameter>         * @param <${typeParameter.name}> the type parameter\n
+         </#list><#if element.parameterList.parameters?has_content>         *\n
+         </#if><#list element.parameterList.parameters as parameter>         * @param ${parameter.name} the ${paramNames[parameter.name]}\n
+         </#list><#if isNotVoid>         *\n
+                  * @return the ${partName}\n
+         </#if><#if element.throwsList.referenceElements?has_content>         *\n
+         </#if><#list element.throwsList.referenceElements as exception>         * @throws ${exception.referenceName} the ${exceptionNames[exception.referenceName]}\n
+         </#list> */
+
+
+6  field
+
+规则      ^.*(public|protected|private)*.+static.*(\w\s\w)+.+
+
+预览      /**\n
+         * The constant ${element.getName()}.\n
+         */
+
+
+7  field
+
+规则      ^.*(public|protected|private)*.*(\w\s\w)+.+
+
+预览       /**\n
+             <#if element.parent.isInterface()>        * The constant ${element.getName()}.\n
+         <#else>        * The ${name}.\n
+         </#if> */
+
