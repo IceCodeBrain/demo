@@ -17,7 +17,7 @@ import java.util.Map;
 import java.util.TimeZone;
 
 
-public class JsonUtil {
+public class JsonUtils {
     private static final ObjectMapper objectMapper = new ObjectMapper();
     static {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
