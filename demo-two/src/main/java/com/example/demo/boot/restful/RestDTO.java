@@ -27,6 +27,10 @@ public class RestDTO<T> {
     }
 
     public void setPageNum(Integer pageNum) {
+        if (pageNum == null || pageNum < 1) {
+            this.pageNum = 20;
+            return;
+        }
         this.pageNum = pageNum;
     }
 
@@ -35,6 +39,10 @@ public class RestDTO<T> {
     }
 
     public void setPageSize(Integer pageSize) {
+        if (pageSize == null || pageSize < 1) {
+            this.pageSize = 1;
+            return;
+        }
         this.pageSize = pageSize;
     }
 
