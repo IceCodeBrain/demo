@@ -30,8 +30,8 @@ public class HeartBeatServer {
      * 我们在此示例中实现了服务器端应用程序，因此将使用两个NioEventLoopGroup。第一个，通常称为“老板”，接受传入连接。第二个，通常称为“工人”，
      * 一旦老板接受连接并将接受的连接注册到工作人员，就处理被接受连接的流量。使用了多少个线程以及它们如何映射到创建的Channels取决于EventLoopGroup实现，甚至可以通过构造函数进行配置。
      */
-    private EventLoopGroup boss = new NioEventLoopGroup();
-    private EventLoopGroup work = new NioEventLoopGroup();
+    private EventLoopGroup boss = new NioEventLoopGroup(1);
+    private EventLoopGroup work = new NioEventLoopGroup(200);
 
     @Value("${netty.server.port}")
     private int nettyPort;
@@ -48,6 +48,8 @@ public class HeartBeatServer {
                 .group(boss, work)
                 .channel(NioServerSocketChannel.class)
                 .localAddress(new InetSocketAddress(nettyPort))
+                //设置队列大小
+                .option(ChannelOption.SO_BACKLOG, 1024)
                 //保持长连接
                 .childOption(ChannelOption.SO_KEEPALIVE, true)
                 .childHandler(new HeartbeatInitializer());
