@@ -38,7 +38,7 @@ $!callback.setSavePath($tool.append($modulePath, "/src/main/resources/mapper"))
   </select>
 
   <!--查询指定行数据-->
-  <select id="queryList" resultType="$!{tableInfo.savePackageName}.model.entity.$!{tableInfo.name};">
+  <select id="queryList" resultType="$!{tableInfo.savePackageName}.model.entity.$!{tableInfo.name}">
     select
     #allSqlColumn()
 
