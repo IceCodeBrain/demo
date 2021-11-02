@@ -14,6 +14,7 @@ $!callback.setSavePath($tool.append($tableInfo.savePath, "/service/impl"))
 #if($tableInfo.savePackageName)package $!{tableInfo.savePackageName}.#{end}service.impl;
 import $!{tableInfo.savePackageName}.boot.restful.RestDTO;
 import $!{tableInfo.savePackageName}.model.entity.$!{tableInfo.name};
+import $!{tableInfo.savePackageName}.model.dto.$!{tableInfo.name}DTO;
 import $!{tableInfo.savePackageName}.model.vo.$!{tableInfo.name}VO;
 import $!{tableInfo.savePackageName}.dao.$!{tableInfo.name}Dao;
 import $!{tableInfo.savePackageName}.service.$!{tableInfo.name}Service;
@@ -63,7 +64,7 @@ return null;
 */
 @Override
 public Boolean add($!{tableInfo.name}DTO dto) {
-  $!{tableInfo.name} $!{tool.firstLowerCase($tableInfo.name)} = new  $!{tableInfo.name}()
+  $!{tableInfo.name} $!{tool.firstLowerCase($tableInfo.name)} = new  $!{tableInfo.name}();
   return this.$!{tool.firstLowerCase($tableInfo.name)}Dao.insertSelective($!{tool.firstLowerCase($tableInfo.name)}) == 1;
 }
 
@@ -75,7 +76,7 @@ public Boolean add($!{tableInfo.name}DTO dto) {
 */
 @Override
 public Boolean update($!{tableInfo.name}DTO dto) {
-    $!{tableInfo.name} $!{tool.firstLowerCase($tableInfo.name)} = new  $!{tableInfo.name}()
+    $!{tableInfo.name} $!{tool.firstLowerCase($tableInfo.name)} = new  $!{tableInfo.name}();
   return this.$!{tool.firstLowerCase($tableInfo.name)}Dao.updateByPrimaryKeySelective($!{tool.firstLowerCase($tableInfo.name)}) == 1;
 }
 
