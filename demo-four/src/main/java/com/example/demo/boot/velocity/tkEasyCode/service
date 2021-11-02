@@ -13,14 +13,55 @@ $!callback.setSavePath($tool.append($tableInfo.savePath, "/service"))
 
 #if($tableInfo.savePackageName)package $!{tableInfo.savePackageName}.#{end}service;
 
-import $!{tableInfo.savePackageName}.entity.$!{tableInfo.name};
-
+import $!{tableInfo.savePackageName}.model.entity.$!{tableInfo.name};
+import $!{tableInfo.savePackageName}.model.vo.$!{tableInfo.name}VO;
+import $!{tableInfo.savePackageName}.model.dto.$!{tableInfo.name}DTO;
+import com.github.pagehelper.PageInfo;
 
 ##使用宏定义实现类注释信息
 #tableComment("表服务接口")
 
 public interface $!{tableName} {
 
+/**
+* 通过ID查询单条数据
+*
+* @param $!pk.name 主键
+* @return 实例对象
+*/
+$!{tableInfo.name}VO queryById($!pk.shortType $!pk.name);
 
+/**
+* 分页查询
+*
+* @param $!tool.firstLowerCase($!{tableInfo.name}) 筛选条件
+* @param pageRequest      分页对象
+* @return 查询结果
+*/
+PageInfo<$!{tableInfo.name}VO> queryByPage(RestDTO<Object> dto);
+
+/**
+* 新增数据
+*
+* @param $!tool.firstLowerCase($!{tableInfo.name}) 实例对象
+* @return Boolean
+*/
+Boolean add($!{tableInfo.name}DTO dto);
+
+/**
+* 修改数据
+*
+* @param $!tool.firstLowerCase($!{tableInfo.name}) 实例对象
+* @return Boolean
+*/
+  Boolean update($!{tableInfo.name}DTO dto);
+
+/**
+* 通过主键删除数据
+*
+* @param $!pk.name 主键
+* @return 是否成功
+*/
+  Boolean deleteById($!pk.shortType $!pk.name);
 
 }

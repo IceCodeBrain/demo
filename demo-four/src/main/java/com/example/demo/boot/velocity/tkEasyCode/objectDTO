@@ -2,10 +2,10 @@
 $!define
 
 ##使用宏定义设置回调（保存位置与文件后缀）
-#saveFile("/model/vo","$!{tableInfo.name}VO", ".java")
+#saveFile("/model/dto","$!{tableInfo.name}DTO", ".java")
 
 ##使用宏定义设置包后缀
-#setPackageSuffix("model.vo")
+#setPackageSuffix("model.dto")
 
 ##使用全局变量实现默认包导入
 $!autoImport

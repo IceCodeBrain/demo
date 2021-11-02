@@ -12,14 +12,21 @@ $!callback.setSavePath($tool.append($tableInfo.savePath, "/controller"))
 #end
 
 #if($tableInfo.savePackageName)package $!{tableInfo.savePackageName}.#{end}controller;
-
-import $!{tableInfo.savePackageName}.entity.$!{tableInfo.name};
+import $!{tableInfo.savePackageName}.boot.restful.RestResponse;
+import $!{tableInfo.savePackageName}.boot.restful.RestResult;
+import $!{tableInfo.savePackageName}.boot.restful.RestDTO;
+import $!{tableInfo.savePackageName}.model.entity.$!{tableInfo.name};
+import $!{tableInfo.savePackageName}.model.vo.$!{tableInfo.name}VO;
 import $!{tableInfo.savePackageName}.service.$!{tableInfo.name}Service;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
+import com.github.pagehelper.PageInfo;
+
+
+
 ##使用宏定义实现类注释信息
 #tableComment("表控制层")
 
@@ -36,14 +43,58 @@ private final $!{tableInfo.name}Service $!tool.firstLowerCase($tableInfo.name)Se
 
 
 /**
+* 分页查询
+*
+* @param pageRequest      分页对象
+* @return 查询结果
+*/
+@GetMapping
+public RestResult<PageInfo<$!{tableInfo.name}VO>> doQueryByPage(@RequestBody RestDTO<Object> dto) {
+return RestResponse.ok(this.$!{tool.firstLowerCase($tableInfo.name)}Service.queryByPage(dto);
+}
+
+/**
 * 通过主键查询单条数据
 *
 * @param id 主键
 * @return 单条数据
-*/ @ApiOperation("get查询")
-@GetMapping("selectOne")
-public $!{tableInfo.name} selectOne(@ApiParam("id") @RequestParam $!pk.shortType id) {
-return null;
+*/
+@GetMapping("doQueryById/{id}")
+public RestResult<$!{tableInfo.name}VO> doQueryById(@PathVariable("id") $!pk.shortType id) {
+return RestResponse.ok(this.$!{tool.firstLowerCase($tableInfo.name)}Service.queryById(id));
 }
+
+/**
+* 新增数据
+*
+* @param dto 实体
+* @return 新增结果
+*/
+@PostMapping
+public RestResult<Boolean> doAdd(@RequestBody $!{tableInfo.name}DTO dto) {
+return RestResponse.ok(this.$!{tool.firstLowerCase($tableInfo.name)}Service.add(dto));
+}
+
+/**
+* 编辑数据
+*
+* @param dto 实体
+* @return 编辑结果
+*/
+@PutMapping
+public RestResult<Boolean> doEdit(@RequestBody $!{tableInfo.name}DTO dto) {
+return RestResponse.ok(this.$!{tool.firstLowerCase($tableInfo.name)}Service.update(dto));
+}
+
+/**
+* 删除数据
+*
+* @param id 主键
+* @return 删除是否成功
+*/
+@DeleteMapping("doDeleteById/{id}")
+public RestResult<Boolean> doDeleteById(@PathVariable("id") $!pk.shortType id) {
+  return RestResponse.ok(this.$!{tool.firstLowerCase($tableInfo.name)}Service.deleteById(id));
+  }
 
 }
