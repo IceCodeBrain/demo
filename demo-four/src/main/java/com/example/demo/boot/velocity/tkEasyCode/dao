@@ -15,7 +15,10 @@ $!callback.setSavePath($tool.append($tableInfo.savePath, "/dao"))
 
 import $!{tableInfo.savePackageName}.model.entity.$!{tableInfo.name};
 import $!{tableInfo.savePackageName}.model.vo.$!{tableInfo.name}VO;
-import $!{tableInfo.savePackageName}.boot.core.TKMapper;
+import $!{tableInfo.savePackageName}.boot.component.tk.TKMapper;
+import org.apache.ibatis.annotations.Param;
+import org.springframework.data.domain.Pageable;
+import java.util.List;
 
 ##使用宏定义实现类注释信息
 #tableComment("表数据库访问层")

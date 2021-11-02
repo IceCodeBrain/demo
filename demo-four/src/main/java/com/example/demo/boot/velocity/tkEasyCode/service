@@ -34,8 +34,7 @@ $!{tableInfo.name}VO queryById($!pk.shortType $!pk.name);
 /**
 * 分页查询
 *
-* @param $!tool.firstLowerCase($!{tableInfo.name}) 筛选条件
-* @param pageRequest      分页对象
+* @param dto 分页对象
 * @return 查询结果
 */
 PageInfo<$!{tableInfo.name}VO> queryByPage(RestDTO<Object> dto);
@@ -43,7 +42,7 @@ PageInfo<$!{tableInfo.name}VO> queryByPage(RestDTO<Object> dto);
 /**
 * 新增数据
 *
-* @param $!tool.firstLowerCase($!{tableInfo.name}) 实例对象
+* @param dto 实例对象
 * @return Boolean
 */
 Boolean add($!{tableInfo.name}DTO dto);
@@ -51,7 +50,7 @@ Boolean add($!{tableInfo.name}DTO dto);
 /**
 * 修改数据
 *
-* @param $!tool.firstLowerCase($!{tableInfo.name}) 实例对象
+* @param dto 实例对象
 * @return Boolean
 */
   Boolean update($!{tableInfo.name}DTO dto);
