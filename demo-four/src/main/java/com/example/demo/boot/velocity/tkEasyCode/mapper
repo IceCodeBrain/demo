@@ -14,15 +14,8 @@ $!callback.setSavePath($tool.append($modulePath, "/src/main/resources/mapper"))
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="$!{tableInfo.savePackageName}.dao.$!{tableInfo.name}Dao">
 
-  <resultMap type="$!{tableInfo.savePackageName}.model.entity.$!{tableInfo.name}" id="$!{tableInfo.name}Map">
-      #foreach($column in $tableInfo.fullColumn)
-        <result property="$!column.name" column="$!column.obj.name" jdbcType="$!column.ext.jdbcType"/>
-      #end
-  </resultMap>
-
-
   <!--查询单个-->
-  <select id="queryOne" resultMap="$!{tableInfo.name}Map">
+  <select id="queryOne" resultType="$!{tableInfo.savePackageName}.model.entity.$!{tableInfo.name}">
     select
       #allSqlColumn()
 
@@ -34,21 +27,21 @@ $!callback.setSavePath($tool.append($modulePath, "/src/main/resources/mapper"))
           </if>
         #end
     </where>
-    LIMIT 0, 1
+    limit 0, 1
   </select>
 
   <!--查询指定行数据-->
   <select id="queryList" resultType="$!{tableInfo.savePackageName}.model.entity.$!{tableInfo.name}">
     select
-    #allSqlColumn()
+      #allSqlColumn()
 
     from $!tableInfo.obj.name
     <where>
-      #foreach($column in $tableInfo.fullColumn)
-        <if test="$!column.name != null#if($column.type.equals("java.lang.String")) and $!column.name != ''#end">
-          and $!column.obj.name = #{$!column.name}
-        </if>
-      #end
+        #foreach($column in $tableInfo.fullColumn)
+          <if test="$!column.name != null#if($column.type.equals("java.lang.String")) and $!column.name != ''#end">
+            and $!column.obj.name = #{$!column.name}
+          </if>
+        #end
     </where>
   </select>
 
