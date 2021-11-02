@@ -1,5 +1,5 @@
 ##引入宏定义
-$!define
+$!{define.vm}
 
 ##使用宏定义设置回调（保存位置与文件后缀）
 #save("/entity", ".java")
@@ -8,7 +8,7 @@ $!define
 #setPackageSuffix("entity")
 
 ##使用全局变量实现默认包导入
-$!autoImport
+$!{autoImport.vm}
 import java.io.Serializable;
 
 ##使用宏定义实现类注释信息
