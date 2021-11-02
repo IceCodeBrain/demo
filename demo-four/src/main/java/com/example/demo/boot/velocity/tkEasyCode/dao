@@ -26,37 +26,22 @@ import java.util.List;
 public interface $!{tableName} extends TKMapper<$!{tableInfo.name}>{
 
 /**
-* 通过ID查询单条数据
-*
-* @param $!pk.name 主键
-* @return 实例对象
-*/
-$!{tableInfo.name} queryById($!pk.shortType $!pk.name);
-
-/**
-* 查询指定行数据
+* 查询单条数据
 *
 * @param $!tool.firstLowerCase($!{tableInfo.name}) 查询条件
-* @param pageable         分页对象
-* @return 对象列表
+* @return 返回对象
 */
-List<$!{tableInfo.name}> queryAllByLimit($!{tableInfo.name} $!tool.firstLowerCase($!{tableInfo.name}), @Param("pageable") Pageable pageable);
+$!{tableInfo.name} queryOne($!{tableInfo.name} $!tool.firstLowerCase($!{tableInfo.name}));
+
 
 /**
-* 统计总行数
+* 查询一条数据
 *
 * @param $!tool.firstLowerCase($!{tableInfo.name}) 查询条件
-* @return 总行数
+* @return 返回对象
 */
-long count($!{tableInfo.name} $!tool.firstLowerCase($!{tableInfo.name}));
+List<$!{tableInfo.name}> queryList($!{tableInfo.name} $!tool.firstLowerCase($!{tableInfo.name}));
 
-/**
-* 新增数据
-*
-* @param $!tool.firstLowerCase($!{tableInfo.name}) 实例对象
-* @return 影响行数
-*/
-int insert($!{tableInfo.name} $!tool.firstLowerCase($!{tableInfo.name}));
 
 /**
 * 批量新增数据（MyBatis原生foreach方法）
