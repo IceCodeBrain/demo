@@ -21,7 +21,7 @@ import java.util.Date;
 
 @ApiModel("$!{tableInfo.comment}model")
 @Data
-public class $!{tableInfo.name}VO {
+public class $!{tableInfo.name}DTO {
 #foreach($column in $tableInfo.fullColumn)
 
 @ApiModelProperty(value = "$!{column.comment}")
