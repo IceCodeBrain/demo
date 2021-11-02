@@ -48,7 +48,8 @@ private final $!{tableInfo.name}Service $!tool.firstLowerCase($tableInfo.name)Se
 * @param pageRequest      分页对象
 * @return 查询结果
 */
-@GetMapping
+@ApiOperation("分页查询")
+@PostMapping("doQueryByPage")
 public RestResult<PageInfo<$!{tableInfo.name}VO>> doQueryByPage(@RequestBody RestDTO<Object> dto) {
 return RestResponse.ok(this.$!{tool.firstLowerCase($tableInfo.name)}Service.queryByPage(dto);
 }
@@ -59,6 +60,7 @@ return RestResponse.ok(this.$!{tool.firstLowerCase($tableInfo.name)}Service.quer
 * @param id 主键
 * @return 单条数据
 */
+@ApiOperation("通过主键查询单条数据")
 @GetMapping("doQueryById/{id}")
 public RestResult<$!{tableInfo.name}VO> doQueryById(@PathVariable("id") $!pk.shortType id) {
 return RestResponse.ok(this.$!{tool.firstLowerCase($tableInfo.name)}Service.queryById(id));
@@ -70,7 +72,8 @@ return RestResponse.ok(this.$!{tool.firstLowerCase($tableInfo.name)}Service.quer
 * @param dto 实体
 * @return 新增结果
 */
-@PostMapping
+@ApiOperation("新增数据")
+@PostMapping("doAdd")
 public RestResult<Boolean> doAdd(@RequestBody $!{tableInfo.name}DTO dto) {
 return RestResponse.ok(this.$!{tool.firstLowerCase($tableInfo.name)}Service.add(dto));
 }
@@ -81,7 +84,8 @@ return RestResponse.ok(this.$!{tool.firstLowerCase($tableInfo.name)}Service.add(
 * @param dto 实体
 * @return 编辑结果
 */
-@PutMapping
+@ApiOperation("编辑数据")
+@PutMapping("doEdit")
 public RestResult<Boolean> doEdit(@RequestBody $!{tableInfo.name}DTO dto) {
 return RestResponse.ok(this.$!{tool.firstLowerCase($tableInfo.name)}Service.update(dto));
 }
@@ -92,6 +96,7 @@ return RestResponse.ok(this.$!{tool.firstLowerCase($tableInfo.name)}Service.upda
 * @param id 主键
 * @return 删除是否成功
 */
+@ApiOperation("删除数据")
 @DeleteMapping("doDeleteById/{id}")
 public RestResult<Boolean> doDeleteById(@PathVariable("id") $!pk.shortType id) {
   return RestResponse.ok(this.$!{tool.firstLowerCase($tableInfo.name)}Service.deleteById(id));
