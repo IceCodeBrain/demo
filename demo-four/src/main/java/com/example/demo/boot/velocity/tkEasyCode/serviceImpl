@@ -12,7 +12,7 @@ $!callback.setSavePath($tool.append($tableInfo.savePath, "/service/impl"))
 #end
 
 #if($tableInfo.savePackageName)package $!{tableInfo.savePackageName}.#{end}service.impl;
-
+import $!{tableInfo.savePackageName}.boot.restful.RestDTO;
 import $!{tableInfo.savePackageName}.model.entity.$!{tableInfo.name};
 import $!{tableInfo.savePackageName}.model.vo.$!{tableInfo.name}VO;
 import $!{tableInfo.savePackageName}.dao.$!{tableInfo.name}Dao;
