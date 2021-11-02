@@ -28,8 +28,7 @@ import javax.annotation.Resource;
 
 @Service
 public class $!{tableName} implements $!{tableInfo.name}Service {
-@Resource
-private $!{tableInfo.name}Dao $!tool.firstLowerCase($!{tableInfo.name})Dao;
+
 @Resource
 private $!{tableInfo.name}Dao $!tool.firstLowerCase($!{tableInfo.name})Dao;
 
