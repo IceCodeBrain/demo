@@ -10,10 +10,11 @@ $!define
 ##使用全局变量实现默认包导入
 $!autoImport
 import javax.persistence.*;
+import lombok.Data;
 
 ##使用宏定义实现类注释信息
 #tableComment("实体类")
-
+@Data
 @Table(name = "$!{tableInfo.obj.name}")
 public class $!{tableInfo.name}{
 #foreach($column in $tableInfo.fullColumn)
@@ -21,9 +22,5 @@ public class $!{tableInfo.name}{
     #doField($column)
 #end
 
-#foreach($column in $tableInfo.fullColumn)
-    ##使用宏定义实现get,set方法
-    #getSetMethod($column)
-#end
 
 }
