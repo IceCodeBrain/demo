@@ -91,5 +91,5 @@ public Boolean deleteById($!pk.shortType $!pk.name) {
   return this.$!{tool.firstLowerCase($tableInfo.name)}Dao.deleteByPrimaryKey($!pk.name) == 1;
 }
 
-
+  /* =================================================【以下为私有方法区域】=================================================================*/
 }
