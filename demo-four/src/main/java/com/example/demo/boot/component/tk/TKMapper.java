@@ -1,4 +1,4 @@
-package com.example.demo.boot.comonent.tk;
+package com.example.demo.boot.component.tk;
 
 import tk.mybatis.mapper.common.IdsMapper;
 import tk.mybatis.mapper.common.Mapper;
