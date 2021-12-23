@@ -28,6 +28,6 @@ public interface $!{tableName} extends TKMapper<$!{tableInfo.name}>{
 * @param $!tool.firstLowerCase($!{tableInfo.name}) 查询条件
 * @return 返回对象
 */
-$!{tableInfo.name} queryOne($!{tableInfo.name} $!tool.firstLowerCase($!{tableInfo.name}));
+$!{tableInfo.name} findOne($!{tableInfo.name} $!tool.firstLowerCase($!{tableInfo.name}));
 
 }
