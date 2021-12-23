@@ -1,5 +1,5 @@
-##引入宏定义
-$!define
+##导入宏定义
+$!{define.vm}
 
 ##使用宏定义设置回调（保存位置与文件后缀）
 #save("/model/entity", ".java")

@@ -1,5 +1,5 @@
-##引入宏定义
-$!define
+##导入宏定义
+$!{define.vm}
 ##定义初始变量
 #set($tableName = $tool.append($tableInfo.name, "ServiceImpl"))
 ##设置回调
