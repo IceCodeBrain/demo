@@ -9,9 +9,9 @@ $!{define.vm}
 
 ##使用全局变量实现默认包导入
 $!autoImport
+import java.util.Date;
 import javax.persistence.*;
 import lombok.Data;
-
 ##使用宏定义实现类注释信息
 #tableComment("实体类")
 @Data
