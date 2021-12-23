@@ -1,72 +1,16 @@
 server:
   port: 8080
-#  servlet:
-#    context-path: /demo
-  tomcat:
-    accept-count: 150
-    max-threads: 500
-    uri-encoding: UTF-8
+  servlet:
+    context-path: /demo
+    session:
+      persistent: false
 spring:
   application:
-    name: demo-two
+    name: demo
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss
     default-property-inclusion: non_null
     time-zone: GMT+8
-  cache:
-    type: redis
-  redis:
-    database: 1
-    host: 192.168.1.41
-    jedis:
-      pool:
-        max-active: 8
-        max-idle: 8
-        max-wait: -1ms
-        min-idle: 2
-    password:
-    port: 6379
-    timeout: 10s
-  datasource:
-    driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://192.168.1.41:3306/scm_cms?characterEncoding=utf8&autoReconnect=true&allowMultiQueries=true&useSSL=false&serverTimezone=GMT
-    username: root
-    password: root
-    type: com.alibaba.druid.pool.DruidDataSource
-    druid:
-      aop-patterns: com.xcky.*
-      filter:
-        stat:
-          enabled: true
-          log-slow-sql: true
-          merge-sql: true
-          slow-sql-millis: 10000
-        wall:
-          enabled: true
-      initial-size: 4
-      max-active: 10
-      max-open-prepared-statements: 30
-      max-wait: 12000
-      min-evictable-idle-time-millis: 30000
-      min-idle: 4
-      pool-prepared-statements: true
-      stat-view-servlet:
-        enabled: true
-        login-password: root
-        login-username: root
-        reset-enable: false
-        url-pattern: /druid/*
-      test-on-borrow: false
-      test-on-return: false
-      test-while-idle: true
-      time-between-eviction-runs-millis: 60000
-      validation-query: select 1 from dual
-      web-stat-filter:
-        enabled: true
-        exclusions: '*.js,*.gif,*.jpg,*.bmp,*.png,*.css,*.ico,/druid/*'
-        profile-enable: true
-        session-stat-enable: true
-        url-pattern: /*
   messages:
     basename: message/messages_zh_CN
     encoding: UTF-8
@@ -75,24 +19,50 @@ spring:
       enabled: true
       max-file-size: 50MB
       max-request-size: 50MB
+  cache:
+    type: redis
+  redis:
+    database: 1
+    host: 39.100.94.39
+    password: xianlin@123
+    port: 6379
+    timeout: 10s
+    lettuce:
+      pool:
+        min-idle: 8
+        max-active: 20
+        max-wait: 10000ms
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/member_point?characterEncoding=utf8&autoReconnect=true&allowMultiQueries=true&useSSL=false&serverTimezone=GMT
+    username: root
+    password: wuyin@123
+    hikari:
+      maximum-pool-size: 10
+      minimum-idle: 5
+      connection-timeout: 30000
+      idle-timeout: 600000
+      max-lifetime: 1800000
 
 logging:
   file:
-    max-history: 10
-    max-size: 20MB
-    name: ./log/${spring.application.name}/${spring.application.name}.log
+    name: ./logs/${spring.application.name}.log
   level:
-    com:
-      example:
-        demo: debug
-  pattern:
-    console: '%d - %msg%n'
+    com.qianqi.point: debug
+  logback:
+    rollingpolicy:
+      max-history: 10
+      max-file-size: 10MB
+
 mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.example.demo.model.entity
   configuration:
     cache-enabled: true
     map-underscore-to-camel-case: true
-  mapper-locations: classpath:mapper/*.xml
-  type-aliases-package: com.example.demo.example.entity
+
+
 pagehelper:
   helper-dialect: mysql
   page-size-zero: true
@@ -100,6 +70,22 @@ pagehelper:
   reasonable: true
   support-methods-arguments: true
 ##``````````````````````````````````` tkMapper 配置``````````````````````````````````````````````````````````````###
+mapper.mappers: com.example.demo.boot.core.TKMapper
 
-mapper:
-  mappers: com.example.demo.boot.core.TKMapper
+
+
+##``````````````````````````````````` 在线文档 配置``````````````````````````````````````````````````````````````###
+swagger:
+  enable: true
+knife4j:
+  basic:
+    enable: true
+    ## Basic认证用户名
+    username: admin
+    ## Basic认证密码
+    password: zsw123456
+
+
+
+#定时任务 每10秒执行一次
+cron.point.expire: 0 0/5 * * * ?
