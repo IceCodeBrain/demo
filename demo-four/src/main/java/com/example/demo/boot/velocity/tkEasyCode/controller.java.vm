@@ -30,7 +30,7 @@ import lombok.RequiredArgsConstructor;
 ##使用宏定义实现类注释信息
 #tableComment("表控制层")
 
-@RequiredArgsConstructor(onConstructor = @__(@Autowired))
+@RequiredArgsConstructor
 @Api(tags = "$!{tableInfo.comment}相关功能API")
 @RestController
 @RequestMapping("$!tool.firstLowerCase($tableInfo.name)")

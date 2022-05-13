@@ -21,17 +21,16 @@ import $!{tableInfo.savePackageName}.service.$!{tableInfo.name}Service;
 import org.springframework.stereotype.Service;
 import com.github.pagehelper.PageInfo;
 import com.github.pagehelper.PageHelper;
-import javax.annotation.Resource;
-
+import lombok.RequiredArgsConstructor;
 
 ##使用宏定义实现类注释信息
 #tableComment("表服务实现类")
-
+@RequiredArgsConstructor
 @Service
 public class $!{tableName} implements $!{tableInfo.name}Service {
 
-@Resource
-private $!{tableInfo.name}Dao $!tool.firstLowerCase($!{tableInfo.name})Dao;
+
+private final $!{tableInfo.name}Dao $!tool.firstLowerCase($!{tableInfo.name})Dao;
 
 /**
 * 通过ID查询单条数据
