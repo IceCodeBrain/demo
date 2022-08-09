@@ -62,7 +62,7 @@ logging:
 
 mybatis:
   mapper-locations: classpath:mapper/*.xml
-  type-aliases-package: com.pwb.weather.model.entity
+  type-aliases-package: com.example.demo.model.entity
   configuration:
     cache-enabled: true
     map-underscore-to-camel-case: true
@@ -73,7 +73,7 @@ pagehelper:
   reasonable: true
   support-methods-arguments: true
 ##``````````````````````````````````` tkMapper 配置``````````````````````````````````````````````````````````````###
-mapper. mappers: com.pwb.weather.boot.component.tk.TKMapper
+mapper. mappers: com.example.demo.boot.component.tk.TKMapper
 
 
 ##``````````````````````````````````` 在线文档 配置``````````````````````````````````````````````````````````````###
