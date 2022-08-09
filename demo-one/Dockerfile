@@ -14,7 +14,7 @@ EXPOSE 8080
 # 添加环境变量
 #ENV JAVA_OPTS="-Xms256m -Xmx512m"
 # 将jar包添加到容器中 /app/目录并更名为xxx.jar
-ADD ./target/weather.jar /app/bootstrap.jar
+ADD ./target/demo-one.jar /app/bootstrap.jar
 # 运行jar包命令 "nohup" "&" 可省略
 # -Djava.security.egd=file:/dev/./urandom 加速tomcat启动
 #ENTRYPOINT ["java","-Xms256m","-Xmx512m","-Djava.security.egd=file:/dev/./urandom","-jar","/app/bootstrap.jar", "--spring.profiles.active=dev", "--server.port=10000"]

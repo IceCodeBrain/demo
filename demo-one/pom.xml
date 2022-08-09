@@ -140,7 +140,7 @@
     </dependencies>
 
     <build>
-        <finalName>weather</finalName>
+        <finalName>demo-one</finalName>
         <!--加上这个才能打包时将静态资源打进去-->
         <resources>
             <resource>
