@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.dao.AreaCodeDao">
+
+    <!--查询单个-->
+    <select id="findOne" resultType="com.example.demo.model.entity.AreaCode">
+        select id,
+        name,
+        address,
+        code,
+        super_code
+        from area_code
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="name != null and name != ''">
+                and name = #{name}
+            </if>
+            <if test="address != null and address != ''">
+                and address = #{address}
+            </if>
+            <if test="code != null">
+                and code = #{code}
+            </if>
+            <if test="superCode != null">
+                and super_code = #{superCode}
+            </if>
+        </where>
+        limit 0, 1
+    </select>
+
+    <select id="getAddress" resultType="com.example.demo.model.vo.AreaCodeVO">
+        SELECT name,
+               code,
+               address
+        FROM area_code
+        WHERE super_code = #{code}
+    </select>
+
+
+</mapper>
+

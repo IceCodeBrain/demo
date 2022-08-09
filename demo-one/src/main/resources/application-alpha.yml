@@ -1,0 +1,93 @@
+server:
+  port: 8080
+  servlet:
+    #context-path: /weather
+    session:
+      persistent: false
+
+  tomcat:
+    accept-count: 150
+    uri-encoding: UTF-8
+    threads:
+      max: 20
+spring:
+  application:
+    name: member-point
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    default-property-inclusion: non_null
+    time-zone: GMT+8
+  messages:
+    basename: message/messages_zh_CN
+    encoding: UTF-8
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 50MB
+      max-request-size: 50MB
+  cache:
+    type: redis
+  redis:
+    database: 2
+    host: 10.0.16.17
+    password: frank@CACHE.000
+    port: 6379
+    timeout: 10s
+    lettuce:
+      pool:
+        min-idle: 8
+        max-active: 20
+        max-wait: 10000ms
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://10.0.16.8:3306/weather?characterEncoding=utf8&autoReconnect=true&allowMultiQueries=true&useSSL=false&serverTimezone=Asia/Shanghai
+    username: root
+    password: frank@DB.000
+    hikari:
+      maximum-pool-size: 10
+      minimum-idle: 5
+      connection-timeout: 30000
+      idle-timeout: 600000
+      max-lifetime: 1800000
+
+logging:
+  file:
+    name: ./logs/${spring.application.name}.log
+  level:
+    com.pwb.weather: info
+  logback:
+    rollingpolicy:
+      max-history: 10
+      max-file-size: 10MB
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.pwb.weather.model.entity
+  configuration:
+    cache-enabled: true
+    map-underscore-to-camel-case: true
+pagehelper:
+  helper-dialect: mysql
+  page-size-zero: true
+  params: count=countSql
+  reasonable: true
+  support-methods-arguments: true
+##``````````````````````````````````` tkMapper 配置``````````````````````````````````````````````````````````````###
+mapper. mappers: com.pwb.weather.boot.component.tk.TKMapper
+
+
+##``````````````````````````````````` 在线文档 配置``````````````````````````````````````````````````````````````###
+swagger:
+  enable: true
+knife4j:
+  enable: true
+  basic:
+    enable: true
+    ## Basic认证用户名
+    username: weather
+    ## Basic认证密码
+    password: weather
+
+
+#定时任务 每10秒执行一次
+cron.point.expire: 0 0/5 * * * ?

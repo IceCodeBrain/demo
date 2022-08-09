@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.dao.WeatherInfoDao">
+
+    <!--查询单个-->
+    <select id="findOne" resultType="com.example.demo.model.entity.WeatherInfo">
+        select
+        id, code, name, create_time
+        from weather_info
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="code != null">
+                and code = #{code}
+            </if>
+            <if test="name != null and name != ''">
+                and name = #{name}
+            </if>
+            <if test="createTime != null">
+                and create_time = #{createTime}
+            </if>
+        </where>
+        limit 0, 1
+    </select>
+
+    <select id="exportList" resultType="com.example.demo.model.excel.AreaWeatherEO">
+        select code,
+               name
+        from weather_info
+        order by id desc
+    </select>
+
+    <select id="findList" resultType="com.example.demo.model.vo.WeatherInfoVO">
+        select id,
+        code,
+        name,
+        create_time
+        from weather_info
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="code != null">
+                and code = #{code}
+            </if>
+            <if test="name != null and name != ''">
+                and name = #{name}
+            </if>
+            <if test="createTime != null">
+                and create_time = #{createTime}
+            </if>
+        </where>
+        order by id desc
+    </select>
+
+    <select id="queryById" resultType="com.example.demo.model.vo.WeatherInfoVO">
+        select id,
+               code,
+               name,
+               create_time
+        from weather_info
+        where id = #{id}
+    </select>
+
+    <select id="existCode" resultType="java.lang.Integer">
+        select code
+        from weather_info
+        where code = #{code} limit 0, 1
+    </select>
+
+
+</mapper>
+

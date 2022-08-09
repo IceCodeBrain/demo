@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.dao.AdminDao">
+
+    <!--查询单个-->
+    <select id="findOne" resultType="com.example.demo.model.entity.Admin">
+        select
+        id, avatar, username, nickname, password, phone, type, update_time, create_time
+        from admin
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="avatar != null and avatar != ''">
+                and avatar = #{avatar}
+            </if>
+            <if test="username != null and username != ''">
+                and username = #{username}
+            </if>
+            <if test="nickname != null and nickname != ''">
+                and nickname = #{nickname}
+            </if>
+            <if test="password != null and password != ''">
+                and password = #{password}
+            </if>
+            <if test="phone != null and phone != ''">
+                and phone = #{phone}
+            </if>
+            <if test="type != null">
+                and type = #{type}
+            </if>
+            <if test="updateTime != null">
+                and update_time = #{updateTime}
+            </if>
+            <if test="createTime != null">
+                and create_time = #{createTime}
+            </if>
+        </where>
+        limit 0, 1
+    </select>
+
+    <select id="findList" resultType="com.example.demo.model.vo.AdminVO">
+        select
+        id, avatar, username, nickname, password, phone, type, create_time
+        from admin
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="avatar != null and avatar != ''">
+                and avatar = #{avatar}
+            </if>
+            <if test="username != null and username != ''">
+                and username = #{username}
+            </if>
+            <if test="nickname != null and nickname != ''">
+                and nickname = #{nickname}
+            </if>
+            <if test="password != null and password != ''">
+                and password = #{password}
+            </if>
+            <if test="phone != null and phone != ''">
+                and phone = #{phone}
+            </if>
+            <if test="type != null">
+                and type = #{type}
+            </if>
+            <if test="updateTime != null">
+                and update_time = #{updateTime}
+            </if>
+            <if test="createTime != null">
+                and create_time = #{createTime}
+            </if>
+        </where>
+    </select>
+
+    <select id="queryById" resultType="com.example.demo.model.vo.AdminVO">
+        select id,
+               avatar,
+               username,
+               nickname,
+               password,
+               phone,
+               type,
+               create_time
+        from admin
+        where id = #{id} limit 0, 1
+    </select>
+
+
+</mapper>
+
