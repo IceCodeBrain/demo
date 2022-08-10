@@ -1,5 +1,5 @@
 #打包完后的jar名称，替换成你自己项目的名称，该名称可以在maven项目的pom中配置
-proc="demo-one"
+proc="hrms"
 #项目的目录地址
 SOURCE_HOME="/opt/app/$proc"
 #日志地址
@@ -7,7 +7,7 @@ APP_LOG="$SOURCE_HOME/logs/$proc.log"
 #环境配置 用户配置开发(dev)，测试(test)，生产(prod)的配置文件，避免频繁改动
 PROFILES_ACTIVE="spring.profiles.active=alpha"
 #JVM启动参数，关于JVM调优这里不介绍，感兴趣的可以自行百度 JVM调优
-JAVA_OPTS="-server -Xms512M -Xmx512M -Xss256k -Xmn256m -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=$SOURCE_HOME/logs/jvm/dump -XX:SurvivorRatio=4 -XX:+AggressiveOpts -XX:+UseBiasedLocking -XX:MetaspaceSize=128M -XX:MaxMetaspaceSize=256M  -XX:CMSInitiatingOccupancyFraction=90 -XX:+CMSParallelRemarkEnabled -XX:+UseCMSCompactAtFullCollection -XX:+DisableExplicitGC -XX:MaxTenuringThreshold=0 -XX:CMSFullGCsBeforeCompaction=100 -XX:+UseConcMarkSweepGC -XX:+UseParNewGC -XX:LargePageSizeInBytes=128m -XX:+UseFastAccessorMethods -XX:+UseCMSInitiatingOccupancyOnly -Djava.awt.headless=true"
+JAVA_OPTS="-server -Xms512M -Xmx512M -Xss256k -Xmn256m -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=$SOURCE_HOME/logs/jvm/dump"
 app_pid=0
 #检查进程是否存在
 checkPid() {
@@ -15,7 +15,7 @@ checkPid() {
   #is_pid=$(ps -ef | grep -n $proc | grep java | grep -v grep | awk '{print $2}')
   is_pid=$(ps -ef | grep -n $proc | grep java | grep -v grep | awk '{print $2}')
   echo "===========is_pid=$is_pid============"
-  if [[ -n "$is_pid" ]]; then
+  if [ -n "$is_pid" ]; then
     app_pid=$is_pid
   else
     app_pid=0
@@ -25,7 +25,7 @@ checkPid() {
 #编写启动方法
 start() {
   checkPid
-  if [[ $app_pid -ne 0 ]]; then
+  if [ $app_pid -ne 0 ]; then
     echo "================================"
     echo "warn: $proc already started! (pid=$app_pid)"
     echo "================================"
@@ -41,7 +41,7 @@ start() {
     $JAVA_CMD &
     sleep 1
     checkPid
-    if [[ $app_pid -ne 0 ]]; then
+    if [ $app_pid -ne 0 ]; then
       echo "======================================"
       echo "$proc Start Success! (pid=$app_pid)[OK]"
       echo "======================================"
@@ -61,18 +61,18 @@ showLog() {
 stop() {
   checkPid
 
-  if [[ $app_pid -ne 0 ]]; then
+  if [ $app_pid -ne 0 ]; then
     echo -n "Stopping $proc ...(pid=$app_pid) "
     kill -9 $app_pid
 
-    if [[ $? -eq 0 ]]; then
+    if [ $? -eq 0 ]; then
       echo "[OK]"
     else
       echo "[Failed]"
     fi
 
     checkPid
-    if [[ $app_pid -ne 0 ]]; then
+    if [ $app_pid -ne 0 ]; then
       stop
     fi
   else
@@ -85,7 +85,7 @@ stop() {
 #项目状态
 status() {
   checkPid
-  if [[ $app_pid -ne 0 ]]; then
+  if [ $app_pid -ne 0 ]; then
     echo "$proc is running! (pid=$app_pid)"
   else
     echo "$proc is not running"

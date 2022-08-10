@@ -12,7 +12,7 @@ server:
       max: 20
 spring:
   application:
-    name: member-point
+    name: demo-one
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss
     default-property-inclusion: non_null
