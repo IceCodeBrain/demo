@@ -1,5 +1,5 @@
 #打包完后的jar名称，替换成你自己项目的名称，该名称可以在maven项目的pom中配置
-proc="hrms"
+proc="demo"
 #项目的目录地址
 SOURCE_HOME="/opt/app/$proc"
 #日志地址
