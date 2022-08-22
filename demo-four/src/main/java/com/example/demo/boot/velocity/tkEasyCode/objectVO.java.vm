@@ -22,14 +22,14 @@ import java.util.Date;
 @ApiModel("$!{tableInfo.comment}VO")
 @Data
 public class $!{tableInfo.name}VO {
-    #foreach($column in $tableInfo.fullColumn)
+#foreach($column in $tableInfo.fullColumn)
 
-        @ApiModelProperty(value = "$!{column.comment}")
-            #if ($column.type.indexOf("Date")>-1)
-            @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
-            #end
-        private $!{tool.getClsNameByFullName($column.type)} $!{column.name};
-    #end
+    @ApiModelProperty(value = "$!{column.comment}")
+        #if ($column.type.indexOf("Date")>-1)
+        @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
+        #end
+    private $!{tool.getClsNameByFullName($column.type)} $!{column.name};
+#end
 
 
 }
