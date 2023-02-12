@@ -14,7 +14,7 @@ $!callback.setSavePath($tool.append($tableInfo.savePath, "/controller"))
 #if($tableInfo.savePackageName)package $!{tableInfo.savePackageName}.#{end}controller;
 import $!{tableInfo.savePackageName}.boot.restful.RestResponse;
 import $!{tableInfo.savePackageName}.boot.restful.RestResult;
-import $!{tableInfo.savePackageName}.boot.restful.RestDTO;
+import $!{tableInfo.savePackageName}.boot.restful.PageQO;
 import $!{tableInfo.savePackageName}.model.dto.$!{tableInfo.name}DTO;
 import $!{tableInfo.savePackageName}.model.vo.$!{tableInfo.name}VO;
 import $!{tableInfo.savePackageName}.service.$!{tableInfo.name}Service;
@@ -50,8 +50,8 @@ private final $!{tableInfo.name}Service $!tool.firstLowerCase($tableInfo.name)Se
 */
 @ApiOperation("分页查询")
 @PostMapping("doQueryByPage")
-public RestResult<PageInfo<$!{tableInfo.name}VO>> doQueryByPage(@RequestBody RestDTO<Object> dto) {
-return RestResponse.ok(this.$!{tool.firstLowerCase($tableInfo.name)}Service.queryByPage(dto));
+public RestResult<PageInfo<$!{tableInfo.name}VO>> doQueryByPage(PageQO qo) {
+return RestResponse.ok(this.$!{tool.firstLowerCase($tableInfo.name)}Service.queryByPage(qo));
 }
 
 /**

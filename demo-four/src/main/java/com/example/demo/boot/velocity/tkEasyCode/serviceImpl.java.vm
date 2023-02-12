@@ -12,7 +12,7 @@ $!callback.setSavePath($tool.append($tableInfo.savePath, "/service/impl"))
 #end
 
 #if($tableInfo.savePackageName)package $!{tableInfo.savePackageName}.#{end}service.impl;
-import $!{tableInfo.savePackageName}.boot.restful.RestDTO;
+import $!{tableInfo.savePackageName}.boot.restful.PageQO;
 import $!{tableInfo.savePackageName}.model.entity.$!{tableInfo.name};
 import $!{tableInfo.savePackageName}.model.dto.$!{tableInfo.name}DTO;
 import $!{tableInfo.savePackageName}.model.vo.$!{tableInfo.name}VO;
@@ -50,8 +50,8 @@ return null;
 * @return 查询结果
 */
 @Override
-public PageInfo<$!{tableInfo.name}VO> queryByPage(RestDTO<Object> dto) {
-  PageHelper.startPage(dto.getPageNum(), dto.getPageSize());
+public PageInfo<$!{tableInfo.name}VO> queryByPage(PageQO qo) {
+  PageHelper.startPage(qo.getPageNum(), qo.getPageSize());
 return null;
 }
 

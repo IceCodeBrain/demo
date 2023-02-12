@@ -12,7 +12,7 @@ $!callback.setSavePath($tool.append($tableInfo.savePath, "/service"))
 #end
 
 #if($tableInfo.savePackageName)package $!{tableInfo.savePackageName}.#{end}service;
-import $!{tableInfo.savePackageName}.boot.restful.RestDTO;
+import $!{tableInfo.savePackageName}.boot.restful.PageQO;
 import $!{tableInfo.savePackageName}.model.vo.$!{tableInfo.name}VO;
 import $!{tableInfo.savePackageName}.model.dto.$!{tableInfo.name}DTO;
 import com.github.pagehelper.PageInfo;
@@ -36,7 +36,7 @@ $!{tableInfo.name}VO queryById($!pk.shortType $!pk.name);
 * @param dto 分页对象
 * @return 查询结果
 */
-PageInfo<$!{tableInfo.name}VO> queryByPage(RestDTO<Object> dto);
+PageInfo<$!{tableInfo.name}VO> queryByPage(PageQO qo);
 
 /**
 * 新增数据

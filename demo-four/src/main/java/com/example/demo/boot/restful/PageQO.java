@@ -11,7 +11,7 @@ import lombok.SneakyThrows;
  * @author: PWB <br>
  */
 @ApiModel("分页查询参数 model ")
-public class RestDTO<T> {
+public class PageQO{
 
   @ApiModelProperty("第几页 默认1 ")
   private Integer pageNum = 1;
@@ -19,8 +19,6 @@ public class RestDTO<T> {
   @ApiModelProperty("每页大小 默认 10")
   private Integer pageSize = 10;
 
-  @ApiModelProperty("其它查询参数 ")
-  private T data;
 
   public Integer getPageNum() {
     return pageNum;
@@ -44,14 +42,6 @@ public class RestDTO<T> {
       return;
     }
     this.pageSize = pageSize;
-  }
-
-  public T getData() {
-    return data;
-  }
-
-  public void setData(T data) {
-    this.data = data;
   }
 
 
