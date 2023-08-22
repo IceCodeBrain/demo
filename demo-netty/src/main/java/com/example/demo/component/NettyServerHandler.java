@@ -26,7 +26,7 @@ public class NettyServerHandler extends ChannelInboundHandlerAdapter {
     @Override
     public void channelActive(ChannelHandlerContext ctx) {
 
-       // ctx.channel().localAddress()
+        // ctx.channel().localAddress()
         log.info("Channel active......");
         channels.add(ctx.channel());
     }
@@ -59,6 +59,7 @@ public class NettyServerHandler extends ChannelInboundHandlerAdapter {
         cause.printStackTrace();
         ctx.close();
     }
+
     @Override
     public void handlerRemoved(ChannelHandlerContext ctx) {
 

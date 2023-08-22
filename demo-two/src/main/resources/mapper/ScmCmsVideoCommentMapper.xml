@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.demo.example.mapper.ScmCmsVideoCommentMapper">
-  <resultMap id="BaseResultMap" type="com.example.demo.example.entity.ScmCmsVideoComment">
-    <!--
-      WARNING - @mbg.generated
-    -->
-    <id column="id" jdbcType="BIGINT" property="id" />
-    <result column="cms_video_id" jdbcType="BIGINT" property="cmsVideoId" />
-    <result column="user_id" jdbcType="BIGINT" property="userId" />
-    <result column="user_name" jdbcType="VARCHAR" property="userName" />
-    <result column="user_pic" jdbcType="VARCHAR" property="userPic" />
-    <result column="comment" jdbcType="VARCHAR" property="comment" />
-    <result column="comment_pic" jdbcType="VARCHAR" property="commentPic" />
-    <result column="likes" jdbcType="INTEGER" property="likes" />
-    <result column="version" jdbcType="INTEGER" property="version" />
-    <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
-  </resultMap>
+    <resultMap id="BaseResultMap" type="com.example.demo.example.entity.ScmCmsVideoComment">
+        <!--
+          WARNING - @mbg.generated
+        -->
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="cms_video_id" jdbcType="BIGINT" property="cmsVideoId"/>
+        <result column="user_id" jdbcType="BIGINT" property="userId"/>
+        <result column="user_name" jdbcType="VARCHAR" property="userName"/>
+        <result column="user_pic" jdbcType="VARCHAR" property="userPic"/>
+        <result column="comment" jdbcType="VARCHAR" property="comment"/>
+        <result column="comment_pic" jdbcType="VARCHAR" property="commentPic"/>
+        <result column="likes" jdbcType="INTEGER" property="likes"/>
+        <result column="version" jdbcType="INTEGER" property="version"/>
+        <result column="create_date" jdbcType="TIMESTAMP" property="createDate"/>
+    </resultMap>
 </mapper>

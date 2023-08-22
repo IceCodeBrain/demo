@@ -8,11 +8,10 @@ import java.lang.annotation.Target;
 @Target({ElementType.TYPE, ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)
 public @interface Authority {
-	//
-	boolean required() default true;
+    //
+    boolean required() default true;
 
-	int[] value() default {0};
-
+    int[] value() default {0};
 
 
 }

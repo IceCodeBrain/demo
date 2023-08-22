@@ -1,27 +1,27 @@
 server:
-    port: 80
+  port: 80
 
 logging:
-    level:
-        root: DEBUG
+  level:
+    root: DEBUG
 
 management:
-    endpoints:
-        web:
-            exposure:
-                include: "*"
+  endpoints:
+    web:
+      exposure:
+        include: "*"
 
-    endpoint:
-        shutdown:
-            enabled: true
+  endpoint:
+    shutdown:
+      enabled: true
 
 netty:
-    websocket:
-        # Websocket服务端口
-        port: 1024
-        # 绑定的网卡
-        ip: 0.0.0.0
-        # 消息帧最大体积
-        max-frame-size: 10240
-        # URI路径
-        path: /channel
+  websocket:
+    # Websocket服务端口
+    port: 1024
+    # 绑定的网卡
+    ip: 0.0.0.0
+    # 消息帧最大体积
+    max-frame-size: 10240
+    # URI路径
+    path: /channel

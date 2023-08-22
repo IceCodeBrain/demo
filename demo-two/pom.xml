@@ -300,7 +300,7 @@
         </dependency>-->
         <!--......................................end..............................................-->
 
-<!--            -->
+        <!--            -->
         <dependency>
             <groupId>ws.schild</groupId>
             <artifactId>jave-core</artifactId>
@@ -321,7 +321,6 @@
             <artifactId>jave-nativebin-linux64</artifactId>
             <version>3.0.1</version>
         </dependency>
-
 
 
         <!-- https://mvnrepository.com/artifact/com.auth0/java-jwt -->

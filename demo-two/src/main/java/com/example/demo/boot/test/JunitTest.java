@@ -46,7 +46,7 @@ public class JunitTest {
         TopicVO topicVO = new TopicVO();
         topicVO.setId(1L);
         RestResult<TopicVO> restResult = RestResponse.ok(topicVO);
-        log.info("result:{}",restResult);
+        log.info("result:{}", restResult);
         // restResult = RestResponse.error("shiaop");
         topicVO = RestResponse.verifyRestResult(restResult);
         log.info("ces:{}", topicVO);
@@ -54,8 +54,8 @@ public class JunitTest {
 
     @Test
     public void testBigDecimal() {
-        BigDecimal one =  BigDecimal.ONE;
-        BigDecimal two =  one.add(BigDecimal.ONE);
+        BigDecimal one = BigDecimal.ONE;
+        BigDecimal two = one.add(BigDecimal.ONE);
 
         log.info(one.toString()); // 1
         log.info(two.toString()); // 2
@@ -63,7 +63,7 @@ public class JunitTest {
 
     @Test
     public void testAdd() {
-        int one =1;
+        int one = 1;
         one = one - -1;
         int two = one + -1;
         log.info(Integer.toString(one)); // 2

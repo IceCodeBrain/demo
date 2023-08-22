@@ -23,11 +23,11 @@ import $!{tableInfo.savePackageName}.boot.component.tk.TKMapper;
 public interface $!{tableName} extends TKMapper<$!{tableInfo.name}>{
 
 /**
-* 查询单条数据
-*
-* @param $!tool.firstLowerCase($!{tableInfo.name}) 查询条件
-* @return 返回对象
-*/
-$!{tableInfo.name} findOne($!{tableInfo.name} $!tool.firstLowerCase($!{tableInfo.name}));
+ * 查询单条数据
+ *
+ * @param $!tool.firstLowerCase($!{tableInfo.name}) 查询条件
+ * @return 返回对象
+ */
+    $!{tableInfo.name} findOne($!{tableInfo.name} $!tool.firstLowerCase($!{tableInfo.name}));
 
-}
+        }

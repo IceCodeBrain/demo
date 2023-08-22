@@ -11,16 +11,16 @@ $!{define.vm}
 $!autoImport
 import java.util.Date;
 import javax.persistence.*;
+
 import lombok.Data;
 ##使用宏定义实现类注释信息
 #tableComment("实体类")
 @Data
 @Table(name = "$!{tableInfo.obj.name}")
 public class $!{tableInfo.name}{
-#foreach($column in $tableInfo.fullColumn)
-    ##定义实体类属性：#doField($column)
-    #doField($column)
-#end
+    #foreach($column in $tableInfo.fullColumn)
+        ##定义实体类属性：#doField($column)
+        #doField($column)
+    #end
 
-
-}
+        }

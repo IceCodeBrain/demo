@@ -28,8 +28,8 @@ public class SpecialNoIdProvider extends MapperTemplate {
         Set<EntityColumn> columnList = EntityHelper.getColumns(entityClass);
         Iterator var5 = columnList.iterator();
 
-        while(var5.hasNext()) {
-            EntityColumn column = (EntityColumn)var5.next();
+        while (var5.hasNext()) {
+            EntityColumn column = (EntityColumn) var5.next();
             if (!column.isId() && column.isInsertable()) {
                 sql.append(column.getColumnHolder("record") + ",");
             }

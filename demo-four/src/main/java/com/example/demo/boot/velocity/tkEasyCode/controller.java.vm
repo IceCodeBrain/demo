@@ -50,9 +50,9 @@ private final $!{tableInfo.name}Service $!tool.firstLowerCase($tableInfo.name)Se
 */
 @ApiOperation("分页查询")
 @PostMapping("doQueryByPage")
-public RestResult<PageInfo<$!{tableInfo.name}VO>> doQueryByPage(PageQO qo) {
-return RestResponse.ok(this.$!{tool.firstLowerCase($tableInfo.name)}Service.queryByPage(qo));
-}
+public RestResult<PageInfo<$!{tableInfo.name}VO>>doQueryByPage(PageQO qo){
+        return RestResponse.ok(this.$!{tool.firstLowerCase($tableInfo.name)}Service.queryByPage(qo));
+        }
 
 /**
 * 通过主键查询单条数据
@@ -62,9 +62,9 @@ return RestResponse.ok(this.$!{tool.firstLowerCase($tableInfo.name)}Service.quer
 */
 @ApiOperation("通过主键查询单条数据")
 @GetMapping("doQueryById/{id}")
-public RestResult<$!{tableInfo.name}VO> doQueryById(@PathVariable("id") $!pk.shortType id) {
-return RestResponse.ok(this.$!{tool.firstLowerCase($tableInfo.name)}Service.queryById(id));
-}
+public RestResult<$!{tableInfo.name}VO> doQueryById(@PathVariable("id") $!pk.shortType id){
+        return RestResponse.ok(this.$!{tool.firstLowerCase($tableInfo.name)}Service.queryById(id));
+        }
 
 /**
 * 新增数据
@@ -74,9 +74,9 @@ return RestResponse.ok(this.$!{tool.firstLowerCase($tableInfo.name)}Service.quer
 */
 @ApiOperation("新增数据")
 @PostMapping("doAdd")
-public RestResult<Boolean> doAdd(@RequestBody $!{tableInfo.name}DTO dto) {
-return RestResponse.ok(this.$!{tool.firstLowerCase($tableInfo.name)}Service.add(dto));
-}
+public RestResult<Boolean> doAdd(@RequestBody $!{tableInfo.name}DTO dto){
+        return RestResponse.ok(this.$!{tool.firstLowerCase($tableInfo.name)}Service.add(dto));
+        }
 
 /**
 * 编辑数据
@@ -86,9 +86,9 @@ return RestResponse.ok(this.$!{tool.firstLowerCase($tableInfo.name)}Service.add(
 */
 @ApiOperation("编辑数据")
 @PutMapping("doEdit")
-public RestResult<Boolean> doEdit(@RequestBody $!{tableInfo.name}DTO dto) {
-return RestResponse.ok(this.$!{tool.firstLowerCase($tableInfo.name)}Service.update(dto));
-}
+public RestResult<Boolean> doEdit(@RequestBody $!{tableInfo.name}DTO dto){
+        return RestResponse.ok(this.$!{tool.firstLowerCase($tableInfo.name)}Service.update(dto));
+        }
 
 /**
 * 删除数据
@@ -98,8 +98,8 @@ return RestResponse.ok(this.$!{tool.firstLowerCase($tableInfo.name)}Service.upda
 */
 @ApiOperation("删除数据")
 @DeleteMapping("doDeleteById/{id}")
-public RestResult<Boolean> doDeleteById(@PathVariable("id") $!pk.shortType id) {
-  return RestResponse.ok(this.$!{tool.firstLowerCase($tableInfo.name)}Service.deleteById(id));
-  }
+public RestResult<Boolean> doDeleteById(@PathVariable("id") $!pk.shortType id){
+        return RestResponse.ok(this.$!{tool.firstLowerCase($tableInfo.name)}Service.deleteById(id));
+        }
 
-}
+        }

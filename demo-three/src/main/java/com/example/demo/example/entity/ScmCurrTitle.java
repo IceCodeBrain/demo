@@ -6,7 +6,7 @@ import javax.persistence.*;
 @Table(name = "scm_curr_title")
 public class ScmCurrTitle {
     /**
-     * id 
+     * id
      */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -42,18 +42,18 @@ public class ScmCurrTitle {
     private String state;
 
     /**
-     * 获取id 
+     * 获取id
      *
-     * @return id - id 
+     * @return id - id
      */
     public Long getId() {
         return id;
     }
 
     /**
-     * 设置id 
+     * 设置id
      *
-     * @param id id 
+     * @param id id
      */
     public void setId(Long id) {
         this.id = id;

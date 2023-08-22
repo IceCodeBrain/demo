@@ -25,33 +25,33 @@
 ##定义表注释的宏定义，调用方式：#tableComment("注释信息")
 #macro(tableComment $desc)
 /**
- * @description: $!{tableInfo.comment}($!{tableInfo.name})$desc <br>
- * @author: $!author <br>
- * @since: 1.0 <br>
- * @date: $!time.currTime() <br>
- */
+* @description: $!{tableInfo.comment}($!{tableInfo.name})$desc <br>
+* @author: $!author <br>
+* @since: 1.0 <br>
+* @date: $!time.currTime() <br>
+*/
 #end
 
 ##定义GET，SET方法的宏定义，调用方式：#getSetMethod($column)
 #macro(getSetMethod $column)
 
     #if(${column.comment})
-/**
-     * 获取${column.comment}
-     */
+    /**
+    * 获取${column.comment}
+    */
     #end
 public $!{tool.getClsNameByFullName($column.type)} get$!{tool.firstUpperCase($column.name)}() {
-        return $!{column.name};
-    }
+return $!{column.name};
+}
 
     #if(${column.comment})
-/**
-     * 设置${column.comment}
-     */
+    /**
+    * 设置${column.comment}
+    */
     #end
 public void set$!{tool.firstUpperCase($column.name)}($!{tool.getClsNameByFullName($column.type)} $!{column.name}) {
-        this.$!{column.name} = $!{column.name};
-    }
+this.$!{column.name} = $!{column.name};
+}
 #end
 
 
@@ -59,18 +59,18 @@ public void set$!{tool.firstUpperCase($column.name)}($!{tool.getClsNameByFullNam
 #macro(doField $column)
 
     #if(${column.comment})
-/**
-      * $!{column.comment}
-      */
+    /**
+    * $!{column.comment}
+    */
     #end
 
     #if(($column.obj.name.indexOf("id")>-1 || $column.obj.name.indexOf("ID")>-1) && $column.obj.name.length()<3)
-@Id
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     #end
 
     #if($column.obj.name != $column.name)
-@Column(name = "$!{column.obj.name}")
+    @Column(name = "$!{column.obj.name}")
     #end
 private $!{tool.getClsNameByFullName($column.type)} $!{column.name};
 #end

@@ -196,6 +196,7 @@ public class DateUtils extends org.apache.commons.lang3.time.DateUtils {
         }
         return day + "天" + hour + "小时" + min + "分钟";
     }
+
     /**
      * 获取两个时间之间的年月
      */
@@ -406,7 +407,6 @@ public class DateUtils extends org.apache.commons.lang3.time.DateUtils {
         }
         return (int) (strtodate.getTime() / 1000);
     }
-
 
 
     /**

@@ -24,7 +24,7 @@ public class TopicBean {
 
 
     /**
-     *  Incorrect table definition; there can be only one auto column and it must be defined as a key
+     * Incorrect table definition; there can be only one auto column and it must be defined as a key
      * id
      */
     @Id

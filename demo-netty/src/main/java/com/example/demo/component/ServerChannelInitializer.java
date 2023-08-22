@@ -17,8 +17,8 @@ public class ServerChannelInitializer extends ChannelInitializer<SocketChannel> 
     protected void initChannel(SocketChannel socketChannel) throws Exception {
         //添加编解码
         socketChannel.pipeline().addLast(new IdleStateHandler(60, 0, 0))
-                                .addLast(new StringDecoder(CharsetUtil.UTF_8))
-                                .addLast(new StringEncoder(CharsetUtil.UTF_8))
-                                .addLast(new NettyServerHandler());
+                .addLast(new StringDecoder(CharsetUtil.UTF_8))
+                .addLast(new StringEncoder(CharsetUtil.UTF_8))
+                .addLast(new NettyServerHandler());
     }
 }

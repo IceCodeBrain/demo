@@ -21,6 +21,7 @@ public class JWTUtil {
     // private static final long EXPIRE_TIME = 1000;
 
     private final static String SALT = "YcYp65l;uq234pwb;iIjHg872S-ajfL.khp636";
+
     /**
      * 校验token是否正确
      *

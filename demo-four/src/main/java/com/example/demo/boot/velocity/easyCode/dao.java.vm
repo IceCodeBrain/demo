@@ -39,7 +39,7 @@ public interface $!{tableName} {
          * @param pageable         分页对象
          * @return 对象列表
          */
-        List<$!{tableInfo.name}> queryAllByLimit($!{tableInfo.name} $!tool.firstLowerCase($!{tableInfo.name}), @Param("pageable") Pageable pageable);
+        List<$!{tableInfo.name}> queryAllByLimit($!{tableInfo.name} $!tool.firstLowerCase($!{tableInfo.name}),@Param("pageable") Pageable pageable);
 
         /**
          * 统计总行数

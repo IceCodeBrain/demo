@@ -27,7 +27,7 @@ public interface TopicService {
     TopicVO doGetTopicById(Long id);
 
 
-    Page<TopicBean> doGetTopicByName(String name,int page, int size);
+    Page<TopicBean> doGetTopicByName(String name, int page, int size);
 
 
     Page<TopicBean> doFindAllTopic(int page, int size);

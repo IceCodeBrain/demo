@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.demo.example.mapper.ScmAnnouncementTemplateMapper">
-  <resultMap id="BaseResultMap" type="com.example.demo.example.entity.ScmAnnouncementTemplate">
-    <!--
-      WARNING - @mbg.generated
-    -->
-    <id column="id" jdbcType="BIGINT" property="id" />
-    <result column="title" jdbcType="VARCHAR" property="title" />
-    <result column="content" jdbcType="VARCHAR" property="content" />
-    <result column="type" jdbcType="TINYINT" property="type" />
-    <result column="rolling_time" jdbcType="TINYINT" property="rollingTime" />
-    <result column="word_is_rolling" jdbcType="BIT" property="wordIsRolling" />
-    <result column="sort" jdbcType="INTEGER" property="sort" />
-    <result column="is_delete" jdbcType="BIT" property="isDelete" />
-    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
-    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
-  </resultMap>
+    <resultMap id="BaseResultMap" type="com.example.demo.example.entity.ScmAnnouncementTemplate">
+        <!--
+          WARNING - @mbg.generated
+        -->
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="title" jdbcType="VARCHAR" property="title"/>
+        <result column="content" jdbcType="VARCHAR" property="content"/>
+        <result column="type" jdbcType="TINYINT" property="type"/>
+        <result column="rolling_time" jdbcType="TINYINT" property="rollingTime"/>
+        <result column="word_is_rolling" jdbcType="BIT" property="wordIsRolling"/>
+        <result column="sort" jdbcType="INTEGER" property="sort"/>
+        <result column="is_delete" jdbcType="BIT" property="isDelete"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+    </resultMap>
 </mapper>

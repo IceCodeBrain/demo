@@ -22,7 +22,7 @@ public class ImageController {
 
     @ApiOperation(value = "获取二维码", notes = "获取用户信息二维吗")
     @GetMapping(value = "/qrcode/{id}")
-    public void getQRCode( HttpServletResponse response) throws IOException {
+    public void getQRCode(HttpServletResponse response) throws IOException {
         response.setHeader("Cache-Control", "no-store");
         // 不设置缓存
         response.setHeader("Pragma", "no-cache");
@@ -44,7 +44,6 @@ public class ImageController {
                 "png",
                 response.getOutputStream()//写出到的文件
         );
-
 
 
     }

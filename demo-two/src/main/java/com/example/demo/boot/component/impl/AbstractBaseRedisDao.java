@@ -1,4 +1,3 @@
-
 package com.example.demo.boot.component.impl;
 
 import org.springframework.data.redis.core.RedisTemplate;
@@ -7,7 +6,6 @@ import org.springframework.data.redis.serializer.RedisSerializer;
 import javax.annotation.Resource;
 
 /**
- *
  * @author pwb
  * @create 2019/8/27
  * @since 1.0.0

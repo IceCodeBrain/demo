@@ -34,7 +34,8 @@ public class CustomProtocol implements Serializable {
         this.id = id;
         this.content = content;
     }
-    public CustomProtocol(){
+
+    public CustomProtocol() {
 
     }
 

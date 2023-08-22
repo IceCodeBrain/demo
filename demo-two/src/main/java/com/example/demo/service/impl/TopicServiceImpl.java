@@ -43,7 +43,7 @@ public class TopicServiceImpl implements TopicService {
             topicBean.setCreateTime(date);
             topicBeans.add(topicBean);
         }
-       topicESRepository.saveAll(topicBeans);
+        topicESRepository.saveAll(topicBeans);
     }
 
     @Override

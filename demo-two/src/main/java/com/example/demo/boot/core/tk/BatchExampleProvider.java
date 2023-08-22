@@ -11,6 +11,7 @@ import java.util.Set;
 
 /**
  * 批量更新的SqlProvider
+ *
  * @author kwah
  */
 
@@ -36,10 +37,10 @@ public class BatchExampleProvider extends ExampleProvider {
 
         //获取全部列
         Set<EntityColumn> columnList = EntityHelper.getColumns(entityClass);
-        String idname = "",javaIdname = "";
+        String idname = "", javaIdname = "";
         for (EntityColumn column : columnList) {
             //获取主键id
-            if(column.isId()){
+            if (column.isId()) {
                 idname = column.getColumn();
                 javaIdname = column.getEntityField().getName();
                 break;
@@ -49,10 +50,10 @@ public class BatchExampleProvider extends ExampleProvider {
 
         for (EntityColumn column : columnList) {
             if (!column.isId() && column.isUpdatable()) {
-                sql.append("  <trim prefix=\""+column.getColumn()+" =case\" suffix=\"end,\">");
+                sql.append("  <trim prefix=\"" + column.getColumn() + " =case\" suffix=\"end,\">");
                 sql.append("    <foreach collection=\"list\" item=\"i\" index=\"index\">");
-                sql.append("      <if test=\"i."+column.getEntityField().getName()+"!=null\">");
-                sql.append("         when "+idname+"=#{i."+javaIdname+"} then #{i."+column.getEntityField().getName()+"}");
+                sql.append("      <if test=\"i." + column.getEntityField().getName() + "!=null\">");
+                sql.append("         when " + idname + "=#{i." + javaIdname + "} then #{i." + column.getEntityField().getName() + "}");
                 sql.append("      </if>");
                 sql.append("    </foreach>");
                 sql.append("  </trim>");
@@ -61,10 +62,10 @@ public class BatchExampleProvider extends ExampleProvider {
 
         sql.append("</trim>");
         sql.append("WHERE");
-        sql.append(" "+idname+" IN ");
+        sql.append(" " + idname + " IN ");
         sql.append("<trim prefix=\"(\" suffix=\")\">");
         sql.append("<foreach collection=\"list\" separator=\", \" item=\"i\" index=\"index\" >");
-        sql.append("#{i."+javaIdname+"}");
+        sql.append("#{i." + javaIdname + "}");
         sql.append("</foreach>");
         sql.append("</trim>");
         System.out.println(sql.toString());

@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.demo.example.mapper.ScmCmsVideoLikeRecordMapper">
-  <resultMap id="BaseResultMap" type="com.example.demo.example.entity.ScmCmsVideoLikeRecord">
-    <!--
-      WARNING - @mbg.generated
-    -->
-    <id column="id" jdbcType="BIGINT" property="id" />
-    <result column="cms_video_id" jdbcType="BIGINT" property="cmsVideoId" />
-    <result column="user_id" jdbcType="BIGINT" property="userId" />
-    <result column="comment_id" jdbcType="BIGINT" property="commentId" />
-    <result column="is_comment_like" jdbcType="CHAR" property="isCommentLike" />
-  </resultMap>
+    <resultMap id="BaseResultMap" type="com.example.demo.example.entity.ScmCmsVideoLikeRecord">
+        <!--
+          WARNING - @mbg.generated
+        -->
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="cms_video_id" jdbcType="BIGINT" property="cmsVideoId"/>
+        <result column="user_id" jdbcType="BIGINT" property="userId"/>
+        <result column="comment_id" jdbcType="BIGINT" property="commentId"/>
+        <result column="is_comment_like" jdbcType="CHAR" property="isCommentLike"/>
+    </resultMap>
 </mapper>

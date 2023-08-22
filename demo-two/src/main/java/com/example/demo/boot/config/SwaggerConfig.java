@@ -75,7 +75,7 @@ public class SwaggerConfig {
         return new ApiInfoBuilder()
                 .title("demo项目后端api文档")
                 .description("简单优雅的restfun风格；")
-               // .termsOfServiceUrl("http://localhost:8080/demo")
+                // .termsOfServiceUrl("http://localhost:8080/demo")
                 .version("1.0")
                 .build();
     }

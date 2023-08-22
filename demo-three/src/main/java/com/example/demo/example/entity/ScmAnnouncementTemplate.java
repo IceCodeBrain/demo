@@ -45,7 +45,7 @@ public class ScmAnnouncementTemplate {
     private Integer sort;
 
     /**
-     * 是否删除 是 ->1 or true | 否 -> 0 or false 
+     * 是否删除 是 ->1 or true | 否 -> 0 or false
      */
     @Column(name = "is_delete")
     private Boolean isDelete;
@@ -189,18 +189,18 @@ public class ScmAnnouncementTemplate {
     }
 
     /**
-     * 获取是否删除 是 ->1 or true | 否 -> 0 or false 
+     * 获取是否删除 是 ->1 or true | 否 -> 0 or false
      *
-     * @return is_delete - 是否删除 是 ->1 or true | 否 -> 0 or false 
+     * @return is_delete - 是否删除 是 ->1 or true | 否 -> 0 or false
      */
     public Boolean getIsDelete() {
         return isDelete;
     }
 
     /**
-     * 设置是否删除 是 ->1 or true | 否 -> 0 or false 
+     * 设置是否删除 是 ->1 or true | 否 -> 0 or false
      *
-     * @param isDelete 是否删除 是 ->1 or true | 否 -> 0 or false 
+     * @param isDelete 是否删除 是 ->1 or true | 否 -> 0 or false
      */
     public void setIsDelete(Boolean isDelete) {
         this.isDelete = isDelete;

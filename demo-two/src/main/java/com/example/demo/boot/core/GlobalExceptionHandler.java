@@ -41,6 +41,7 @@ public class GlobalExceptionHandler {
         log.error(e.getMessage(), e);
         return RestResponse.build(e.getCode(), e.getMessage());
     }
+
     /**
      * 处理自定义异常
      */
@@ -49,6 +50,7 @@ public class GlobalExceptionHandler {
         log.error(e.getMessage(), e);
         return RestResponse.build(e.getCode(), e.getMessage());
     }
+
     /**
      * 统一处理请求参数校验(实体对象传参)
      *
@@ -65,6 +67,7 @@ public class GlobalExceptionHandler {
         message = new StringBuilder(message.substring(0, message.length() - 1));
         return RestResponse.build(RestCode.FAIL.getCode(), message.toString());
     }
+
     /**
      * 方法参数校验
      */
