@@ -23,12 +23,12 @@ import com.github.pagehelper.PageInfo;
 public interface $!{tableName} {
 
 /**
- * 通过ID查询单条数据
- *
- * @param $!pk.name 主键
- * @return 实例对象
- */
-    $!{tableInfo.name}VO queryById($!pk.shortType $!pk.name);
+* 通过ID查询单条数据
+*
+* @param $!pk.name 主键
+* @return 实例对象
+*/
+$!{tableInfo.name}VO queryById($!pk.shortType $!pk.name);
 
 /**
 * 分页查询
@@ -36,7 +36,7 @@ public interface $!{tableName} {
 * @param dto 分页对象
 * @return 查询结果
 */
-        PageInfo<$!{tableInfo.name}VO> queryByPage(PageQO qo);
+PageInfo<$!{tableInfo.name}VO> queryByPage(PageQO qo);
 
 /**
 * 新增数据
@@ -44,7 +44,7 @@ public interface $!{tableName} {
 * @param dto 实例对象
 * @return Boolean
 */
-        Boolean add($!{tableInfo.name}DTO dto);
+Boolean add($!{tableInfo.name}DTO dto);
 
 /**
 * 修改数据
@@ -52,15 +52,15 @@ public interface $!{tableName} {
 * @param dto 实例对象
 * @return Boolean
 */
-        Boolean update($!{tableInfo.name}DTO dto);
+  Boolean update($!{tableInfo.name}DTO dto);
 
 /**
- * 通过主键删除数据
- *
- * @param $!pk.name 主键
- * @return 是否成功
- */
-        Boolean deleteById($!pk.shortType $!pk.name);
+* 通过主键删除数据
+*
+* @param $!pk.name 主键
+* @return 是否成功
+*/
+  Boolean deleteById($!pk.shortType $!pk.name);
 
 
-        }
+}
