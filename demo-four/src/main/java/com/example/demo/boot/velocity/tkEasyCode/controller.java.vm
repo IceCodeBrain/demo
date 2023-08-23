@@ -40,7 +40,7 @@ private final $!{tableInfo.name}Service $!tool.firstLowerCase($tableInfo.name)Se
 
 //分页查询
 @ApiOperation("分页查询")
-@PostMapping("doQueryByPage")
+@GetMapping("doQueryByPage")
 public RestResult<PageInfo<$!{tableInfo.name}VO>> doQueryByPage(PageQO qo) {
 return RestResponse.ok(this.$!{tool.firstLowerCase($tableInfo.name)}Service.queryByPage(qo));
 }
