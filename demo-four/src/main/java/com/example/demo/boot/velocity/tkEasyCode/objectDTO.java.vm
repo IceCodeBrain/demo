@@ -9,26 +9,25 @@ $!{define.vm}
 
 ##使用全局变量实现默认包导入
 $!autoImport
-import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 import java.util.Date;
+import lombok.EqualsAndHashCode;
+import $!{tableInfo.savePackageName}.boot.restful.BaseID;
 
 ##使用宏定义实现类注释信息
 #tableComment("实体类")
-
-@ApiModel("$!{tableInfo.comment}DTO")
+@EqualsAndHashCode(callSuper = true)
+@ApiModel("$!{tableInfo.comment}新增修改DTO")
 @Data
-public class $!{tableInfo.name}DTO {
+public class $!{tableInfo.name}DTO extends BaseID{
 #foreach($column in $tableInfo.fullColumn)
-
-@ApiModelProperty(value = "$!{column.comment}")
-#if ($column.type.indexOf("Date")>-1)
-@JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
-#end
-private $!{tool.getClsNameByFullName($column.type)} $!{column.name};
+    #if(!($column.name.equals("id"))&& !($column.name.equals("createTime"))&&!($column.name.equals("updateTime")))
+        @ApiModelProperty(value = "$!{column.comment}")
+        private $!{tool.getClsNameByFullName($column.type)} $!{column.name};
+    #end
 #end
 
 

@@ -33,7 +33,7 @@ $!{tableInfo.name}VO queryById($!pk.shortType $!pk.name);
 /**
 * 分页查询
 *
-* @param dto 分页对象
+* @param qo 分页对象
 * @return 查询结果
 */
 PageInfo<$!{tableInfo.name}VO> queryByPage(PageQO qo);

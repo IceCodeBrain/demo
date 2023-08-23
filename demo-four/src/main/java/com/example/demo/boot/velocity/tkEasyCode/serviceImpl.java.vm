@@ -32,59 +32,34 @@ public class $!{tableName} implements $!{tableInfo.name}Service {
 
 private final $!{tableInfo.name}Dao $!tool.firstLowerCase($!{tableInfo.name})Dao;
 
-/**
-* 通过ID查询单条数据
-*
-* @param $!pk.name 主键
-* @return 实例对象
-*/
+
 @Override
 public $!{tableInfo.name}VO queryById($!pk.shortType $!pk.name) {
 return null;
 }
 
-/**
-* 分页查询
-*
-* @param dto 分页对象
-* @return 查询结果
-*/
+
 @Override
 public PageInfo<$!{tableInfo.name}VO> queryByPage(PageQO qo) {
   PageHelper.startPage(qo.getPageNum(), qo.getPageSize());
 return null;
 }
 
-/**
-* 新增数据
-*
-* @param dto 实例对象
-* @return 实例对象
-*/
+
 @Override
 public Boolean add($!{tableInfo.name}DTO dto) {
   $!{tableInfo.name} $!{tool.firstLowerCase($tableInfo.name)} = new  $!{tableInfo.name}();
   return this.$!{tool.firstLowerCase($tableInfo.name)}Dao.insertSelective($!{tool.firstLowerCase($tableInfo.name)}) == 1;
 }
 
-/**
-* 修改数据
-*
-* @param dto 实例对象
-* @return 实例对象
-*/
+
 @Override
 public Boolean update($!{tableInfo.name}DTO dto) {
     $!{tableInfo.name} $!{tool.firstLowerCase($tableInfo.name)} = new  $!{tableInfo.name}();
   return this.$!{tool.firstLowerCase($tableInfo.name)}Dao.updateByPrimaryKeySelective($!{tool.firstLowerCase($tableInfo.name)}) == 1;
 }
 
-/**
-* 通过主键删除数据
-*
-* @param $!pk.name 主键
-* @return 是否成功
-*/
+
 @Override
 public Boolean deleteById($!pk.shortType $!pk.name) {
   return this.$!{tool.firstLowerCase($tableInfo.name)}Dao.deleteByPrimaryKey($!pk.name) == 1;

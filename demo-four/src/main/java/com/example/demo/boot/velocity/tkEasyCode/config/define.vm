@@ -26,8 +26,6 @@
 #macro(tableComment $desc)
 /**
  * @description: $!{tableInfo.comment}($!{tableInfo.name})$desc <br>
- * @author: $!author <br>
- * @since: 1.0 <br>
  * @date: $!time.currTime() <br>
  */
 #end
@@ -58,19 +56,19 @@ public void set$!{tool.firstUpperCase($column.name)}($!{tool.getClsNameByFullNam
 ##定义实体类属性：#doField($column)
 #macro(doField $column)
 
-    #if(${column.comment})
-/**
-      * $!{column.comment}
-      */
+
+
+    #if(!($column.obj.name.equals("id"))&& !($column.name.equals("createTime"))&&!($column.name.equals("updateTime")))
+        #if(${column.comment})
+        /**
+        * $!{column.comment}
+        */
+        #end
+        #if($column.obj.name != $column.name)
+        @Column(name = "$!{column.obj.name}")
+        #end
+    private $!{tool.getClsNameByFullName($column.type)} $!{column.name};
     #end
 
-    #if(($column.obj.name.indexOf("id")>-1 || $column.obj.name.indexOf("ID")>-1) && $column.obj.name.length()<3)
-@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    #end
 
-    #if($column.obj.name != $column.name)
-@Column(name = "$!{column.obj.name}")
-    #end
-private $!{tool.getClsNameByFullName($column.type)} $!{column.name};
 #end

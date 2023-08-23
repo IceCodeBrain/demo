@@ -15,20 +15,27 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 import java.util.Date;
+import lombok.EqualsAndHashCode;
+import $!{tableInfo.savePackageName}.boot.restful.BaseVO;
 
 ##使用宏定义实现类注释信息
 #tableComment("实体类")
-
-@ApiModel("$!{tableInfo.comment}VO")
+@EqualsAndHashCode(callSuper = true)
+@ApiModel("$!{tableInfo.comment}返回对象VO")
 @Data
-public class $!{tableInfo.name}VO {
+public class $!{tableInfo.name}VO extends BaseVO{
 #foreach($column in $tableInfo.fullColumn)
 
-@ApiModelProperty(value = "$!{column.comment}")
-#if ($column.type.indexOf("Date")>-1)
-@JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
-#end
-private $!{tool.getClsNameByFullName($column.type)} $!{column.name};
+    #if(!($column.name.equals("id"))&& !($column.name.equals("createTime"))&&!($column.name.equals("updateTime")))
+
+        @ApiModelProperty(value = "$!{column.comment}")
+            #if ($column.type.indexOf("Date")>-1)
+            @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
+            #end
+        private $!{tool.getClsNameByFullName($column.type)} $!{column.name};
+    #end
+
+
 #end
 
 
